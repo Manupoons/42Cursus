@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 13:23:21 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/09/17 13:23:23 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/09/20 10:25:23 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/09/20 10:25:24 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*dst;
-	char	*source;
+	char	*aux_big;
+	char	*aux_lit;
+	size_t	x;
+	size_t	length;
 
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	dst = (char *)dest;
-	source = (char *)src;
-	while (n > 0)
+	if (*little == '\0')
+		return ((char *)big);
+	x = 0;
+	aux_big = (char *)big;
+	aux_lit = (char *)little;
+	length = ft_strlen(aux_lit);
+	while (aux_big[x] && (x + length) <= len)
 	{
-		*dst = *source;
-		dst++;
-		source++;
-		n--;
+		if (ft_strncmp((aux_big + x), aux_lit, length) == 0)
+			return (aux_big + x);
+		x++;
 	}
-	return (dest);
+	return (NULL);
 }
