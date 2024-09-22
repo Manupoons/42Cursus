@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:23:53 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/09/17 11:23:55 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/09/22 19:09:10 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
+char    *ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
