@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/22 21:59:10 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/09/23 10:20:43 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/09/23 11:01:49 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/09/23 11:12:44 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strjoin(char const *s1, char const *s2)
+void    ft_putnbr_fd(int n, int fd)
 {
-    char   *res;
-    size_t x;
-    size_t y;
-
-    x = 0;
-    y = 0;
-    res = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-    if (!res)
-        return (NULL);
-    while (s1[x])
+    if (n == -2147483648)
+        ft_putstr_fd("-2147483648", fd);
+    else if (n < 0)
     {
-        res[x] = s1[x];
-        x++;
+        ft_putchar_fd('-', fd);
+        ft_putnbr_fd(-n, fd);
     }
-    while (s2[y])
+    else if (n >= 10)
     {
-        res[x + y] = s2[y];
-        y++;
+        ft_putnbr_fd(n / 10, fd);
+        ft_putchar_fd(n % 10 + '0', fd);
     }
-    res[x + y] = '\0';
-    return(res);
-}  
+    else
+        ft_putchar_fd(n + '0', fd);
+}
