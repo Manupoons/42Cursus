@@ -12,51 +12,51 @@
 
 #include "libft.h"
 
-static size_t   ft_numsize(long num)
+static size_t	ft_numsize(long num)
 {
-    size_t  len;
+	size_t	len;
 
-    len = 0;
-    if (num == 0)
-        return (1);
-    if (num < 0)
-    {
-        num *= -1;
-        len++;
-    }
-    while (num > 0)
-    {
-        num /= 10;
-        len++;
-    }
-    return (len);
+	len = 0;
+	if (num == 0)
+		return (1);
+	if (num < 0)
+	{
+		num *= -1;
+		len++;
+	}
+	while (num > 0)
+	{
+		num /= 10;
+		len++;
+	}
+	return (len);
 }
 
-char    *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-    char    *str;
-    size_t  len;
-    size_t  x;
-    long    num;
+	char	*str;
+	size_t	len;
+	size_t	x;
+	long	num;
 
-    x = 0;
-    num = (long)n;
-    len = ft_numsize(num);
-    str = (char *)malloc(sizeof(char) * (len + 1));
-    if (!str)
-        return (NULL);
-    if (n == 0)
-        str[x] = '0';
-    if (num < 0)
-    {
-        str[0] = '-';
-        num *= -1;
-    }
-    while (num > 0)
-    {
-        str[(len - 1) - x++] = (num % 10) + '0';
-        num /= 10;
-    }
-    str[len] = '\0';
-    return (str);
+	x = 0;
+	num = (long)n;
+	len = ft_numsize(num);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	if (n == 0)
+		str[x] = '0';
+	if (num < 0)
+	{
+		str[0] = '-';
+		num *= -1;
+	}
+	while (num > 0)
+	{
+		str[(len - 1) - x++] = (num % 10) + '0';
+		num /= 10;
+	}
+	str[len] = '\0';
+	return (str);
 }
