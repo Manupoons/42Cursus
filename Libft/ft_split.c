@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 10:46:48 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/09/23 12:00:58 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/09/24 09:40:04 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,14 @@ static int	ft_count_words(char const *s, char c)
 static char	**ft_free(char **strs, int x)
 {
 	while (x > 0)
-	{
-		free(strs[x]);
-		x--;
-	}
-	free (strs);
+		free(strs[x--]);
+	free(strs);
 	return (NULL);
 }
 
-static int	ft_word_len(char const *s, char c)
+static size_t	ft_word_len(char const *s, char c)
 {
-	int	x;
+	size_t	x;
 
 	x = 0;
 	while (s[x] && s[x] != c)
@@ -58,11 +55,11 @@ char	**ft_split(char const *s, char c)
 {
 	char	**strs;
 	size_t	x;
-	int		len;
+	size_t	len;
 
 	x = 0;
 	strs = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (!strs || !s)
+	if (!strs)
 		return (ft_free(strs, 0));
 	while (*s)
 	{
@@ -79,6 +76,6 @@ char	**ft_split(char const *s, char c)
 		}
 		s += len;
 	}
-	strs[x] = '\0';
+	strs[x] = NULL;
 	return (strs);
 }
