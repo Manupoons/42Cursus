@@ -23,8 +23,11 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		return (ft_memcpy(dest, src, n));
 	if (dest > src)
 	{
-		while (n--)
+		while (n)
+		{
+			n--;
 			aux_dst[n] = aux_src[n];
+		}
 	}
 	return (dest);
 }

@@ -34,16 +34,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[aux_dst] = '\0';
 	return (dst_length + src_length);
 }
-
-/*
-int	main(void)
-{
-	char dst[] = "adios";
-	char src[] = "hola";
-	size_t val = 9;
-
-	printf("%s\n", dst);
-	ft_strlcat(dst, src, val);
-	printf("%s", dst);
-}
-*/

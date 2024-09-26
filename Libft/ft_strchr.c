@@ -29,12 +29,3 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return ((char *)dst + x);
 }
-/*
-int	main(void)
-{
-	char str[] = "hola que tal";
-	int c = 97;
-
-	printf("%s", ft_strchr(str, c));
-}
-*/

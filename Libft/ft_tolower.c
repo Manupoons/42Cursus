@@ -21,10 +21,3 @@ int	ft_tolower(int c)
 	}
 	return (c);
 }
-/*
-int main(void)
-{
-	printf("%d\n", ft_tolower(69));
-	printf("%d\n", ft_tolower(101));
-}
-*/
