@@ -30,12 +30,13 @@ char	*get_next_line(int fd)
 
 int main()
 {
-	char	*buffer[42];
-	char	*line;
+	char	buffer[42];
+	//char	*line;
 
 	int fd = open("a.txt", O_RDONLY);
 	read(fd, buffer, BUFFER_SIZE);
 	if (fd < 0)
 		return (0);
-	printf("Text:  %s\n", *buffer);
+	printf("Text:  %s\n", buffer);
+	return (0);
 }
