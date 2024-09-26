@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 15:44:41 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/09/25 10:57:30 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/09/25 11:20:10 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/09/25 11:52:29 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*node;
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-<<<<<<< HEAD
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		node = *lst;
-		*lst = (*lst)->next;
-		del(node->content);
-=======
-	while (*lst)
-	{
-		node = *lst;
-		del((*lst)->content);
-		*lst = (*lst)->next;
->>>>>>> 4d8c98c183f85e77a7aed8b4a0ad9bc5138ce5c3
-		free(node);
-	}
-}
+# ifndef BUFFER_SIZE
+#	define BUFFER_SIZE 42
+# endif
+
+char	*get_next_line(int fd);
+int		ft_strlen(char *str);
+char	*ft_strchr(char *str, int c);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strjoin(char *s1, char *s2);
+
+#endif
