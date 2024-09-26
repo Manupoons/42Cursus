@@ -23,10 +23,5 @@
 # endif
 
 char	*get_next_line(int fd);
-int		ft_strlen(char *str);
-char	*ft_strchr(char *str, int c);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t size);
-char	*ft_strjoin(char *s1, char *s2);
 
 #endif
