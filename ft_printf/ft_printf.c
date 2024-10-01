@@ -83,11 +83,3 @@ int	ft_printf(char const *s, ...)
 	va_end(v1);
 	return (val);
 }
-
-/*
-int	main()
-{
-	ft_printf("%s\n", "hola");
-	printf("%s\n", "hola");
-}
-*/
