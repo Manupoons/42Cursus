@@ -32,24 +32,6 @@ static char	*set_line(char *line)
 	return (aux);
 }
 
-static char	*ft_strchr(char *s, int c)
-{
-	unsigned int	x;
-	char			aux;
-
-	x = 0;
-	aux = (char) c;
-	while (s[x])
-	{
-		if (s[x] == aux)
-			return ((char *) &s[x]);
-		x++;
-	}
-	if (s[x] == aux)
-		return ((char *) &s[x]);
-	return (NULL);
-}
-
 static char	*fill_line(int fd, char *aux, char *buffer)
 {
 	ssize_t	bytes;

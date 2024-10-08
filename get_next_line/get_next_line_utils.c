@@ -67,19 +67,12 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char			*res;
+	unsigned int	x;
+	unsigned int	y;
 
 	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!res)
 		return (NULL);
-	fill_str(res, s1, s2);
-	return (res);
-}
-
-void	fill_str(char *res, char *s1, char *s2)
-{
-	unsigned int	x;
-	unsigned int	y;
-
 	x = 0;
 	y = 0;
 	while (s1[y])
@@ -88,4 +81,23 @@ void	fill_str(char *res, char *s1, char *s2)
 	while (s2[y])
 		res[x++] = s2[y++];
 	res[x] = '\0';
+	return (res);
+}
+
+char	*ft_strchr(char *s, int c)
+{
+	unsigned int	x;
+	char			aux;
+
+	x = 0;
+	aux = (char) c;
+	while (s[x])
+	{
+		if (s[x] == aux)
+			return ((char *) &s[x]);
+		x++;
+	}
+	if (s[x] == aux)
+		return ((char *) &s[x]);
+	return (NULL);
 }
