@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 11:20:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/10/07 10:32:42 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/10/21 11:39:03 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/10/21 11:39:06 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_free(char *buffer, char *line)
 {
@@ -96,18 +96,18 @@ char	*read_buffer(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = read_buffer(fd, buffer);
-	if (!buffer)
+	buffer[fd] = read_buffer(fd, buffer[fd]);
+	if (!buffer[fd])
 	{
-		free (buffer);
+		free (buffer[fd]);
 		return (NULL);
 	}
-	line = fill_line(buffer);
-	buffer = set_line(buffer);
+	line = fill_line(buffer[fd]);
+	buffer[fd] = set_line(buffer[fd]);
 	return (line);
 }
