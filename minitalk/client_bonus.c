@@ -43,28 +43,28 @@ int	ft_atoi(const char *nptr)
 
 void	conv_int_bin(unsigned int c, int pid)
 {
-		unsigned int base;
-		unsigned int cont;
+	unsigned int	base;
+	unsigned int	cont;
 
-		cont = 0;
-		base = 2147483648;
-		if (cont < 32)
+	cont = 0;
+	base = 2147483648;
+	if (cont < 32)
+	{
+		while (base > 0)
 		{
-			while (base > 0)
+			if (c >= base)
 			{
-				if (c >= base)
-				{
-					kill(pid, SIGUSR1);
-					c -= base;
-				}
-				else
-					kill(pid, SIGUSR2);
-				base /=2;
-				usleep(300);
+				kill(pid, SIGUSR1);
+				c -= base;
 			}
+			else
+				kill(pid, SIGUSR2);
+			base /= 2;
+			usleep(300);
 		}
-		usleep(500);
-		cont++;
+	}
+	usleep(500);
+	cont++;
 }
 
 void	convert_bin(unsigned char c, int pid)
@@ -90,7 +90,7 @@ void	convert_bin(unsigned char c, int pid)
 void	confirm(int sig)
 {
 	if (sig == SIGUSR1)
-		write(1, "Received bits\n", 13);
+		write(1, "Received bit\n", 13);
 }
 
 int	main(int argc, char **argv)
@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	signal(SIGUSR1, confirm);
 	pid = ft_atoi(argv[1]);
-	conv_int_bin(getgid(), pid);
+	conv_int_bin(getpid(), pid);
 	while (argv[2][i])
 	{
 		convert_bin(argv[2][i], pid);
