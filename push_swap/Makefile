@@ -4,30 +4,18 @@ SRC = $(addprefix src/, push_swap.c)
 OBJ := $(SRC:%.c=%.o)
 
 CC = gcc
-CCFLAGS = -Werror -Wall -Wextra
+RM = rm -f
+FLAGS = -Werror -Wextra -Wall
 
-all: $(NAME)
-
-libft:
-	@make -C libft/
-
-$(NAME): $(OBJ)
-	@make -C libft
-	$(CC) $^ -Llibft -lft -o $(NAME)
-
-%.o: %.c
-	$(CC) $(CCFLAGS) -Iincludes -Ilibft -c $< -o $@
+all: $(OBJ)
+	$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
-	make fclean -C libft/
+	$(RM) $(NAME)
 
 re: fclean all
 
-debug: $(OBJ)
-	$(CC) $(CCFLAGS) -fsanitize=address -Llibft -lft $^ -o $(NAME)
-
-.PHONY: 
+.PHONY: all clean fclean re
