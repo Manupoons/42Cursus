@@ -81,7 +81,7 @@ void	convert_bin(unsigned char c, int pid)
 		}
 		else
 			kill(pid, SIGUSR2);
-		base = base / 2;
+		base /= 2;
 		usleep(300);
 	}
 	usleep(500);
@@ -104,8 +104,11 @@ int	main(int argc, char **argv)
 	signal(SIGUSR1, confirm);
 	pid = ft_atoi(argv[1]);
 	conv_int_bin(getgid(), pid);
-	while (argv[2][i++])
+	while (argv[2][i])
+	{
 		convert_bin(argv[2][i], pid);
+		i++;
+	}
 	convert_bin('\0', pid);
 	return (0);
 }

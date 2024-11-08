@@ -14,11 +14,6 @@
 
 static int	g_pidclient;
 
-void	ft_putchar(int c)
-{
-	write (1, &c, 1);
-}
-
 void	ft_putnbr(int num)
 {
 	int	c;
@@ -44,10 +39,10 @@ void	reset(unsigned int *base, int *result, int *cont)
 		*cont = 32;
 		*result = 0;
 	}
-	else if (*cont == 40 && &*result == 0)
+	else if (*cont == 40 && *result == 0)
 	{
 		*cont = 0;
-		*base = 0;
+		*base = 2147483648;
 	}
 }
 
@@ -60,13 +55,10 @@ void	reset2(int *result, unsigned int *base)
 
 void	conv_txt(int bit)
 {
-	static unsigned int	base;
-	static int			result;
-	static int			i;
+	static unsigned int	base = 2147483648;
+	static int			result = 0;
+	static int			i = 0;
 
-	base = 2147483648;
-	result = 0;
-	i = 0;
 	if (i < 32)
 	{
 		if (bit == SIGUSR1)
@@ -95,7 +87,8 @@ int	main(void)
 	write(1, "\n", 1);
 	signal(SIGUSR1, conv_txt);
 	signal(SIGUSR2, conv_txt);
+	pause();
 	while (1)
-		pause();
+		sleep(1);
 	return (0);
 }
