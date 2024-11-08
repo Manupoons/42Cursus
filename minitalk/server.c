@@ -28,12 +28,15 @@ void	ft_putnbr(int num)
 		ft_putchar (('0' + num));
 }
 
-void conv_txt(char *s)
+void	conv_txt(char *s)
 {
-	int base = 128;
-	int result = 0;
-	int i = 0;
+	int	base;
+	int	result;
+	int	i;
 
+	base = 128;
+	result = 0;
+	i = 0;
 	while (i < 8)
 	{
 		if (s[i] == '1')
@@ -44,10 +47,10 @@ void conv_txt(char *s)
 	write(1, &result, 1);
 }
 
-void handle_bin(int sig)
+void	handle_bin(int sig)
 {
-	static int i;
-	static char c[8];
+	static int	i;
+	static char	c[8];
 
 	if (sig == SIGUSR1)
 		c[i] = '1';
@@ -61,15 +64,13 @@ void handle_bin(int sig)
 	}
 }
 
-int main(void)
+int	main(void)
 {
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
-
 	signal(SIGUSR1, handle_bin);
 	signal(SIGUSR2, handle_bin);
-
 	while (1)
-		pause();  // Wait for a signal to arrive
+		pause();
 	return (0);
 }

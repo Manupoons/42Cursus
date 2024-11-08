@@ -12,41 +12,40 @@
 
 #include "minitalk.h"
 
-int     ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
-		int		x;
-		int		sign;
-		char	*aux;
-		int		num;
+	int		x;
+	int		sign;
+	char	*aux;
+	int		num;
 
-		x = 0;
-		sign = 1;
-		num = 0;
-		aux = (char *)nptr;
-		while (aux[x] != '\0' && (aux[x] == ' ' || aux[x] == '\n'
-						|| aux[x] == '\r' || aux[x] == '\t'
-						|| aux[x] == '\v' || aux[x] == '\f'))
-				x++;
-		if ((char)aux[x] == '-' || (char)aux[x] == '+')
-		{
-				if ((char)aux[x] == '-')
-						sign *= -1;
-				x++;
-		}
-		while (aux[x] != '\0' && (aux[x] >= '0' && aux[x] <= '9'))
-		{
-				num = num * 10 + aux[x] - '0';
-				x++;
-		}
-		return (num * sign);
+	x = 0;
+	sign = 1;
+	num = 0;
+	aux = (char *)nptr;
+	while (aux[x] != '\0' && (aux[x] == ' ' || aux[x] == '\n'
+			|| aux[x] == '\r' || aux[x] == '\t'
+			|| aux[x] == '\v' || aux[x] == '\f'))
+		x++;
+	if ((char)aux[x] == '-' || (char)aux[x] == '+')
+	{
+		if ((char)aux[x] == '-')
+			sign *= -1;
+		x++;
+	}
+	while (aux[x] != '\0' && (aux[x] >= '0' && aux[x] <= '9'))
+	{
+		num = num * 10 + aux[x] - '0';
+		x++;
+	}
+	return (num * sign);
 }
 
-
-void convert_bin(char *s, int pid)
+void	convert_bin(char *s, int pid)
 {
-	int i;
-	int base;
-	char letter;
+	int		i;
+	int		base;
+	char	letter;
 
 	i = 0;
 	while (s[i])
