@@ -5,52 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 10:29:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/09 15:38:57 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/11/11 13:08:04 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/11/11 13:08:05 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+#include "../mlx/mlx.h"
 
-static void	*ft_memset(void *s, int c, size_t len)
+void	check_map_extension(char *map, t_list *d)
 {
-	unsigned char	*str;
+	int	i;
 
-	str = (unsigned char *)s;
-	while (len--)
-		*str++ = (unsigned char)c;
-	return(s);
+	i = ft_strlen(map);
+	if (i > 2 && map[i - 4] == '.' && map[i - 3] == 'b'
+		&& map[i - 2] == 'e' && map[i - 1] == 'r')
+		;
+	else
+		ft_error(d, 6);
 }
 
-int	exit_point(t_complete *game)
+void	init_img(t_list *d)
 {
-	int	line;
+	int	w;
+	int	h;
 
-	line = 0;
-	if (game->winpointer)
-		mlx_destroy_window(game->mlxpointer, game->winpointer);
-	free(game->mlxpointer);
-	while (line < game->heightmap - 1)
-		free(game->map[line++]);
-	free(game->map);
-	exit(0);
+	w = 50;
+	h = 50;
+	d->y = (ft_strlen(d->big_line) / d->width + 1) * 50;
+	d->x = (d->width - 1) * 50;
+	d->bush = mlx_xpm_file_to_image(d->mlx, "img/bush.xpm", &w, &h);
+	d->fond = mlx_xpm_file_to_image(d->mlx, "img/fond.xpm", &w, &h);
+	d->poke = mlx_xpm_file_to_image(d->mlx, "img/poke.xpm", &w, &h);
+	d->npcstart = mlx_xpm_file_to_image(d->mlx, "img/npc.xpm", &w, &h);
+	d->npc = mlx_xpm_file_to_image(d->mlx, "img/npc.xpm", &w, &h);
+	d->npcmv = mlx_xpm_file_to_image(d->mlx, "img/npcmv.xpm", &w, &h);
+	d->npcleft = mlx_xpm_file_to_image(d->mlx, "img/npcleft.xpm", &w, &h);
+	d->npclmv = mlx_xpm_file_to_image(d->mlx, "img/npcleftmv.xpm", &w, &h);
+	d->npcright = mlx_xpm_file_to_image(d->mlx, "img/npcright.xpm", &w, &h);
+	d->npcrmv = mlx_xpm_file_to_image(d->mlx, "img/npcrightmv.xpm", &w, &h);
+	d->npcback = mlx_xpm_file_to_image(d->mlx, "img/npcback.xpm", &w, &h);
+	d->npcbmv = mlx_xpm_file_to_image(d->mlx, "img/npcbackmv.xpm", &w, &h);
+	d->imgexit = mlx_xpm_file_to_image(d->mlx, "img/imgexit.xpm", &w, &h);
 }
 
 int	main(int argc, char **argv)
 {
-	t_complete	game;
+	t_list	*d;
 
 	if (argc != 2)
+	{
+		write(1, "Numero de argumentos incorrecto.\n", 33);
 		return (0);
-	ft_memset(&game, 0, sizeof(t_complete));
-	map_reading(&game, argv);
-	check_errors(&game);
-	game.mlxpointer = mlx_init();
-	game.winpointer = mlx_new_window(game.mlxpointer, (game.widthmap * 40),
-						(game.heightmap * 40), "solong");
-	place_img_in_game(&game);
-	adding_graphics(&game);
-	mlx_key_hook(game.winpointer, controls_working, &game);
-	mlx_hook(game.winpointer, 17, 0, (void *)exit, 0);
-	mlx_loop(game.mlxpointer);
+	}
+	d = ft_calloc(1, sizeof(t_list));
+	if (!d)
+		return (0);
+	d->mlx = mlx_init();
+	init_data(d, argv[1]);
+	mlx_key_hook(d->win, key_press, d);
+	mlx_hook(d->win, 17, 0, ft_free, d);
+	mlx_loop(d->mlx);
+	ft_free(d);
+	return (0);
+}
+
+int	init_data(t_list *d, char *map)
+{
+	d->moves = 0;
+	check_map_extension(map, d);
+	read_map(map, d);
+	init_img(d);
+	d->win = mlx_new_window(d->mlx, d->x, d->y, "so_long");
+	print_map(d);
+	return (0);
 }
