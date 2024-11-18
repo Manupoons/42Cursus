@@ -1,14 +1,16 @@
 NAME = push_swap
 
-SRC = $(addprefix src/, push_swap.c)
+SRC = src/*.c
 OBJ := $(SRC:%.c=%.o)
 
 CC = gcc
 RM = rm -f
 FLAGS = -Werror -Wextra -Wall
 
-all: $(OBJ)
-	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+$(NAME):
+	$(CC) $(FLAGS) $(SRC) -Iinc -o $(NAME)
+
+all: $(NAME)
 
 clean:
 	$(RM) $(OBJ)

@@ -1,41 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 10:36:07 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/18 12:22:38 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/11/18 10:36:12 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/11/18 12:22:54 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void	swap(t_stack **stack)
+static void	rotate(t_stack **stack)
 {
 	t_stack *temp;
+	t_stack *tail;
 
-	if (!*stack || (*stack)->next == NULL) 
-		return ;
 	temp = *stack;
 	*stack = (*stack)->next;
-	temp->next = (*stack)->next;
-	(*stack)->next = temp;
+	tail = get_bottom(*stack);
+	temp->next = NULL;
+	tail->next = temp;
 }
 
-void	do_sa(t_stack **stack_a){
-	swap(stack_a);
-	ft_putstr("sa\n");
+void	do_ra(t_stack **stack_a)
+{
+	rotate(stack_a);
+	ft_putstr("ra\n");
 }
 
-void	do_sb(t_stack **stack_b){
-	swap(stack_b);
-	ft_putstr("sb\n");
+void	do_rb(t_stack **stack_b)
+{
+	rotate(stack_b);
+	ft_putstr("rb\n");
 }
 
-void	do_ss(t_stack **stack_a, t_stack **stack_b){
-	swap(stack_a);
-	swap(stack_b);
-	ft_putstr("ss\n");
+void	do_rr(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_putstr("rr\n");
 }

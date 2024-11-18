@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 10:36:07 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/18 12:22:38 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/11/18 10:36:09 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/11/18 12:22:45 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void	swap(t_stack **stack)
+static void	push(t_stack **src, t_stack **dest)
 {
 	t_stack *temp;
 
-	if (!*stack || (*stack)->next == NULL) 
+	if (*src == NULL)
 		return ;
-	temp = *stack;
-	*stack = (*stack)->next;
-	temp->next = (*stack)->next;
-	(*stack)->next = temp;
+	temp = (*src)->next;
+	(*src)->next = *dest;
+	*dest = *src;
+	*src = temp;
 }
 
-void	do_sa(t_stack **stack_a){
-	swap(stack_a);
-	ft_putstr("sa\n");
+void	do_pa(t_stack **stack_a, t_stack **stack_b)
+{
+	push(stack_b, stack_a);
+	ft_putstr("pa\n");
 }
 
-void	do_sb(t_stack **stack_b){
-	swap(stack_b);
-	ft_putstr("sb\n");
-}
-
-void	do_ss(t_stack **stack_a, t_stack **stack_b){
-	swap(stack_a);
-	swap(stack_b);
-	ft_putstr("ss\n");
+void	do_pb(t_stack **stack_a, t_stack **stack_b)
+{
+	push(stack_a, stack_b);
+	ft_putstr("pb\n");
 }
