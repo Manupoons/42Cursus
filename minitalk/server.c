@@ -6,11 +6,21 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:51:14 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/10/31 11:25:04 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:43:31 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+int ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
+}
 
 void	ft_putchar(int c)
 {
@@ -60,7 +70,14 @@ void	handle_bin(int sig)
 	if (i == 8)
 	{
 		i = 0;
+		if (ft_strcmp(c, "00000000") == 0)
+		{
+			write(1, "\n", 1);
+			return;
+		}
 		conv_txt(c);
+		for (int j = 0; j < 8; j++)
+			c[j] = '\0';
 	}
 }
 
@@ -71,6 +88,6 @@ int	main(void)
 	signal(SIGUSR1, handle_bin);
 	signal(SIGUSR2, handle_bin);
 	while (1)
-		pause();
+		sleep(1);
 	return (0);
 }

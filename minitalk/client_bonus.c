@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:03:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/10/31 11:24:18 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:41:16 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
-	int		x;
+	int		i;
 	int		sign;
-	char	*aux;
 	int		num;
 
-	x = 0;
+	i = 0;
 	sign = 1;
 	num = 0;
-	aux = (char *)nptr;
-	while (aux[x] != '\0' && (aux[x] == ' ' || aux[x] == '\n'
-			|| aux[x] == '\r' || aux[x] == '\t'
-			|| aux[x] == '\v' || aux[x] == '\f'))
-		x++;
-	if ((char)aux[x] == '-' || (char)aux[x] == '+')
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if ((char)aux[x] == '-')
+		if (str[i] == '-')
 			sign *= -1;
-		x++;
+		i++;
 	}
-	while (aux[x] != '\0' && (aux[x] >= '0' && aux[x] <= '9'))
+	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
 	{
-		num = num * 10 + aux[x] - '0';
-		x++;
+		num = (num * 10) + (str[i] - '0');
+		i++;
 	}
 	return (num * sign);
 }

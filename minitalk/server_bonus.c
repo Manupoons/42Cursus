@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:51:14 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/10/31 11:25:04 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:57:24 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ int	main(void)
 	write(1, "\n", 1);
 	signal(SIGUSR1, conv_txt);
 	signal(SIGUSR2, conv_txt);
-	pause();
 	while (1)
-		sleep(1);
+		pause();
 	return (0);
 }
