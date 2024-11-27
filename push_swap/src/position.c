@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:38:41 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/18 13:09:44 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:36:08 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	get_position(t_stack **stack)
 {
 	t_stack	*temp;
-	int	i;
+	int		i;
 
 	temp = *stack;
 	i = 0;

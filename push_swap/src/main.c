@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:17:20 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/18 13:45:55 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:35:40 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_sorted(t_stack *stack)
 {
-	while (stack->next)
+	while (stack->next != NULL)
 	{
 		if (stack->value > stack->next->value)
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:53:45 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/18 13:45:51 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:43:30 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	stack_add(t_stack **stack, t_stack *new)
 
 	if (!new)
 		return ;
-	if (!stack)
+	if (!*stack)
 	{
 		*stack = new;
 		return ;

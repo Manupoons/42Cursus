@@ -19,7 +19,7 @@ long	input_is_correct(char *str)
 	i = 0;
 	if ((str[i] == '-' || str[i] == '+') && (ft_strlen(str) > 1))
 		i++;
-	while (str[i])
+	while (str[i] != '\0')
 	{
 		if (str[i] < '0' || str[i] > '9')
 			return (0);
@@ -61,7 +61,7 @@ void	get_index(t_stack *stack_a, int stack_size)
 		value = INT_MIN;
 		while (ptr)
 		{
-			if (ptr->value == value && ptr->index == 0)
+			if (ptr->value == INT_MIN && ptr->index == 0)
 				ptr->index = 1;
 			if (ptr->value > value && ptr->index == 0)
 			{
