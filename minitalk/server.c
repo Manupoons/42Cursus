@@ -6,37 +6,11 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:51:14 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/26 11:43:31 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:55:26 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-int ft_strcmp(const char *s1, const char *s2)
-{
-	while (*s1 && *s2 && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
-}
-
-void	ft_putchar(int c)
-{
-	write (1, &c, 1);
-}
-
-void	ft_putnbr(int num)
-{
-	if (num > 9)
-	{
-		ft_putnbr(num / 10);
-		num = num % 10;
-	}
-	if (num <= 9)
-		ft_putchar (('0' + num));
-}
 
 void	conv_txt(char *s)
 {

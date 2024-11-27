@@ -6,29 +6,13 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:51:14 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/26 11:57:24 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:38:43 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
 static int	g_pidclient;
-
-void	ft_putnbr(int num)
-{
-	int	c;
-
-	if (num > 9)
-	{
-		ft_putnbr(num / 10);
-		num = num % 10;
-	}
-	if (num <= 9)
-	{
-		c = ('0' + num);
-		write (1, &c, 1);
-	}
-}
 
 void	reset(unsigned int *base, int *result, int *cont)
 {
