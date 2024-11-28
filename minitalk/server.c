@@ -68,6 +68,6 @@ int	main(void)
 	signal(SIGUSR1, handle_bin);
 	signal(SIGUSR2, handle_bin);
 	while (1)
-		sleep(1);
+		pause();
 	return (0);
 }
