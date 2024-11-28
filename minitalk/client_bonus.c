@@ -15,11 +15,11 @@
 void	conv_int_bin(unsigned int c, int pid)
 {
 	unsigned int	base;
-	unsigned int	cont;
+	unsigned int	i;
 
-	cont = 0;
+	i = 0;
 	base = 2147483648;
-	if (cont < 32)
+	if (i < 32)
 	{
 		while (base > 0)
 		{
@@ -35,7 +35,7 @@ void	conv_int_bin(unsigned int c, int pid)
 		}
 	}
 	usleep(500);
-	cont++;
+	i++;
 }
 
 void	convert_bin(unsigned char c, int pid)
