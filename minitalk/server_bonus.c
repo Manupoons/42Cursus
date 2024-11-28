@@ -67,6 +67,7 @@ void	conv_txt(int bit)
 
 int	main(void)
 {
+	write(1, "PID: ", 5);
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
 	signal(SIGUSR1, conv_txt);

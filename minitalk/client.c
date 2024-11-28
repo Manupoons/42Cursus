@@ -33,7 +33,7 @@ void	convert_bin(char *s, int pid)
 			else
 				kill(pid, SIGUSR2);
 			base /= 2;
-			usleep(500);
+			usleep(100);
 		}
 		i++;
 	}

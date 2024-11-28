@@ -34,6 +34,7 @@ void	conv_txt(char *s)
 void	handle_bin(int sig)
 {
 	static int	i;
+	int			j;
 	static char	c[8];
 
 	if (sig == SIGUSR1)
@@ -47,16 +48,21 @@ void	handle_bin(int sig)
 		if (ft_strcmp(c, "00000000") == 0)
 		{
 			write(1, "\n", 1);
-			return;
+			return ;
 		}
 		conv_txt(c);
-		for (int j = 0; j < 8; j++)
+		j = 0;
+		while (j < 8)
+		{
 			c[j] = '\0';
+			j++;
+		}
 	}
 }
 
 int	main(void)
 {
+	write(1, "PID: ", 5);
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
 	signal(SIGUSR1, handle_bin);
