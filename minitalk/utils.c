@@ -50,8 +50,8 @@ void	ft_putnbr(int num)
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	int		num;
+	int	i;
+	int	num;
 
 	i = 0;
 	num = 0;
