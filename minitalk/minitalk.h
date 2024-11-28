@@ -15,10 +15,7 @@
 
 # include <signal.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <sys/types.h>
-# include <stdlib.h>
-# include <limits.h>
 
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_putchar(int c);

@@ -30,7 +30,7 @@ void	reset(unsigned int *base, int *result, int *cont)
 	}
 }
 
-void	reset2(int *result, unsigned int *base)
+void	set_msgbase(int *result, unsigned int *base)
 {
 	g_pidclient = *result;
 	*result = 0;
@@ -50,7 +50,7 @@ void	conv_txt(int bit)
 		base /= 2;
 	}
 	if (i == 31)
-		reset2(&result, &base);
+		set_msgbase(&result, &base);
 	if (i >= 32 && i <= 39)
 	{
 		if (bit == SIGUSR1)
@@ -59,8 +59,6 @@ void	conv_txt(int bit)
 		kill(g_pidclient, SIGUSR1);
 	}
 	i++;
-	if (result == 0 && i == 40)
-		reset(&base, &result, &i);
 	if (i == 40)
 		reset(&base, &result, &i);
 }
