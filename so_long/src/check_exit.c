@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:06:16 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/11 13:06:17 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:56:30 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_exit(t_list *d, char letter)
 	}
 	if (letter == 'E' && d->consum != 0)
 	{
-		write(1, "Necesitas recoger todos los consumibles!\n", 41);
+		write(1, "You need all the consumables!\n", 31);
 		return (1);
 	}
 	else

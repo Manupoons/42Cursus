@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:08:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/01 19:09:12 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:58:34 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write(1, "Numero de argumentos incorrecto.\n", 33);
+		write(1, "You need 1 argument\n", 20);
 		return (0);
 	}
 	d = ft_calloc(1, sizeof(t_list));

@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:19:02 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/11 11:05:03 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:53:17 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,9 @@ typedef struct s_list
 	int		enemy;
 	int		height;
 	int		width;
-
 	char	*big_line;
 }	t_list;
 
-int		main(int argc, char **argv);
 int		init_data(t_list *d, char *map);
 int		ft_strlen(const char *s);
 int		key_press(int key, t_list *d);
@@ -62,9 +60,7 @@ int		check_exit(t_list *d, char letter);
 int		ft_free(t_list *d);
 void	print_map(t_list *d);
 void	read_map(char *map, t_list *d);
-void	ft_bzero(void *s, size_t n);
 void	ft_error(t_list *d, int num);
-void	*ft_memset(void *b, int c, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
