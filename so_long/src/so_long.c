@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:08:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/11 13:08:05 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:09:12 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ void	init_img(t_list *d)
 	d->imgexit = mlx_xpm_file_to_image(d->mlx, "img/imgexit.xpm", &w, &h);
 }
 
+int	init_data(t_list *d, char *map)
+{
+	d->moves = 0;
+	check_map_extension(map, d);
+	read_map(map, d);
+	init_img(d);
+	d->win = mlx_new_window(d->mlx, d->x, d->y, "so_long");
+	print_map(d);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*d;
@@ -67,16 +78,5 @@ int	main(int argc, char **argv)
 	mlx_hook(d->win, 17, 0, ft_free, d);
 	mlx_loop(d->mlx);
 	ft_free(d);
-	return (0);
-}
-
-int	init_data(t_list *d, char *map)
-{
-	d->moves = 0;
-	check_map_extension(map, d);
-	read_map(map, d);
-	init_img(d);
-	d->win = mlx_new_window(d->mlx, d->x, d->y, "so_long");
-	print_map(d);
 	return (0);
 }

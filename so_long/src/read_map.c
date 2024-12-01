@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:58 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/11 13:07:59 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:10:59 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	check_fst_line(t_list *d)
 	check_start_line(d);
 }
 
-void	checkline(t_list *d)
+void	check_line(t_list *d)
 {
 	int	i;
 
@@ -127,5 +127,5 @@ void	read_map(char *map, t_list *d)
 	}
 	close(fd);
 	check_fst_line(d);
-	checkline(d);
+	check_line(d);
 }
