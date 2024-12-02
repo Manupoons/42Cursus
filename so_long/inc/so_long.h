@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:19:02 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/01 19:53:17 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:54:01 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,56 +15,74 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
+# include <mlx.h>
 # include <stdio.h>
 # include <fcntl.h>
 
-typedef struct s_list
+# define IMG_W 32
+# define IMG_H 32
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define UARROW 38
+# define DARROW 40
+# define LARROW 37
+# define RARROW 39
+# define UP -1
+# define DOWN 1
+# define LEFT -1
+# define RIGHT 1
+
+
+typedef struct s_img
+{
+	void	*player_up;
+	void	*player_left;
+	void	*player_right;
+	void	*player_down;
+	void	*background;
+}	t_img;
+
+typedef struct s_map
+{
+	char	**map;
+	void	*object;
+	int		x;
+	int		y;
+	int		pokeballs;
+}	t_map;
+
+
+typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
-	void	*bush;
-	void	*fond;
-	void	*poke;
-	void	*npc;
-	void	*npcstart;
-	void	*npcmv;
-	void	*npcleft;
-	void	*npclmv;
-	void	*npcright;
-	void	*npcrmv;
-	void	*npcback;
-	void	*npcbmv;
-	void	*imgexit;
-	int		errors;
-	int		moves;
-	int		npccontrol;
-	int		linecontrol;
-	int		x;
-	int		y;
-	int		consum;
-	int		ex;
-	int		back;
-	int		wall;
-	int		player;
-	int		enemy;
-	int		height;
-	int		width;
-	char	*big_line;
-}	t_list;
+	int		size_x;
+	int		size_y;
+	int		p_x;
+	int		p_y;
+	int		counter;
+	int		collected;
+	t_map	*map;
+	t_img	*img;
+}	t_data;
 
-int		init_data(t_list *d, char *map);
-int		ft_strlen(const char *s);
-int		key_press(int key, t_list *d);
-int		check_exit(t_list *d, char letter);
-int		ft_free(t_list *d);
-void	print_map(t_list *d);
-void	read_map(char *map, t_list *d);
-void	ft_error(t_list *d, int num);
-void	*ft_calloc(size_t count, size_t size);
-char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(const char *s, int c);
-char	*ft_itoa(int n);
+void	window_size(t_data *data, char **argv);
+int		ft_printf(char const *s, ...);
+int		ft_putnbr(int num);
+int		key_press(int key, t_data *data);
+void	find_player(t_data *data);
+void	free_double_p(char ***str);
+void	free_double_pointer(t_data *data);
+void	calloc_fail(char *str);
+void	handle_error(t_data *data, char *str, int num);
+
+void	ft_putstr_fd(char *s, int fd);
+void	ft_init(t_data *data, t_map *map);
+void	check_path(t_data *data);
+void	validate_map(t_data *data, char **argv, int argc);
+
 
 #endif

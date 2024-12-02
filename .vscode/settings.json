@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"mlx.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"so_long.h": "c"
 	}
 }

@@ -6,149 +6,84 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:36 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/11 13:07:38 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:23:31 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 #include "../mlx/mlx.h"
 
-void	move_w(t_list *d)
+static void	ft_player_move(t_data *data, char pos, int dir)
 {
-	int	i;
-
-	i = 0;
-	while (d->big_line[i] != 'P')
-		i++;
-	if (d->big_line[i - d->width] != '1'
-		&& !check_exit(d, d->big_line[i - d->width]))
+	if (pos == 'y' && dir == UP)
 	{
-		d->moves++;
-		if (d->big_line[i - d->width] == 'C')
-			d->consum--;
-		d->big_line[i] = '0';
-		d->big_line[i - d->width] = 'P';
-		if (d->npccontrol == 0)
-		{
-			d->npcstart = d->npcback;
-			d->npccontrol = 1;
-		}
-		else
-		{
-			d->npcstart = d->npcbmv;
-			d->npccontrol = 0;
-		}
+		mlx_put_image_to_window(data->mlx, data->win, data->img->player_up,
+			(data->p_x * IMG_W), (data->p_y * IMG_H));
 	}
-	print_map(d);
+	if (pos == 'x' && dir == LEFT)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->img->player_left,
+			(data->p_x * IMG_W), (data->p_y * IMG_H));
+	}
+	if (pos == 'y' && dir == DOWN)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->img->player_down,
+			(data->p_x * IMG_W), (data->p_y * IMG_H));
+	}
+	if (pos == 'x' && dir == RIGHT)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->img->player_right,
+			(data->p_x * IMG_W), (data->p_y * IMG_H));
+	}
 }
 
-void	move_s(t_list *d)
+static void	ft_collect(t_data *data, char pos, int dir)
 {
-	int	i;
-
-	i = 0;
-	while (d->big_line[i] != 'P')
-		i++;
-	if (d->big_line[i + d->width] != '1'
-		&& !check_exit(d, d->big_line[i + d->width]))
-	{
-		d->moves++;
-		if (d->big_line[i + d->width] == 'C')
-			d->consum--;
-		d->big_line[i] = '0';
-		d->big_line[i + d->width] = 'P';
-		if (d->npccontrol == 0)
-		{
-			d->npcstart = d->npc;
-			d->npccontrol = 1;
-		}
-		else
-		{
-			d->npcstart = d->npcmv;
-			d->npccontrol = 0;
-		}
-	}
-	print_map(d);
+	data->collected++;
+	data->map->map[data->p_y][data->p_x] = '0';
+	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
+			(data->p_x * IMG_W), (data->p_y * IMG_H));
+	ft_player_move(data, pos, dir);
 }
 
-void	move_a(t_list *d)
+void	ft_move(t_data *data, char pos, int dir)
 {
-	int	i;
-
-	i = 0;
-	while (d->big_line[i] != 'P')
-		i++;
-	if (d->big_line[i - 1] != '1' && !check_exit(d, d->big_line[i - 1]))
-	{
-		d->moves++;
-		if (d->big_line[i - 1] == 'C')
-			d->consum--;
-		d->big_line[i] = '0';
-		d->big_line[i - 1] = 'P';
-		if (d->npccontrol == 0)
-		{
-			d->npcstart = d->npcleft;
-			d->npccontrol = 1;
-		}
-		else
-		{
-			d->npcstart = d->npclmv;
-			d->npccontrol = 0;
-		}
-	}
-	print_map(d);
+	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
+			(data->p_x * IMG_W), (data->p_y * IMG_H));
+	if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] != '1'
+		&& (data->map->map[data->p_y + 1 * dir][data->p_x] != 'E'
+		|| data->collected != data->map->pokeballs))
+		data->p_y = data->p_y + 1 * dir;
+	else if (pos == 'x' && data->map->map[data->p_y][data->p_x + 1 * dir] != '1'
+		&& (data->map->map[data->p_y][data->p_x + 1 * dir] != 'E'
+		|| data->collected != data->map->pokeballs))
+		data->p_x = data->p_x + 1 * dir;
+	else if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] == 'E'
+		&& data->collected != data->map->pokeballs)
+		write(1, "Collect all collectibles before leaving\n", 40);
+	else if (pos == 'y' && data->map->map[data->p_y][data->p_x + 1 * dir] == 'E'
+		&& data->collected != data->map->pokeballs)
+		write(1, "Collect all collectibles before leaving\n", 40);
+	ft_player_move(data, pos, dir);
+	if (data->map->map[data->p_y][data->p_x] == 'C')
+		ft_collect(data, pos, dir);
+	mlx_do_sync(data->mlx);
+	ft_printf("You moved &d times\n", ++data->counter);
 }
 
-void	move_d(t_list *d)
+int	key_press(int key, t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (d->big_line[i] != 'P')
-		i++;
-	if (d->big_line[i + 1] != '1' && !check_exit(d, d->big_line[i + 1]))
-	{
-		d->moves++;
-		if (d->big_line[i + 1] == 'C')
-			d->consum--;
-		d->big_line[i] = '0';
-		d->big_line[i + 1] = 'P';
-		if (d->npccontrol == 0)
-		{
-			d->npcstart = d->npcright;
-			d->npccontrol = 1;
-		}
-		else
-		{
-			d->npcstart = d->npcrmv;
-			d->npccontrol = 0;
-		}
-	}
-	print_map(d);
-}
-
-int	key_press(int key, t_list *d)
-{
-	char	*moves_p;
-
-	(void)d;
-	if (key == 65307) // Escape key in Linux
-	{
-		mlx_destroy_window(d->mlx, d->win);
-		ft_free(d);
-	}
-	if (key == 119) // W key
-		move_w(d);
-	if (key == 97)  // A key
-		move_a(d);
-	if (key == 115) // S key
-		move_s(d);
-	if (key == 100) // D key
-		move_d(d);
-	moves_p = ft_itoa(d->moves);
-	write(1, moves_p, ft_strlen(moves_p));
-	if (moves_p)
-		free(moves_p);
-	write(1, "\n", 1);
+	if (key == ESC)
+		ft_exit(data);
+	else if (key == W || key == UARROW)
+		ft_move(data, 'y', UP);
+	else if (key == A || key == LARROW)
+		ft_move(data, 'x', LEFT);
+	else if (key == S || key == DARROW)
+		ft_move(data, 'y', DOWN);
+	else if (key == D || key == RARROW)
+		ft_move(data, 'x', RIGHT);
+	if (data->map->map[data->p_y][data->p_x] == 'E')
+		winner(data);
 	return (0);
 }

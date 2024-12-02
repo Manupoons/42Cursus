@@ -6,47 +6,70 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 19:04:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/01 19:55:09 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:02:54 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	ft_free(t_list *d)
+void	find_player(t_data *data)
 {
-	d->errors = 1;
-	if (d->big_line)
-		free(d->big_line);
-	if (d)
-		free(d);
-	exit(0);
+	int	x;
+	int	y;
+
+	y = 0;
+	while (data->map->map[y])
+	{
+		x = 0;
+		while (data->map->map[y][x])
+		{
+			if (data->map->map[y][x] == 'P')
+			{
+				data->p_x = x;
+				data->p_y = y;
+			}
+			x++;
+		}
+		y++;
+	}
 }
 
-void	*ft_memset(void *b, int c, size_t len)
+void	free_double_p(char ***str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (i < len)
-	{
-		((unsigned char *)b)[i] = (unsigned char)c;
+	while ((*str)[i])
 		i++;
-	}
-	return (b);
+	i--;
+	while (i >= 0)
+		free((*str)[i--]);
+	free((*str));
 }
 
-void	ft_bzero(void *s, size_t n)
+void	free_double_pointer(t_data *data)
 {
-	ft_memset(s, 0, n);
+	int	i;
+
+	i = 0;
+	while (data->map->map[i])
+		i++;
+	while (i >= 0)
+		free(data->map->map[i--]);
+	free(data->map->map);
+	free(data->img);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+void	calloc_fail(char *str)
 {
-	void	*bzero;
+	perror(str);
+	exit(EXIT_FAILURE);
+}
 
-	bzero = (void *)malloc(count * size);
-	if (!bzero)
-		return (0);
-	ft_bzero (bzero, count * size);
-	return (bzero);
+void	handle_error(t_data *data, char *str, int num)
+{
+	if (num)
+		free_double_pointer(data);
+	ft_putstr_fd(str, 2);
+	exit(EXIT_FAILURE);
 }

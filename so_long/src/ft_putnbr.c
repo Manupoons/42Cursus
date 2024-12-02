@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 11:17:40 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/11 10:49:17 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/09/30 10:48:09 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/12/02 13:04:07 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "ft_printf.h"
 
-static size_t	ft_numsize(long num)
+size_t	ft_numsize(long num)
 {
 	size_t	len;
 
@@ -59,4 +59,26 @@ char	*ft_itoa(int n)
 	}
 	str[len] = '\0';
 	return (str);
+}
+
+int	ft_putnbr(int num)
+{
+	int		len;
+	char	*n;
+
+	n = ft_itoa(num);
+	len = ft_putstr(n);
+	free(n);
+	return (len);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+	}
 }
