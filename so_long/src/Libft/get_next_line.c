@@ -6,11 +6,11 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:20:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 10:58:00 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:44:58 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*ft_free(char *buffer, char *line)
 {

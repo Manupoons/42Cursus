@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_line_length.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 12:31:35 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 11:50:27 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/12/03 10:34:56 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/12/03 10:57:07 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_line_length(int fd)
 {
-	unsigned int	x;
-	char			aux;
+	char	buffer[1];
+	int		len;
+	int		bytes;
 
-	x = 0;
-	aux = (char) c;
-	while (s[x])
+	buffer[0] = '\0';
+	bytes = 1;
+	len = 0;
+	while (bytes == 1)
 	{
-		if (s[x] == aux)
-			return ((char *) &s[x]);
-		x++;
+		bytes = read(fd, buffer, 1);
+		if (buffer[0] != '\n')
+			len++;
+		else
+			break;
 	}
-	if (s[x] == aux)
-		return ((char *) &s[x]);
-	return (NULL);
+	return (len);
 }

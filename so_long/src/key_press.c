@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:36 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/02 12:23:31 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:25:12 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ int	key_press(int key, t_data *data)
 	else if (key == D || key == RARROW)
 		ft_move(data, 'x', RIGHT);
 	if (data->map->map[data->p_y][data->p_x] == 'E')
-		winner(data);
+		ft_winner(data);
 	return (0);
 }

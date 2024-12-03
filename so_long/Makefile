@@ -20,23 +20,23 @@ MID_GRAY =		\033[38;5;245m
 DARK_GREEN =	\033[38;2;75;179;82m
 DARK_YELLOW =	\033[38;5;143m
 
-SRCS = ./src/so_long.c ./src/read_map.c ./src/print_map.c ./src/get_next_line.c \
-			./src/get_next_line_utils.c ./src/key_press.c ./src/check_exit.c \
-			./src/ft_utils.c ./src/ft_itoa.c ./src/ft_error.c \
+SRCS = ./src/so_long.c ./src/check_path.c ./src/create_map.c ./src/ft_printf.c \
+			./src/ft_putnbr.c ./src/ft_utils.c ./src/initializer.c \
+			./src/key_press.c ./src/validate_map.c \
+			$(wildcard ./src/Libft/*.c)  # Include all .c files from src/Libft
 
-INCLUD = ./inc/so_long.h \
-			./inc/mlx.h
+INCLUD = ./inc/so_long.h
 
 CC = gcc
 RM = rm -f
 AR = ar rc
 RN = ranlib
-CFLAGS = -Wall -Wextra -Werror -MMD
+CFLAGS = -Wall -Wextra -Werror -MMD -I./inc -I./src/Libft -g # Add -I for Libft headers
 LIB = -L. -lmlx -lXext -lX11 -lm
 
 .c.o:
-			@echo "${BLUE} ◎ $(BROWN)Compiling   ${MAGENTA}→   $(CYAN)$< $(DEF_COLOR)"
-			@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	@echo "${BLUE} ◎ $(BROWN)Compiling  ${MAGENTA}→  $(CYAN)$< $(DEF_COLOR)"
+	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 OBJS = ${SRCS:.c=.o}
 DEPS = $(addsuffix .d, $(basename $(SRCS)))
@@ -53,18 +53,17 @@ ${NAME}:	${OBJS}
 
 
 clean:
-			@make -C ./mlx clean
-			@${RM} ${OBJS}
-			@${RM} ${DEPS}
-			@echo "\n${BLUE} ◎ $(RED)All objects cleaned successfully ${BLUE}◎$(DEF_COLOR)\n"
+	@make -C ./mlx clean
+	@${RM} ${OBJS}
+	@${RM} ${DEPS}
+	@echo "\n$(BLUE)All objects cleaned successfully $(DEF_COLOR)\n"
 
 fclean:
-			@make -C ./mlx clean
-			@${RM} ${OBJS}
-			@${RM} ${DEPS}
-			@${RM} ${NAME} libmlx.a
-			@echo "\n${BLUE} ◎ $(RED)All objects and executable cleaned successfully${BLUE} ◎$(DEF_COLOR)\n"
-
+	@make -C ./mlx clean
+	@${RM} ${OBJS}
+	@${RM} ${DEPS}
+	@${RM} ${NAME} libmlx.a
+	@echo "\n$(BLUE)All objects and executable cleaned successfully$(DEF_COLOR)\n"
 
 re: fclean all
 

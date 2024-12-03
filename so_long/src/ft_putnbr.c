@@ -6,11 +6,11 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:48:09 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/02 13:04:07 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:54:03 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/so_long.h"
 
 size_t	ft_numsize(long num)
 {

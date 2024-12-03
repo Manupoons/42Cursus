@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:45 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/02 12:06:58 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:48:54 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	window_size(t_data *data, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	data->size_x = (ft_line_length(fd) * IMG_W);
-	data->size_y = (ft_count_line(fd, data->size_x, IMG_W) * IMG_H);
+	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W) * IMG_H);
 }
 
 void	create_map(t_data *data)

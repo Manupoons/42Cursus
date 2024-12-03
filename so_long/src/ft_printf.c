@@ -6,11 +6,11 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 09:42:29 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/02 11:37:25 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:17:54 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/so_long.h"
 
 int	ft_putchar(char c)
 {

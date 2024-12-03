@@ -6,18 +6,19 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:08:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/02 13:53:46 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:19:30 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 #include "../mlx/mlx.h"
+#include <stdio.h>
 
 //map extension
 void	check_map_ext(char *file_name)
 {
 	file_name = file_name + (ft_strlen(file_name) - 4);
-	if (ft_strcmp(file_name, ".ber", 4))
+	if (ft_strncmp(file_name, ".ber", 4))
 	{
 		write(2, "Error!\n Wrong file extension", 28);
 		exit(1);
@@ -53,7 +54,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 	t_map	map;
-
+	
 	window_size(&data, argv);
 	check_map_ext(argv[1]);
 	map.map = ft_calloc(data.size_y + 1, sizeof(char *));
