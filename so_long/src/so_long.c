@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:08:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 13:19:30 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:11:05 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_winner(t_data *data)
 	exit(EXIT_SUCCESS);
 }
 
-//keyboard input check
+// keyboard input check
 static int	ft_render_frame(t_data *data)
 {
 	put_background(data);
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 	t_map	map;
-	
+	(void)argc;
 	window_size(&data, argv);
 	check_map_ext(argv[1]);
 	map.map = ft_calloc(data.size_y + 1, sizeof(char *));
@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 	}
 	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y, "so_long");
 	ft_render_frame(&data);
-	mlx_loop(data.mlx);
-	perror("Error\nprogram failed to loop\n");
-	exit(EXIT_FAILURE);
+	// mlx_loop(data.mlx);
+	// perror("Error\nprogram failed to loop\n");
+	// exit(EXIT_FAILURE);
 }

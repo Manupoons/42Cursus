@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:19:02 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 11:25:22 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:01:26 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 
 # include <stdlib.h>
 # include <stdarg.h>
-# include <mlx.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include "../src/Libft/libft.h"
 
-# define IMG_W 32
-# define IMG_H 32
+# define IMG_W 50
+# define IMG_H 50
 # define ESC 65307
 # define W 119
 # define A 97
@@ -78,7 +77,7 @@ void	create_map(t_data *data);
 void	free_double_p(char ***str);
 void	free_double_pointer(t_data *data);
 void	calloc_fail(char *str);
-void	handle_error(t_data *data, char *str, int num);
+void	handle_error(t_data *data, char *str);
 int		ft_exit(t_data *data);
 void	ft_winner(t_data *data);
 

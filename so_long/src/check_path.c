@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:06:16 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/02 13:01:07 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:00:11 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	valid_collectibles(t_data *data, int x, int y, char **visited)
 		return (0);
 }
 
-static void	fill_visited(t_data *data, char ***visited)
+static void	fill_visited(char ***visited, t_data *data)
 {
 	int	y;
 	int	x;
@@ -67,8 +67,15 @@ static void	fill_visited(t_data *data, char ***visited)
 	y = 0;
 	while (data->map->map[y])
 	{
-		x = 0;
 		(*visited)[y] = malloc(sizeof(char) * (data->size_x + 1));
+		if (!(*visited)[y])
+		{
+			while (--y >= 0) // Free already allocated memory in case of failure
+				free((*visited)[y]);
+			free(*visited);
+			handle_error(data, "Error!\n allocation failure in fill_visited.\n");
+		}
+		x = 0;
 		while (data->map->map[y][x])
 		{
 			(*visited)[y][x] = data->map->map[y][x];
@@ -92,11 +99,11 @@ void	check_collectibles_path(t_data *data, int x, int y)
 			{
 				visited = malloc(sizeof(char *) * (data->size_y + 1));
 				if (!visited)
-					handle_error(data, "Error!\n allocation failure.\n", 1);
+					handle_error(data, "Error!\n allocation failure.\n");
 				visited[data->size_y] = 0;
-				fill_visited(data, &visited);
+				fill_visited(&visited, data);
 				if (!valid_collectibles(data, x, y, visited))
-					handle_error(data, "Error!\nNo path for collectibles\n", 1);
+					handle_error(data, "Error!\nNo path for collectibles\n");
 				free_double_p(&visited);
 			}
 			x++;
@@ -116,13 +123,13 @@ void	check_path(t_data *data)
 	find_player(data);
 	visited = malloc(sizeof(char * ) * (data->size_y + 1));
 	if (!visited)
-		handle_error(data, "Error!\n allocation failure.\n", 1);
-	visited[data->size_y] = 0;
-	fill_visited(data, &visited);
+		handle_error(data, "Error!\n allocation failure.\n");
+	visited[data->size_y] = NULL;
+	fill_visited(&visited, data);
 	if (!valid_exit(data, data->p_x, data->p_y, visited))
 	{
 		free_double_p(&visited);
-		handle_error(data, "Error!\n No valid path.\n", 1);
+		handle_error(data, "Error!\n No valid path.\n");
 	}
 	free_double_p(&visited);
 	check_collectibles_path(data, x, y);

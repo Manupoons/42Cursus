@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:45 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 12:48:54 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:00:30 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	put_object(t_data *data, char *path)
 	data->map->object = mlx_xpm_file_to_image(data->mlx, path,
 			&img_w, &img_h);
 	if (!data->map->object)
-		handle_error(data, "Error\nexit file not found", 1);
+		handle_error(data, "Error\nexit file not found");
 	mlx_put_image_to_window(data->mlx, data->win, data->map->object,
 			(data->map->x * IMG_W), (data->map->y * IMG_H));
 	free(data->map->object);

@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:10:12 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/02 13:32:59 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:07:51 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ static void	check_borders(t_data *data)
 	while (y < (data->size_y / IMG_H))
 	{
 		if ((int)ft_strlen(data->map->map[y]) != data->size_x / IMG_W)
-			handle_error(data, "Error!\n map has to be rectangular\n", 1);
+			handle_error(data, "Error!\n map has to be rectangular\n");
 		x = 0;
 		while (x < (data->size_x / IMG_W))
 		{
-			if (data->map->map[y][x] != '0' && data->map->map[y][x] != 1 &&
+			if (data->map->map[y][x] != '0' && data->map->map[y][x] != '1' &&
 				data->map->map[y][x] != 'C' && data->map->map[y][x] != 'P' && 
 				data->map->map[y][x] != 'E')
-				handle_error(data, "Error\n'0','1','C','P','E' not valid\n", 1);
+				handle_error(data, "Error\n'0','1','C','P','E' not valid\n");
 			else if (((y == 0) || (x == 0)) && data->map->map[y][x] != '1')
-				handle_error(data, "Error\nWalls missing\n", 1);
+				handle_error(data, "Error\nWalls missing\n");
 			else if ((y == (data->size_y / IMG_H - 1)
 						|| x == (data->size_x / IMG_W - 1))
 						&& data->map->map[y][x] != '1')
-				handle_error(data, "Error\nWalls missing\n", 1);
+				handle_error(data, "Error\nWalls missing\n");
 			x++;
 		}
 		y++;
@@ -57,16 +57,16 @@ static void	check_content(t_data *data)
 		y++;
 	}
 	if (player != 1)
-		handle_error(data, "Error!\nMust have 1 player only\n", 1);
+		handle_error(data, "Error!\nMust have 1 player only\n");
 	if (exit != 1)
-		handle_error(data, "Error!\nMust have 1 exit only\n", 1);
+		handle_error(data, "Error!\nMust have 1 exit only\n");
 }
 
 static void	input_error(t_data *data, int argc)
 {
 	if (argc != 2)
 	{
-		handle_error(data, "Error!\nMust have one map\n", 1);
+		handle_error(data, "Error!\nMust have one map\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -94,7 +94,7 @@ void	validate_map(t_data *data, char **argv, int argc)
 			i++;
 	}
 	if (data->size_x / IMG_H == i)
-		handle_error(data, "Error!\nWrong map dimensions", 1);
+		handle_error(data, "Error!\nWrong map dimensions");
 	check_borders(data);
 	check_content(data);
 }

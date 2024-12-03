@@ -3,39 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 10:44:51 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/09/20 10:44:52 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:58:36 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
 	int		x;
 	int		sign;
-	char	*aux;
 	int		num;
 
 	x = 0;
 	sign = 1;
 	num = 0;
-	aux = (char *)nptr;
-	while (aux[x] != '\0' && (aux[x] == ' ' || aux[x] == '\n'
-			|| aux[x] == '\r' || aux[x] == '\t'
-			|| aux[x] == '\v' || aux[x] == '\f'))
+	while (str[x] == ' ' && (str[x] >= 9 && str[x] <= 13))
 		x++;
-	if ((char)aux[x] == '-' || (char)aux[x] == '+')
+	if (str[x] == '-' || str[x] == '+')
 	{
-		if ((char)aux[x] == '-')
-			sign *= -1;
+		if (str[x] == '-')
+			sign = -1;
 		x++;
 	}
-	while (aux[x] != '\0' && (aux[x] >= '0' && aux[x] <= '9'))
+	while (str[x] >= '0' && str[x] <= '9')
 	{
-		num = num * 10 + aux[x] - '0';
+		num = num * 10 + str[x] - '0';
 		x++;
 	}
 	return (num * sign);

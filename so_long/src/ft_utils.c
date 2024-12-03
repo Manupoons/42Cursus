@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 19:04:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/02 13:02:54 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:00:21 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,16 @@ void	free_double_p(char ***str)
 	int	i;
 
 	i = 0;
-	while ((*str)[i])
-		i++;
-	i--;
-	while (i >= 0)
-		free((*str)[i--]);
-	free((*str));
+	if (*str)
+	{
+		while ((*str)[i])
+		{
+			free((*str)[i]);
+			i++;
+		}
+		free(*str);
+		*str = NULL; // Prevent double-free issues
+	}
 }
 
 void	free_double_pointer(t_data *data)
@@ -66,10 +70,9 @@ void	calloc_fail(char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	handle_error(t_data *data, char *str, int num)
+void	handle_error(t_data *data, char *str)
 {
-	if (num)
-		free_double_pointer(data);
+	free_double_pointer(data);
 	ft_putstr_fd(str, 2);
 	exit(EXIT_FAILURE);
 }
