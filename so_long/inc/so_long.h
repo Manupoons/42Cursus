@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:19:02 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 16:01:26 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:02:39 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <mlx.h>
 # include "../src/Libft/libft.h"
 
 # define IMG_W 50
@@ -43,6 +44,7 @@ typedef struct s_img
 	void	*player_right;
 	void	*player_down;
 	void	*background;
+	void	*exit;
 }	t_img;
 
 typedef struct s_map
