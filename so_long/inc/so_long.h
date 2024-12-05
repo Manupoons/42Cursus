@@ -17,7 +17,6 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include <mlx.h>
 # include "../src/Libft/libft.h"
 
 # define IMG_W 50
