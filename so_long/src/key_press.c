@@ -91,13 +91,13 @@ int	key_press(int key, t_data *data)
 {
 	if (key == ESC)
 		ft_exit(data);
-	else if (key == W || key == UARROW)
+	else if (key == W)
 		ft_move(data, 'y', UP);
-	else if (key == A || key == LARROW)
+	else if (key == A)
 		ft_move(data, 'x', LEFT);
-	else if (key == S || key == DARROW)
+	else if (key == S)
 		ft_move(data, 'y', DOWN);
-	else if (key == D || key == RARROW)
+	else if (key == D)
 		ft_move(data, 'x', RIGHT);
 	if (data->map->map[data->p_y][data->p_x] == 'E' &&
 			data->collected == data->map->pokeballs)
