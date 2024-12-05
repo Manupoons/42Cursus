@@ -45,12 +45,12 @@ void	handle_bin(int sig)
 	if (i == 8)
 	{
 		i = 0;
+		conv_txt(c);
 		if (ft_strcmp(c, "00000000") == 0)
 		{
 			write(1, "\n", 1);
 			return ;
 		}
-		conv_txt(c);
 		j = 0;
 		while (j < 8)
 		{
