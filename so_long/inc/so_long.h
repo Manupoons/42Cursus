@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:19:02 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/04 18:02:39 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 07:59:48 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_img
 	void	*player_down;
 	void	*background;
 	void	*exit;
+	void	*pokeball;
+	void	*tree;
 }	t_img;
 
 typedef struct s_map
@@ -69,7 +71,6 @@ typedef struct s_data
 void	window_size(t_data *data, char **argv);
 int		key_press(int key, t_data *data);
 void	find_player(t_data *data);
-void	put_background(t_data *data);
 void	create_map(t_data *data);
 void	free_double_p(char ***str);
 void	free_double_pointer(t_data *data);
@@ -77,6 +78,12 @@ void	calloc_fail(char *str);
 void	handle_error(t_data *data, char *str);
 int		ft_exit(t_data *data);
 void	ft_winner(t_data *data);
+
+void	put_background(t_data *data);
+void	put_tree(t_data *data);
+void	put_player(t_data *data);
+void	put_exit(t_data *data);
+void	put_pokeball(t_data *data);
 
 void	ft_putstr_fd(char *s, int fd);
 void	ft_init(t_data *data, t_map *map);

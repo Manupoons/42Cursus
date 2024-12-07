@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 19:04:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 16:00:21 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 08:08:43 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	free_double_p(char ***str)
 			i++;
 		}
 		free(*str);
-		*str = NULL; // Prevent double-free issues
+		*str = NULL;
 	}
 }
 

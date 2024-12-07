@@ -6,17 +6,42 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:36:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/04 18:04:22 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 08:38:41 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 #include "../mlx/mlx.h"
 
-static void	ft_set_img(t_data *data)
+static void	ft_set_assests(t_data *data)
 {
-	int		img_w;
-	int		img_h;
+	int	img_w;
+	int	img_h;
+
+	img_w = 50;
+	img_h = 50;
+	data->img->background = mlx_xpm_file_to_image(data->mlx, "img/ground.xpm",
+				&img_w, &img_h);
+	if (!data->img->background)
+		handle_error(data, "Error!\nGround file not found\n");
+	data->img->exit = mlx_xpm_file_to_image(data->mlx, "img/exit.xpm",
+				&img_w, &img_h);
+	if (!data->img->exit)
+		handle_error(data, "Error!\nExit file not found\n");
+	data->img->pokeball = mlx_xpm_file_to_image(data->mlx, "img/pokeball.xpm",
+				&img_w, &img_h);
+	if (!data->img->pokeball)
+		handle_error(data, "Error!\nPokeball file not found\n");
+	data->img->tree = mlx_xpm_file_to_image(data->mlx, "img/tree.xpm",
+				&img_w, &img_h);
+	if (!data->img->tree)
+		handle_error(data, "Error!\nTree file not found\n");
+}
+
+static void	ft_set_player(t_data *data)
+{
+	int	img_w;
+	int	img_h;
 
 	img_w = 50;
 	img_h = 50;
@@ -31,14 +56,6 @@ static void	ft_set_img(t_data *data)
 	if (!data->img->player_left || !data->img->player_down ||
 			!data->img->player_right || !data->img->player_up)
 		handle_error(data, "Error!\nPlayer file not found\n");
-	data->img->background = mlx_xpm_file_to_image(data->mlx, "img/ground.xpm",
-				&img_w, &img_h);
-	if (!data->img->background)
-		handle_error(data, "Error!\nGround file not found\n");
-	data->img->exit = mlx_xpm_file_to_image(data->mlx, "img/exit.xpm",
-				&img_w, &img_h);
-	if (!data->img->exit)
-		handle_error(data, "Error!\nExit file not found\n");
 }
 
 void	ft_init(t_data *data, t_map *map)
@@ -53,8 +70,10 @@ void	ft_init(t_data *data, t_map *map)
 		exit(EXIT_FAILURE);
 	}
 	data->img = img;
-	ft_set_img(data);
+	ft_set_assests(data);
+	ft_set_player(data);
 	data->counter = 0;
+	data->map->pokeballs = 0;
 	data->collected = 0;
 }
 

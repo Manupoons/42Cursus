@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:10:12 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 16:07:51 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 08:08:16 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	validate_map(t_data *data, char **argv, int argc)
 			i++;
 	}
 	if (data->size_x / IMG_H == i)
-		handle_error(data, "Error!\nWrong map dimensions");
+		handle_error(data, "Error!\nWrong map dimensions\n");
 	check_borders(data);
 	check_content(data);
 }
