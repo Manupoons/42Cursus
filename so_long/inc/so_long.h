@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:19:02 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 07:59:48 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 19:23:39 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # define LEFT -1
 # define RIGHT 1
 
-
 typedef struct s_img
 {
 	void	*player_up;
@@ -52,7 +51,6 @@ typedef struct s_map
 	int		y;
 	int		pokeballs;
 }	t_map;
-
 
 typedef struct s_data
 {

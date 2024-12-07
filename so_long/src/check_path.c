@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:06:16 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 16:00:11 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 19:55:25 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ static void	fill_visited(char ***visited, t_data *data)
 		(*visited)[y] = malloc(sizeof(char) * (data->size_x + 1));
 		if (!(*visited)[y])
 		{
-			while (--y >= 0) // Free already allocated memory in case of failure
+			while (--y >= 0)
 				free((*visited)[y]);
 			free(*visited);
-			handle_error(data, "Error!\n allocation failure in fill_visited.\n");
+			handle_error(data, "Error!\n allocation failure\n");
 		}
 		x = 0;
 		while (data->map->map[y][x])
@@ -88,7 +88,7 @@ static void	fill_visited(char ***visited, t_data *data)
 
 void	check_collectibles_path(t_data *data, int x, int y)
 {
-	char **visited;
+	char	**visited;
 
 	while (data->map->map[y])
 	{
@@ -121,7 +121,7 @@ void	check_path(t_data *data)
 	x = 0;
 	y = 0;
 	find_player(data);
-	visited = malloc(sizeof(char * ) * (data->size_y + 1));
+	visited = malloc(sizeof(char *) * (data->size_y + 1));
 	if (!visited)
 		handle_error(data, "Error!\n allocation failure.\n");
 	visited[data->size_y] = NULL;

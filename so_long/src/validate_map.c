@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:10:12 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 08:08:16 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 19:27:32 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static void	check_borders(t_data *data)
 		while (x < (data->size_x / IMG_W))
 		{
 			if (data->map->map[y][x] != '0' && data->map->map[y][x] != '1' &&
-				data->map->map[y][x] != 'C' && data->map->map[y][x] != 'P' && 
+				data->map->map[y][x] != 'C' && data->map->map[y][x] != 'P' &&
 				data->map->map[y][x] != 'E')
 				handle_error(data, "Error\n'0','1','C','P','E' not valid\n");
 			else if (((y == 0) || (x == 0)) && data->map->map[y][x] != '1')
 				handle_error(data, "Error\nWalls missing\n");
 			else if ((y == (data->size_y / IMG_H - 1)
-						|| x == (data->size_x / IMG_W - 1))
-						&& data->map->map[y][x] != '1')
+					|| x == (data->size_x / IMG_W - 1))
+				&& data->map->map[y][x] != '1')
 				handle_error(data, "Error\nWalls missing\n");
 			x++;
 		}
@@ -47,7 +47,7 @@ static void	check_content(t_data *data)
 	int	exit;
 	int	player;
 
-	exit = 0,
+	exit = 0;
 	player = 0;
 	y = 0;
 	while (data->map->map && data->map->map[y])
@@ -87,7 +87,7 @@ void	validate_map(t_data *data, char **argv, int argc)
 	{
 		bytes = read(fd, buffer, 1);
 		if (bytes != 1)
-			break;
+			break ;
 		if (buffer[0] != '\n' && buffer[0] != '\0')
 			data->map->map[i] = ft_strjoin(data->map->map[i], buffer);
 		else

@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:34:56 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 10:57:07 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 19:25:09 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_line_length(int fd)
 		if (buffer[0] != '\n')
 			len++;
 		else
-			break;
+			break ;
 	}
 	return (len);
 }

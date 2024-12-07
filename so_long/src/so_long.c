@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:08:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 08:08:21 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 19:54:25 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 	t_map	map;
+
 	if (argc != 2)
 	{
 		write(1, "Number of arguments incorrect\n", 30);

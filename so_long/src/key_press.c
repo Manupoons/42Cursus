@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:36 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 08:35:22 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/07 19:28:11 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,30 +52,26 @@ static void	ft_collect(t_data *data, char pos, int dir)
 	ft_printf("Pokeballs: %d \n", data->map->pokeballs);
 	data->map->map[data->p_y][data->p_x] = '0';
 	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
-			(data->p_x * IMG_W), (data->p_y * IMG_H));
+		(data->p_x * IMG_W), (data->p_y * IMG_H));
 	ft_player_move(data, pos, dir);
 }
 
 void	ft_move(t_data *data, char pos, int dir)
 {
 	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
-			(data->p_x * IMG_W), (data->p_y * IMG_H));
-	if (data->map->map[data->p_y][data->p_x] == 'E')
-	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img->exit,
-				(data->p_x * IMG_W), (data->p_y * IMG_H));
-	}
+		(data->p_x * IMG_W), (data->p_y * IMG_H));
 	if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] != '1'
-				&& (data->map->map[data->p_y + 1 * dir][data->p_x] != 'E'
-				|| data->collected == data->map->pokeballs))
+		&& (data->map->map[data->p_y + 1 * dir][data->p_x] != 'E'
+			|| data->collected == data->map->pokeballs))
 		data->p_y = data->p_y + 1 * dir;
 	else if (pos == 'x' && data->map->map[data->p_y][data->p_x + 1 * dir] != '1'
-				&& (data->map->map[data->p_y][data->p_x + 1 * dir] != 'E'
-				|| data->collected != data->map->pokeballs))
+		&& (data->map->map[data->p_y][data->p_x + 1 * dir] != 'E'
+			|| data->collected == data->map->pokeballs))
 		data->p_x = data->p_x + 1 * dir;
 	else if ((pos == 'y' || pos == 'x')
-			&& data->map->map[data->p_y + 1 * dir][data->p_x] == 'E'
-			&& data->collected != data->map->pokeballs)
+		&& (data->map->map[data->p_y + 1 * dir][data->p_x] == 'E'
+		|| data->map->map[data->p_y][data->p_x + 1 * dir] == 'E')
+		&& data->collected != data->map->pokeballs)
 		write(1, "\nCollect all collectibles before leaving\n", 41);
 	ft_player_move(data, pos, dir);
 	if (data->map->map[data->p_y][data->p_x] == 'C')
@@ -96,7 +92,7 @@ int	key_press(int key, t_data *data)
 		ft_move(data, 'y', DOWN);
 	else if (key == D)
 		ft_move(data, 'x', RIGHT);
-	if (data->map->map[data->p_y + 1][data->p_x + 1] == 'E' &&
+	if (data->map->map[data->p_y][data->p_x] == 'E' &&
 			data->collected == data->map->pokeballs)
 		ft_winner(data);
 	return (0);
