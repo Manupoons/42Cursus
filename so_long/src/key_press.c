@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:36 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 19:28:11 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/08 17:46:29 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,23 @@ void	ft_winner(t_data *data)
 static void	ft_player_move(t_data *data, char pos, int dir)
 {
 	if (pos == 'y' && dir == UP)
-	{
 		mlx_put_image_to_window(data->mlx, data->win, data->img->player_up,
 			(data->p_x * IMG_W), (data->p_y * IMG_H));
-	}
 	if (pos == 'x' && dir == LEFT)
-	{
 		mlx_put_image_to_window(data->mlx, data->win, data->img->player_left,
 			(data->p_x * IMG_W), (data->p_y * IMG_H));
-	}
 	if (pos == 'y' && dir == DOWN)
-	{
 		mlx_put_image_to_window(data->mlx, data->win, data->img->player_down,
 			(data->p_x * IMG_W), (data->p_y * IMG_H));
-	}
 	if (pos == 'x' && dir == RIGHT)
-	{
 		mlx_put_image_to_window(data->mlx, data->win, data->img->player_right,
 			(data->p_x * IMG_W), (data->p_y * IMG_H));
-	}
 }
 
 static void	ft_collect(t_data *data, char pos, int dir)
 {
 	data->collected++;
 	ft_printf("Collected: %d \n", data->collected);
-	ft_printf("Pokeballs: %d \n", data->map->pokeballs);
 	data->map->map[data->p_y][data->p_x] = '0';
 	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
 		(data->p_x * IMG_W), (data->p_y * IMG_H));
@@ -77,7 +68,7 @@ void	ft_move(t_data *data, char pos, int dir)
 	if (data->map->map[data->p_y][data->p_x] == 'C')
 		ft_collect(data, pos, dir);
 	mlx_do_sync(data->mlx);
-	ft_printf("You moved %d times\n", ++data->counter);
+	ft_printf("\nYou moved %d times\n", ++data->counter);
 }
 
 int	key_press(int key, t_data *data)

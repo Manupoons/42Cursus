@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:10:12 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 19:27:32 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/08 18:04:36 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	check_borders(t_data *data)
 	while (y < (data->size_y / IMG_H))
 	{
 		if ((int)ft_strlen(data->map->map[y]) != data->size_x / IMG_W)
-			handle_error(data, "Error!\n map has to be rectangular\n");
+			handle_error(data, "Error!\nMap has to be rectangular\n");
 		x = 0;
 		while (x < (data->size_x / IMG_W))
 		{

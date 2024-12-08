@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:06:16 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 19:55:25 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/08 17:43:26 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	fill_visited(char ***visited, t_data *data)
 			while (--y >= 0)
 				free((*visited)[y]);
 			free(*visited);
-			handle_error(data, "Error!\n allocation failure\n");
+			handle_error(data, "Error!\nAllocation failure\n");
 		}
 		x = 0;
 		while (data->map->map[y][x])
@@ -99,7 +99,7 @@ void	check_collectibles_path(t_data *data, int x, int y)
 			{
 				visited = malloc(sizeof(char *) * (data->size_y + 1));
 				if (!visited)
-					handle_error(data, "Error!\n allocation failure.\n");
+					handle_error(data, "Error!\nAllocation failure.\n");
 				visited[data->size_y] = 0;
 				fill_visited(&visited, data);
 				if (!valid_collectibles(data, x, y, visited))
