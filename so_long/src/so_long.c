@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:08:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/08 18:01:38 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:22:17 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 	ft_init(&data, &map);
 	validate_map(&data, argv, argc);
 	check_path(&data);
-	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y, "so_long mamaratr");
+	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y, "so_long");
 	ft_render_frame(&data);
 	mlx_loop(data.mlx);
 	perror("Error\nProgram failed to loop\n");

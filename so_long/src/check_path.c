@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:06:16 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/08 17:43:26 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:18:55 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,13 +123,13 @@ void	check_path(t_data *data)
 	find_player(data);
 	visited = malloc(sizeof(char *) * (data->size_y + 1));
 	if (!visited)
-		handle_error(data, "Error!\n allocation failure.\n");
+		handle_error(data, "Error!\nAllocation failure.\n");
 	visited[data->size_y] = NULL;
 	fill_visited(&visited, data);
 	if (!valid_exit(data, data->p_x, data->p_y, visited))
 	{
 		free_double_p(&visited);
-		handle_error(data, "Error!\n No valid path.\n");
+		handle_error(data, "Error!\nNo valid path.\n");
 	}
 	free_double_p(&visited);
 	check_collectibles_path(data, x, y);

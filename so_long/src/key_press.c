@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:36 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/08 17:46:29 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:20:47 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	ft_winner(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
-	ft_printf("Congratulations!!\nYou won in %d moves\n", data->counter);
+	ft_printf("\nCongratulations!!\nYou won in %d moves\n", data->counter);
 	free_double_pointer(data);
 	exit(EXIT_SUCCESS);
 }
@@ -40,7 +40,7 @@ static void	ft_player_move(t_data *data, char pos, int dir)
 static void	ft_collect(t_data *data, char pos, int dir)
 {
 	data->collected++;
-	ft_printf("Collected: %d \n", data->collected);
+	ft_printf("\nPokeballs collected: %d \n", data->collected);
 	data->map->map[data->p_y][data->p_x] = '0';
 	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
 		(data->p_x * IMG_W), (data->p_y * IMG_H));

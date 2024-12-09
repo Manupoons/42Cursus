@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 10:44:51 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/03 14:58:36 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/09 09:44:43 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int		x;
-	int		sign;
-	int		num;
+	int	x;
+	int	sign;
+	int	num;
 
 	x = 0;
 	sign = 1;
