@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 10:34:56 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 19:25:09 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:41:09 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ int	ft_line_length(int fd)
 	int		len;
 	int		bytes;
 
-	buffer[0] = '\0';
 	bytes = 1;
 	len = 0;
 	while (bytes == 1)
 	{
 		bytes = read(fd, buffer, 1);
-		if (buffer[0] != '\n')
-			len++;
-		else
+		if (buffer[0] == '\n')
 			break ;
+		else
+			len++;
 	}
 	return (len);
 }

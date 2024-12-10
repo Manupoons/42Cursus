@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 19:04:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 19:53:54 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:55:01 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,21 @@ void	free_double_pointer(t_data *data)
 {
 	int	i;
 
+	if (!data->map || !data->map->map)
+		return;
 	i = 0;
 	while (data->map->map[i])
 		i++;
 	while (i >= 0)
-		free(data->map->map[i--]);
+	{
+		free(data->map->map[i]);
+		data->map->map[i] = NULL;
+		i--;
+	}
 	free(data->map->map);
+	data->map->map = NULL;
 	free(data->img);
+	data->img = NULL;
 }
 
 void	calloc_fail(char *str)
