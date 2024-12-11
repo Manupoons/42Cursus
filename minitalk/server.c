@@ -14,27 +14,30 @@
 
 void	conv_txt(char *s)
 {
-	int	base;
-	int	result;
-	int	i;
+	int		i;
+	int		base;
+	int		result;
 
-	base = 128;
-	result = 0;
 	i = 0;
-	while (i < 8)
+	while (s[i])
 	{
-		if (s[i] == '1')
-			result += base;
-		base /= 2;
-		i++;
+		base = 128;
+		result = 0;
+		while (base > 0)
+		{
+			if (s[i] == '1')
+				result += base;
+			base /= 2;
+			i++;
+		}
+		write(1, &result, 1);
 	}
-	write(1, &result, 1);
 }
 
 void	handle_bin(int sig)
 {
-	static int	i;
 	int			j;
+	static int	i;
 	static char	c[8];
 
 	if (sig == SIGUSR1)

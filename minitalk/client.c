@@ -32,8 +32,8 @@ void	convert_bin(char *s, int pid)
 			}
 			else
 				kill(pid, SIGUSR2);
+			usleep(300);
 			base /= 2;
-			usleep(100);
 		}
 		i++;
 	}
@@ -43,9 +43,10 @@ int	main(int argc, char **argv)
 {
 	int	pid;
 
-	if (argc != 3)
-		return (-1);
-	pid = ft_atoi(argv[1]);
-	convert_bin(argv[2], pid);
+	if (argc == 3)
+	{
+		pid = ft_atoi(argv[1]);
+		convert_bin(argv[2], pid);
+	}
 	return (0);
 }

@@ -12,6 +12,11 @@
 
 #include "minitalk.h"
 
+void	ft_putchar(int c)
+{
+	write (1, &c, 1);
+}
+
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -32,11 +37,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
 
-void	ft_putchar(int c)
-{
-	write (1, &c, 1);
-}
-
 void	ft_putnbr(int num)
 {
 	if (num > 9)
@@ -45,7 +45,7 @@ void	ft_putnbr(int num)
 		num = num % 10;
 	}
 	if (num <= 9)
-		ft_putchar (('0' + num));
+		ft_putchar ('0' + num);
 }
 
 int	ft_atoi(const char *str)
@@ -57,7 +57,7 @@ int	ft_atoi(const char *str)
 	num = 0;
 	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
 	{
-		num = (num * 10) + (str[i] - '0');
+		num = num * 10 + str[i] - '0';
 		i++;
 	}
 	return (num);
