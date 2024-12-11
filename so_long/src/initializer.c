@@ -92,7 +92,7 @@ void	window_size(t_data *data, char **argv)
 		perror("Error\nMap has to be .ber\n");
 		exit(EXIT_FAILURE);
 	}
-	data->size_x = (ft_line_length(fd) * IMG_W); //Segfault here
+	data->size_x = (ft_line_length(fd) * IMG_W);
 	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W) * IMG_H);
 	close(fd);
 }

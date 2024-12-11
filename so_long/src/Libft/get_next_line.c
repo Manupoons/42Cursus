@@ -16,6 +16,12 @@ char	*ft_free(char *buffer, char *line)
 {
 	char	*temp;
 
+	if (!buffer || !line)
+	{
+		free(buffer);
+		free(line);
+		return (NULL);
+	}
 	temp = ft_strjoin(buffer, line);
 	free(buffer);
 	return (temp);
@@ -77,6 +83,8 @@ char	*read_buffer(int fd, char *buffer)
 	if (!buffer)
 		buffer = ft_calloc(1, 1);
 	line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!line)
+		return (NULL);
 	bytes = 1;
 	while (bytes > 0)
 	{
@@ -87,6 +95,8 @@ char	*read_buffer(int fd, char *buffer)
 			break ;
 		line[bytes] = '\0';
 		buffer = ft_free(buffer, line);
+		if (!buffer)
+			return (NULL);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}

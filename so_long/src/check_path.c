@@ -22,13 +22,13 @@ int	valid_exit(t_data *data, int x, int y, char **visited)
 	if (y < 0 || y >= data->size_y || x < 0 || x >= data->size_x
 		|| data->map->map[y][x] == '1' || visited[y][x] == '1')
 		return (0);
+	visited[y][x] = '1';
 	if (data->map->map[y][x] == 'E')
 		return (1);
-	visited[y][x] = '1';
 	up = valid_exit(data, x, y - 1, visited);
 	down = valid_exit(data, x, y + 1, visited);
-	right = valid_exit(data, x + 1, y, visited);
 	left = valid_exit(data, x - 1, y, visited);
+	right = valid_exit(data, x + 1, y, visited);
 	if (up || down || left || right)
 		return (1);
 	else
@@ -46,9 +46,9 @@ int	valid_collectibles(t_data *data, int x, int y, char **visited)
 		|| data->map->map[y][x] == '1' || visited[y][x] == '1'
 		|| visited[y][x] == 'E')
 		return (0);
+	visited[y][x] = '1';
 	if (data->map->map[y][x] == 'P')
 		return (1);
-	visited[y][x] = '1';
 	up = valid_collectibles(data, x, y - 1, visited);
 	down = valid_collectibles(data, x, y + 1, visited);
 	right = valid_collectibles(data, x + 1, y, visited);
@@ -65,7 +65,7 @@ static void	fill_visited(char ***visited, t_data *data)
 	int	x;
 
 	y = 0;
-	while (data->map->map[y])
+	while (y < data->size_y)
 	{
 		(*visited)[y] = malloc(sizeof(char) * (data->size_x + 1));
 		if (!(*visited)[y])
@@ -76,9 +76,9 @@ static void	fill_visited(char ***visited, t_data *data)
 			handle_error(data, "Error!\nAllocation failure\n");
 		}
 		x = 0;
-		while (data->map->map[y][x])
+		while (x < data->size_x)
 		{
-			(*visited)[y][x] = data->map->map[y][x];
+			(*visited)[y][x] = '0';
 			x++;
 		}
 		(*visited)[y][x] = '\0';
@@ -129,7 +129,7 @@ void	check_path(t_data *data)
 	if (!valid_exit(data, data->p_x, data->p_y, visited))
 	{
 		free_double_p(&visited);
-		handle_error(data, "Error!\nNo valid path.\n");
+		handle_error(data, "Error!\nNo path for exit.\n");
 	}
 	free_double_p(&visited);
 	check_collectibles_path(data, x, y);
