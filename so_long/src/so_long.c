@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:08:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/09 12:22:17 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:22:15 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_render_frame(t_data *data)
 {
 	put_background(data);
 	create_map(data);
-	mlx_hook(data->win, 17, 1L << 2, ft_exit, data);
+	mlx_hook(data->win, 17, 0, ft_exit, data);
 	mlx_key_hook(data->win, key_press, data);
 	return (0);
 }
