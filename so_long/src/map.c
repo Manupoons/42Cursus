@@ -28,7 +28,7 @@ static void	check_borders(t_data *data)
 			if (data->map->map[y][x] != '0' && data->map->map[y][x] != '1' &&
 				data->map->map[y][x] != 'C' && data->map->map[y][x] != 'P' &&
 				data->map->map[y][x] != 'E')
-				handle_error(data, "Error\n'0','1','C','P','E' not valid\n");
+				handle_error(data, "Error\nMap must be: 0,1,C,P,E only\n");
 			else if (((y == 0) || (x == 0)) && data->map->map[y][x] != '1')
 				handle_error(data, "Error\nWalls missing\n");
 			else if ((y == (data->size_y / IMG_H - 1)
@@ -47,6 +47,7 @@ static void	check_content(t_data *data)
 	int	exit;
 	int	player;
 
+	check_borders(data);
 	exit = 0;
 	player = 0;
 	y = 0;
@@ -62,15 +63,6 @@ static void	check_content(t_data *data)
 		handle_error(data, "Error!\nMust have 1 exit only\n");
 }
 
-static void	input_error(t_data *data, int argc)
-{
-	if (argc != 2)
-	{
-		handle_error(data, "Error!\nMust have one map\n");
-		exit(EXIT_FAILURE);
-	}
-}
-
 void	validate_map(t_data *data, char **argv, int argc)
 {
 	int		fd;
@@ -78,23 +70,52 @@ void	validate_map(t_data *data, char **argv, int argc)
 	int		bytes;
 	char	buffer[2];
 
-	input_error(data, argc);
-	i = 0;
-	bytes = 1;
-	buffer[1] = '\0';
-	fd = open(argv[1], O_RDONLY);
-	while (bytes == 1)
+	if (argc == 2)
 	{
-		bytes = read(fd, buffer, 1);
-		if (bytes != 1)
-			break ;
-		if (buffer[0] != '\n' && buffer[0] != '\0')
-			data->map->map[i] = ft_strjoin(data->map->map[i], buffer);
-		else
-			i++;
+		i = 0;
+		bytes = 1;
+		buffer[1] = '\0';
+		fd = open(argv[1], O_RDONLY);
+		while (bytes == 1)
+		{
+			bytes = read(fd, buffer, 1);
+			if (bytes != 1)
+				break ;
+			if (buffer[0] != '\n' && buffer[0] != '\0')
+				data->map->map[i] = ft_strjoin(data->map->map[i], buffer);
+			else
+				i++;
+		}
+		if (data->size_x / IMG_H == i)
+			handle_error(data, "Error!\nWrong map dimensions\n");
+		check_content(data);
 	}
-	if (data->size_x / IMG_H == i)
-		handle_error(data, "Error!\nWrong map dimensions\n");
-	check_borders(data);
-	check_content(data);
+}
+
+void	create_map(t_data *data)
+{
+	char	tile;
+
+	data->map->y = 0;
+	while (data->map->y < (data->size_y / IMG_H))
+	{
+		data->map->x = 0;
+		while (data->map->x < (data->size_x / IMG_W))
+		{
+			tile = data->map->map[data->map->y][data->map->x];
+			if (tile == 'P')
+				put_player(data);
+			else if (tile == '1')
+				put_tree(data);
+			else if (tile == 'C')
+			{
+				put_pokeball(data);
+				data->map->pokeballs++;
+			}
+			else if (tile == 'E')
+				put_exit(data);
+			data->map->x++;
+		}
+		data->map->y++;
+	}
 }

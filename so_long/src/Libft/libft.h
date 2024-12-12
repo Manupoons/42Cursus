@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <stdarg.h>
 # include <strings.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -23,18 +24,24 @@
 #  define BUFFER_SIZE 1
 # endif
 
-void	ft_putnbr_fd(int n, int fd);
-int		ft_atoi(const char *nptr);
-void	*ft_calloc(size_t nmemb, size_t size);
-int		ft_count_c(char *s, char c);
-int		ft_count_lines(int fd, int x, int img_w);
+int		ft_putnbr(int num);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
 int		ft_line_length(int fd);
+int		ft_atoi(const char *nptr);
+int		ft_count_c(char *s, char c);
+int		ft_printf(char const *s, ...);
+int		ft_convert(va_list v1, const char s);
+int		ft_count_lines(int fd, int x, int img_w);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_itoa(int n);
+char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, const char *s2);
-size_t	ft_strlen(const char *s);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-
-char	*get_next_line(int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	*ft_calloc(size_t nmemb, size_t size);
+size_t	ft_numsize(long num);
+size_t	ft_strlen(const char *s);
 
 #endif

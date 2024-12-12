@@ -7,9 +7,8 @@ MAGENTA =		\033[0;95m
 CYAN =			\033[0;96m
 WHITE =			\033[0;97m
 
-SRCS = ./src/so_long.c ./src/check_path.c ./src/create_map.c ./src/ft_printf.c \
-			./src/ft_putnbr.c ./src/ft_utils.c ./src/initializer.c \
-			./src/key_press.c ./src/validate_map.c ./src/put_assets.c
+SRCS = ./src/so_long.c ./src/check_path.c ./src/map.c ./src/ft_utils.c \
+		./src/initializer.c ./src/key_press.c ./src/put_assets.c
 
 INCLUD = ./inc/so_long.h
 

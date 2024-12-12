@@ -3,7 +3,7 @@ NAME = libft.a
 SRC = ft_strlen.c ft_calloc.c ft_strchr.c ft_strncmp.c \
 	  ft_strnstr.c ft_atoi.c ft_strjoin.c ft_count_c.c \
 	  ft_line_length.c ft_atoi.c ft_strjoin.c ft_count_c.c \
-	  ft_count_lines.c get_next_line.c
+	  ft_count_lines.c get_next_line.c ft_printf.c ft_putnbr.c
 
 LIBC = ar rcs
 CC = cc
