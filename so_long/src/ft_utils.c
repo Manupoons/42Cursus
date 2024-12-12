@@ -56,7 +56,7 @@ void	free_double_pointer(t_data *data)
 	int	i;
 
 	if (!data->map || !data->map->map)
-		return;
+		return ;
 	i = 0;
 	while (data->map->map[i])
 		i++;
