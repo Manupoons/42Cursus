@@ -6,71 +6,46 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:51:14 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/11/27 11:38:43 by mamaratr         ###   ########.fr       */
+/*   Updated: 2024/12/23 11:10:36 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static int	g_pidclient;
-
-void	reset(unsigned int *base, int *result, int *cont)
+void handle_signal(int sig, siginfo_t *info, void *context)
 {
-	if (*cont == 40 && *result != 0)
-	{
-		write(1, &*result, 1);
-		*base = 128;
-		*cont = 32;
-		*result = 0;
-	}
-	else if (*cont == 40 && *result == 0)
-	{
-		*cont = 0;
-		*base = 2147483648;
-	}
-}
+	static int	bit = 0;
+	static int	i = 0;
 
-void	set_msgbase(int *result, unsigned int *base)
-{
-	g_pidclient = *result;
-	*result = 0;
-	*base = 128;
-}
-
-void	conv_txt(int bit)
-{
-	static unsigned int	base = 2147483648;
-	static int			result = 0;
-	static int			i = 0;
-
-	if (i < 32)
+	(void)context;
+	if (sig == SIGUSR1)
+		i |= (1 << bit);
+	bit++;
+	if (bit == 8)
 	{
-		if (bit == SIGUSR1)
-			result += base;
-		base /= 2;
+		if (i == 0)
+			kill(info->si_pid, SIGUSR2);
+		write(1, &i, 1);
+		bit = 0;
+		i = 0;
 	}
-	if (i == 31)
-		set_msgbase(&result, &base);
-	if (i >= 32 && i <= 39)
-	{
-		if (bit == SIGUSR1)
-			result += base;
-		base /= 2;
-		kill(g_pidclient, SIGUSR1);
-	}
-	i++;
-	if (i == 40)
-		reset(&base, &result, &i);
 }
 
 int	main(void)
 {
+	struct sigaction	sig;
+	
 	write(1, "PID: ", 5);
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
-	signal(SIGUSR1, conv_txt);
-	signal(SIGUSR2, conv_txt);
+	sig.sa_sigaction = handle_signal;
+	sigemptyset(&sig.sa_mask);
+	sig.sa_flags = 0;
 	while (1)
+	{
+		sigaction(SIGUSR1, &sig, NULL);
+		sigaction(SIGUSR2, &sig, NULL);
 		pause();
+	}
 	return (0);
 }
