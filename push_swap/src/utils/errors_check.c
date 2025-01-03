@@ -6,13 +6,13 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:06:55 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/02 12:19:35 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:25:07 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-int	duplicates(t_stack *stack)
+int	has_duplicates(t_stack *stack)
 {
 	t_node	*node1;
 	t_node	*node2;
@@ -69,4 +69,24 @@ void	error(void)
 {
 	write(1, "Error\n", 6);
 	exit(1);
+}
+
+int	check_errors(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	if (argc > 1 && empty_string(argv[1]))
+		return (1);
+	if (argc == 1)
+		return (1);
+	while (i < argc)
+	{
+		if (!valid_int_range(argv[i]))
+			return (1);
+		i++;
+	}
+	if (!validate_params(argc, argv))
+		return (1);
+	return (0);
 }

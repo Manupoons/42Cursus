@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:54:51 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/02 12:38:36 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:26:51 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,42 +33,8 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
-int					max(int a, int b);
-int					ft_atoi(char *str);
-int					ft_strlen(char *str);
-int					ft_strncmp(char *s1, char *s2, size_t n);
-int					is_sorted(t_stack *stack);
-int					ft_isdigit(int c);
-int					validate_input(char *str);
-int					validate_params(int argc, char **argv);
-int					duplicates(t_stack *stack);
-int					is_biggest(t_stack *to_search, int n);
-int					is_smallest(t_stack *to_search, int n);
-int					check_cheapest(t_stack *from, t_stack *to);
-int					check_cheapest(t_stack *from, t_stack *to);
-int					get_depth(t_stack *from, int n);
-int					get_biggest(t_stack *to_search);
-int					get_target(t_stack *to_search, int n, int u_or_l);
-int					get_immediate_lower(t_stack *to_search, int n);
-int					get_immediate_upper(t_stack *to_search, int n);
-int					push_cheapest(t_stack *from, t_stack *to, int n);
-char				*ft_strdup(char *s1);
-char				*ft_strjoin(char *s1, char *s2);
-char				*ft_substr(char *s, unsigned int st, size_t len);
-void				*ft_calloc(size_t count, size_t size);
-char				**ft_split(char *s, char c);
-void				error(void);
-void				free_stack(t_stack *stack);
-void				ft_free_split(char **split);
-void				push_back(t_stack *from, t_stack *to);
-void				push_stack(t_stack *stack, int value);
-void				print_stacks(t_stack *stack_a, t_stack *stack_b);
-void				init_stack(int argc, char **argv, t_stack *stack);
-void				bring_to_top(t_stack *a, int target);
-void				bring_min_to_top(t_stack *stack);
-void				sort(t_stack *a, t_stack *b);
-void				sort_two(t_stack *a);
-void				sort_three(t_stack *a);
+//MOVES:
+
 void				sa(t_stack *a);
 void				pa(t_stack *a, t_stack *b);
 void				pb(t_stack *a, t_stack *b);
@@ -78,12 +44,82 @@ void				rr(t_stack *a, t_stack *b);
 void				rra(t_stack *a);
 void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
-t_node				*new_node(int value);
-t_stack				*new_stack(void);
-unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size);
 
-int					get_smallest(t_stack *to_search);
+//SORT:
+
+// get_cheapest
+int					get_cheapest(t_stack *stack, t_stack *target);
+
+// get_target
+
+int					get_target(t_stack *target, int n, int u_or_l);
+int					get_closer_smaller(t_stack *target, int n);
+int					get_closer_bigger(t_stack *target, int n);
+
+// push_cheapest
+
+int					push_cheapest(t_stack *from, t_stack *to, int n);
+
+// size_info
+
+int					is_biggest(t_stack *target, int n);
+int					is_smallest(t_stack *target, int n);
+int					get_biggest(t_stack *target);
+int					get_smallest(t_stack *target);
+
+// sort
+
+void				sort(t_stack *a, t_stack *b);
+void				sort_two(t_stack *a);
+void				sort_three(t_stack *a);
+
+// utils
+
+int					get_depth(t_stack *from, int n);
+void				move_top(t_stack *stack, int n);
+void				move_min_top(t_stack *stack);
+int					is_sorted(t_stack *stack);
+void				push_back(t_stack *from, t_stack *to);
+
+//UTILS
+
+//errors_check
+
+void				error(void);
+int					has_duplicates(t_stack *stack);
 int					empty_string(const char *str);
 int					valid_int_range(char *str);
+int					check_errors(int argc, char **argv);
+
+//functions
+
+int					ft_atoi(char *str);
+int					ft_strncmp(char *s1, char *s2, size_t n);
+char				**ft_split(char *s, char c);
+char				*ft_strdup(char *s1);
+char				*ft_strjoin(char *s1, char *s2);
+char				*ft_substr(char *s, unsigned int st, size_t len);
+void				ft_free_split(char **split);
+unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size);
+
+//ps_utils
+
+void				free_stack(t_stack *stack);
+t_node				*new_node(int value);
+t_stack				*new_stack(void);
+void				push_stack(t_stack *stack, int value);
+void				init_stack(int argc, char **argv, t_stack *stack);
+
+//utils
+
+int					ft_strlen(char *str);
+int					ft_isdigit(int c);
+int					ft_isspace(int c);
+int					max(int a, int b);
+
+//validate_input
+
+int					validate_input(char *str);
+int					validate_params(int argc, char **argv);
 
 #endif

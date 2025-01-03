@@ -1,16 +1,25 @@
 NAME = push_swap
 
-SRC = src/*.c
-OBJ := $(SRC:%.c=%.o)
+SRC = src/moves/*.c \
+		src/sort/*.c \
+		src/utils/*.c \
+		src/push_swap.c
+
+OBJ := $(SRC:.c=.o)
+
+INC = push_swap.h
 
 CC = gcc
 RM = rm -f
-FLAGS = -Werror -Wextra -Wall
-
-$(NAME):
-	$(CC) $(FLAGS) $(SRC) -Iinc -o $(NAME)
+FLAGS = -Werror -Wextra -Wall -I. -g
 
 all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.c $(INC)
+	$(CC) %(FLAGS) -c $< -o
 
 clean:
 	$(RM) $(OBJ)
