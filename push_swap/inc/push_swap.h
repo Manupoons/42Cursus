@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:54:51 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/03 17:26:51 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:33:46 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,10 @@ unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size);
 //ps_utils
 
 void				free_stack(t_stack *stack);
-t_node				*new_node(int value);
-t_stack				*new_stack(void);
 void				push_stack(t_stack *stack, int value);
 void				init_stack(int argc, char **argv, t_stack *stack);
+t_node				*new_node(int value);
+t_stack				*new_stack(void);
 
 //utils
 

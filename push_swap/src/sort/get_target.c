@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:25:22 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/03 11:44:57 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:41:48 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	get_target(t_stack *target, int n, int dir)
 	if (is_biggest(target, n) || is_smallest(target, n))
 		return (get_biggest(target));
 	else if (dir)
-		return (get_immediate_lower(target, n));
+		return (get_closer_smaller(target, n));
 	else if (!dir)
-		return (get_immediate_upper(target, n));
+		return (get_closer_bigger(target, n));
 	else
 		return (INT_MIN);
 }

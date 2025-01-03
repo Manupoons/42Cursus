@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:25:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/03 16:27:24 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:42:31 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	push_back(t_stack *b, t_stack *a)
 		target = get_closer_bigger(a, node->value);
 		if (target == INT_MAX)
 			target = get_smallest(a);
-		bring_to_top(a, target);
+		move_top(a, target);
 		pa(a, b);
 		node = node->next;
 	}

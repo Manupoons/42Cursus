@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:27:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/02 12:39:40 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:44:01 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	validate_single_input(char *input)
 		return (0);
 	while (numbers[i])
 	{
-		if (!input_valid(numbers[i]))
+		if (!validate_input(numbers[i]))
 			return (ft_free_split(numbers), 0);
 		i++;
 	}
@@ -56,7 +56,7 @@ static int	validate_multiple_inputs(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!input_valid(argv[i]))
+		if (!validate_input(argv[i]))
 			return (0);
 		i++;
 	}

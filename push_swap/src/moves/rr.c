@@ -6,13 +6,13 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:16:06 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/28 11:27:18 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:40:09 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	rb(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b)
 {
 	t_node	*node;
 	t_node	*node2;

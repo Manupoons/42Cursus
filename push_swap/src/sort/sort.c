@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:45:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/03 17:13:53 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:42:17 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ void	sort(t_stack *a, t_stack *b)
 //		pb(a, b);
 	while (a->size > 3)
 	{
-		num = check_cheapest(a, b);
+		num = get_cheapest(a, b);
 		push_cheapest(a, b, num);
 	}
 	sort_three(a);
 	if (b->size != 0)
 	{
 		push_back(b, a);
-		bring_min_to_top(a);
+		move_min_top(a);
 	}
 	return ;
 }
