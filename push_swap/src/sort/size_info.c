@@ -6,19 +6,19 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:42:30 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/02 12:48:18 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:57:57 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-int	is_biggest(t_stack *target, int n)
+int	is_biggest(t_stack *stack, int n)
 {
 	t_node	*node;
 	
-	if (!target->top)
+	if (!stack->top)
 		return (INT_MIN);
-	node = target->top;
+	node = stack->top;
 	while (node)
 	{
 		if (n < node->value)
@@ -28,13 +28,13 @@ int	is_biggest(t_stack *target, int n)
 	return (1);
 }
 
-int	is_smallest(t_stack *target, int n)
+int	is_smallest(t_stack *stack, int n)
 {
 	t_node	*node;
 	
-	if (!target->top)
+	if (!stack->top)
 		return (INT_MIN);
-	node = target->top;
+	node = stack->top;
 	while (node)
 	{
 		if (n > node->value)
@@ -44,14 +44,14 @@ int	is_smallest(t_stack *target, int n)
 	return (1);
 }
 
-int	get_biggest(t_stack *target)
+int	get_biggest(t_stack *stack)
 {
 	t_node	*node;
 	int		max;
 	
-	if (!target->top)
+	if (!stack->top)
 		return (INT_MIN);
-	node = target->top;
+	node = stack->top;
 	max = node->value;
 	while (node)
 	{
@@ -62,14 +62,14 @@ int	get_biggest(t_stack *target)
 	return (max);
 }
 
-int	get_smallest(t_stack *target)
+int	get_smallest(t_stack *stack)
 {
 	t_node	*node;
 	int		min;
 	
-	if (!target->top)
-		return (INT_MIN);
-	node = target->top;
+	if (!stack->top)
+		return (INT_MAX);
+	node = stack->top;
 	min = node->value;
 	while (node)
 	{

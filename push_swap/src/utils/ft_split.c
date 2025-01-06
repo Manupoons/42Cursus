@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 12:13:15 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/02 11:36:05 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:42:24 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_free_split(char **split)
 	if (!split)
 		return ;
 	i = 0;
-	while (split)
+	while (split[i])
 	{
 		free(split[i]);
 		i++;
@@ -89,33 +89,3 @@ char	**ft_split(char *s, char c)
 	split = do_split(s, c, split);
 	return (split);
 }
-/*
-char	**ft_split(char *s, char c)
-{
-	char	**strs;
-	size_t	x;
-	size_t	len;
-
-	x = 0;
-	strs = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (!strs)
-		return (NULL);
-	while (*s)
-	{
-		len = 0;
-		while (*s == c && *s)
-			s++;
-		len = ft_word_len(s, c);
-		if (len)
-		{
-			strs[x] = ft_substr(s, 0, len);
-			if (!strs[x])
-				return (ft_free(strs, x));
-			x++;
-		}
-		s += len;
-	}
-	strs[x] = NULL;
-	return (strs);
-}
-*/

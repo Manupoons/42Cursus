@@ -1,7 +1,10 @@
 NAME = push_swap
 
-SRC = src/moves/sa.c \
-		src/moves/pa.c \
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I. -g
+RM = rm -f
+
+SRCS = src/moves/pa.c \
 		src/moves/pb.c \
 		src/moves/ra.c \
 		src/moves/rb.c \
@@ -9,6 +12,7 @@ SRC = src/moves/sa.c \
 		src/moves/rra.c \
 		src/moves/rrb.c \
 		src/moves/rrr.c \
+		src/moves/sa.c \
 		src/sort/get_cheapest.c \
 		src/sort/get_target.c \
 		src/sort/push_cheapest.c \
@@ -28,27 +32,26 @@ SRC = src/moves/sa.c \
 		src/utils/validate_input.c \
 		src/push_swap.c
 
-OBJ := $(SRC:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
-INC = push_swap.h
-
-CC = gcc
-RM = rm -f
-FLAGS = -Werror -Wextra -Wall -I. -g
+INCLUDES = push_swap.h
 
 all: $(NAME)
+	@echo "ok"
 
-$(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c $(INC)
-	$(CC) %(FLAGS) -c $< -o
+%.o: %.c $(INCLUDES)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJS)
+	@echo "cleaned"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "fully cleaned"
 
 re: fclean all
 

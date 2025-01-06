@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:45:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/03 17:42:17 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:49:07 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	handle_bigger_first(t_stack *stack)
 	else
 	{
 		sa(stack);
-		ra(stack);
+		rra(stack);
 	}
 }
 
@@ -49,15 +49,17 @@ void	sort_three(t_stack *stack)
 	else if (first < second && first > third)
 		rra(stack);
 	else if (first < second && second > third)
+	{
 		sa(stack);
 		ra(stack);
+	}
 }
 
 void	sort(t_stack *a, t_stack *b)
 {
 	int	num;
 
-	num = INT_MAX;
+	num = INT_MIN;
 	if (a->size == 2)
 	{
 		sort_two(a);
@@ -65,8 +67,8 @@ void	sort(t_stack *a, t_stack *b)
 	}
 	if (a->size >= 4)
 		pb(a, b);
-//	if (a->size >= 5)
-//		pb(a, b);
+	if (a->size >= 5)
+		pb(a, b);
 	while (a->size > 3)
 	{
 		num = get_cheapest(a, b);

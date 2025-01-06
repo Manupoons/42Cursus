@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:15:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/28 11:22:36 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:32:59 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	pb(t_stack *a, t_stack *b)
 		return ;
 	node = a->top;
 	a->top = node->next;
-	if (a->top == NULL)
-		a->bottom = NULL;
-	else
+	if (a->top != NULL)
 		a->top->prev = NULL;
-	node->next = b->top;
-	if (b->top == NULL)
-		b->bottom = node;
 	else
+		a->bottom = NULL;
+	node->next = b->top;
+	if (b->top != NULL)
 		b->top->prev = node;
+	else
+		b->bottom = node;
 	b->top = node;
 	node->prev = NULL;
 	b->size++;
