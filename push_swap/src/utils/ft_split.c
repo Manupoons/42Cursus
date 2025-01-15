@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 12:13:15 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/06 12:42:24 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:41:38 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	**do_split(char *s, char c, char **split)
 	size_t	start;
 	size_t	i;
 	size_t	j;
-	
+
 	start = 0;
 	i = 0;
 	j = 0;
@@ -80,7 +80,7 @@ static char	**do_split(char *s, char c, char **split)
 char	**ft_split(char *s, char c)
 {
 	char	**split;
-	
+
 	if (!s)
 		return (NULL);
 	split = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));

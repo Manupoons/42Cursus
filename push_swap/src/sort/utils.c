@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:25:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/06 12:00:21 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:43:52 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	move_top(t_stack *stack, int n)
 void	move_min_top(t_stack *stack)
 {
 	int	val;
-	
+
 	if (!stack || !stack->top)
 		return ;
 	val = get_smallest(stack);
@@ -67,7 +67,7 @@ void	move_min_top(t_stack *stack)
 int	is_sorted(t_stack *stack)
 {
 	t_node	*node;
-	
+
 	if (!stack || !stack->top)
 		return (1);
 	node = stack->top;

@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:25:22 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/06 12:03:40 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:44:47 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	get_closer_smaller(t_stack *stack, int n)
 	int		dif;
 	int		val;
 
-	if(!stack->top)
+	if (!stack->top)
 		return (INT_MIN);
 	node = stack->top;
 	dif = INT_MAX;
@@ -54,7 +54,7 @@ int	get_closer_bigger(t_stack *stack, int n)
 	int		closest_dif;
 	int		val;
 
-	if(!stack->top || !stack)
+	if (!stack->top || !stack)
 		return (INT_MIN);
 	node = stack->top;
 	closest_dif = INT_MAX;

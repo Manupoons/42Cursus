@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:06:55 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/10 10:24:33 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:42:44 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ int	valid_int_range(char *str)
 {
 	if (*str == '-')
 	{
-		if (ft_strlen(str) > 11 || (ft_strlen(str) == 11 && ft_strncmp(str, 
-			"-2147483648", ft_strlen(str)) > 0))
+		if (ft_strlen(str) > 11 || (ft_strlen(str) == 11 && ft_strncmp(str,
+					"-2147483648", ft_strlen(str)) > 0))
 			return (0);
 	}
 	else
 	{
-		if (ft_strlen(str) > 10 || (ft_strlen(str) == 10 && ft_strncmp(str, 
-			"2147483648", ft_strlen(str)) > 0))
+		if (ft_strlen(str) > 10 || (ft_strlen(str) == 10 && ft_strncmp(str,
+					"2147483648", ft_strlen(str)) > 0))
 			return (0);
 	}
 	return (1);

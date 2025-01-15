@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:16:49 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/02 11:58:46 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:41:15 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_node	*new_node(int value)
 t_stack	*new_stack(void)
 {
 	t_stack	*stack;
-	
+
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
 		return (NULL);
@@ -56,7 +56,7 @@ t_stack	*new_stack(void)
 void	push_stack(t_stack *stack, int value)
 {
 	t_node	*node;
-	
+
 	node = new_node(value);
 	if (!node)
 		return ;
@@ -78,7 +78,7 @@ void	init_stack(int argc, char **argv, t_stack *stack)
 {
 	int		i;
 	char	**numbers;
-	
+
 	if (argc == 2)
 	{
 		numbers = ft_split(argv[1], ' ');

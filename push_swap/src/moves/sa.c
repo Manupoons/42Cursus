@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 10:55:37 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/28 11:09:55 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:39:46 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	sa(t_stack *a)
 	t_node	*first;
 	t_node	*second;
 
-	if(!a->top || a->top == a->bottom)
+	if (!a->top || a->top == a->bottom)
 		return ;
 	first = a->top;
 	second = first->next;

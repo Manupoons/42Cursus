@@ -37,7 +37,7 @@ OBJS = $(SRCS:.c=.o)
 INCLUDES = push_swap.h
 
 all: $(NAME)
-	@echo "ok"
+	@echo "compiled"
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)

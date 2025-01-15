@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:45:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/06 11:49:07 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:44:17 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_three(t_stack *stack)
 	int	first;
 	int	second;
 	int	third;
-	
+
 	first = stack->top->value;
 	second = stack->top->next->value;
 	third = stack->top->next->next->value;

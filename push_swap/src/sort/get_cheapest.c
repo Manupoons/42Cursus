@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:31:13 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/06 12:06:33 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:43:29 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	get_moves(t_stack *stack, t_stack *obj, int val)
 	int	target;
 	int	target_depth;
 	int	moves;
-	
+
 	depth = get_depth(stack, val);
 	target = get_target(obj, val, 1);
 	target_depth = get_depth(obj, target);

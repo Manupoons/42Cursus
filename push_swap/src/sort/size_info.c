@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:42:30 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/06 11:57:57 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:43:20 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	is_biggest(t_stack *stack, int n)
 {
 	t_node	*node;
-	
+
 	if (!stack->top)
 		return (INT_MIN);
 	node = stack->top;
@@ -31,7 +31,7 @@ int	is_biggest(t_stack *stack, int n)
 int	is_smallest(t_stack *stack, int n)
 {
 	t_node	*node;
-	
+
 	if (!stack->top)
 		return (INT_MIN);
 	node = stack->top;
@@ -48,7 +48,7 @@ int	get_biggest(t_stack *stack)
 {
 	t_node	*node;
 	int		max;
-	
+
 	if (!stack->top)
 		return (INT_MIN);
 	node = stack->top;
@@ -66,7 +66,7 @@ int	get_smallest(t_stack *stack)
 {
 	t_node	*node;
 	int		min;
-	
+
 	if (!stack->top)
 		return (INT_MAX);
 	node = stack->top;
