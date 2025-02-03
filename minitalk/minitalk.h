@@ -22,5 +22,6 @@
 void	ft_putchar(int c);
 void	ft_putnbr(int num);
 int		ft_atoi(char *str);
+void	*ft_memset(void *s, int c, size_t n);
 
 #endif

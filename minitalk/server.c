@@ -12,32 +12,42 @@
 
 #include "minitalk.h"
 
-void handle_signal(int sig)
-{
-	static int	bit = 0;
-	static int	i = 0;
+static volatile int bit_count = 0;
 
-	if (sig == SIGUSR1)
-		i |= (1 << bit);
-	bit++;
-	if (bit == 8)
+void handle_signal(int sig, siginfo_t *info, void *context)
+{
+	static unsigned char	bit = 0;
+
+	(void)context;
+	bit <<= 1;
+	if (sig == SIGUSR2)
+		bit |= 1;
+	bit_count++;
+	if (bit_count == 8)
 	{
-		write(1, &i, 1);
+		if (bit == '\0')
+			kill(info->si_pid, SIGUSR2);
+		else
+			write(1, &bit, 1);
 		bit = 0;
-		i = 0;
+		bit_count = 0;
 	}
+	if (kill(info->si_pid, SIGUSR1) == -1)
+		write(2, "Error", 5);
 }
 
 int main(void)
 {
+	struct sigaction	sa;
+
 	write(1, "PID: ", 5);
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
+	ft_memset(&sa, 0, sizeof(sa));
+	sa.sa_flags = SA_SIGINFO;
+	sa.sa_sigaction = handle_signal;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
-	{
-		signal(SIGUSR1, handle_signal);
-		signal(SIGUSR2, handle_signal);
 		pause();
-	}
-	return (0);
 }

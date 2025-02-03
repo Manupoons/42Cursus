@@ -12,44 +12,50 @@
 
 #include "minitalk.h"
 
-void	confirm_msg(int sig)
+static volatile int sig_recieved = 0;
+
+static void	handle_signal(int sig)
 {
-	if (sig == SIGUSR2)
-		write(1, "Message received\n", 17);
+	sig_recieved = sig;
 }
 
-void	ft_convert(char c, int pid)
+void	send_char(unsigned char c, int pid)
 {
-	int		bit;
+	int	bit;
 
-	bit = 0;
-	while (bit < 8)
+	bit = 7;
+	while (bit >= 0)
 	{
-		if (1 << bit & c)
-			kill(pid, SIGUSR1);
-		else
+		sig_recieved = 0;
+		if ((c >> bit) & 1)
 			kill(pid, SIGUSR2);
-		usleep(500);
-		bit++;
+		else
+			kill(pid, SIGUSR1);
+		bit--;
+		while (sig_recieved != SIGUSR1)
+			usleep(100);
 	}
+}
+
+void	send_msg(char *msg, int pid)
+{
+	while (*msg)
+	{
+		send_char((unsigned char)*msg, pid);
+		msg++;
+	}
+	send_char('\0', pid);
+	write(1, "Recibido", 8);
 }
 
 int	main(int argc, char **argv)
 {
 	int	pid;
-	int	i;
 
-	i = 0;
-	if (argc == 3)
-	{
-		pid = ft_atoi(argv[1]);
-		while (argv[2][i])
-		{
-			ft_convert(argv[2][i], pid);
-			i++;
-		}
-		signal(SIGUSR2, confirm_msg);
-		ft_convert('\0', pid);
-	}
+	(void)argc;
+	pid = ft_atoi(argv[1]);
+	signal(SIGUSR1, handle_signal);
+	signal(SIGUSR2, handle_signal);
+	send_msg(argv[2], pid);
 	return (0);
 }
