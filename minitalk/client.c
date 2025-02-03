@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:03:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/23 10:42:57 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:50:20 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	convert_bin(char c, int pid)
 {
-	int		bit;
+	int	bit;
 
 	bit = 0;
 	while (bit < 8)
