@@ -12,11 +12,11 @@
 
 #include "minitalk.h"
 
-static volatile int sig_recieved = 0;
+static volatile int	g_sig_recieved = 0;
 
 static void	handle_signal(int sig)
 {
-	sig_recieved = sig;
+	g_sig_recieved = sig;
 }
 
 void	send_char(unsigned char c, int pid)
@@ -26,13 +26,13 @@ void	send_char(unsigned char c, int pid)
 	bit = 7;
 	while (bit >= 0)
 	{
-		sig_recieved = 0;
+		g_sig_recieved = 0;
 		if ((c >> bit) & 1)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
 		bit--;
-		while (sig_recieved != SIGUSR1)
+		while (g_sig_recieved != SIGUSR1)
 			usleep(100);
 	}
 }

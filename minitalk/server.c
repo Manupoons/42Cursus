@@ -12,9 +12,9 @@
 
 #include "minitalk.h"
 
-static volatile int bit_count = 0;
+static volatile int	g_bit_count = 0;
 
-void handle_signal(int sig, siginfo_t *info, void *context)
+void	handle_signal(int sig, siginfo_t *info, void *context)
 {
 	static unsigned char	bit = 0;
 
@@ -22,21 +22,21 @@ void handle_signal(int sig, siginfo_t *info, void *context)
 	bit <<= 1;
 	if (sig == SIGUSR2)
 		bit |= 1;
-	bit_count++;
-	if (bit_count == 8)
+	g_bit_count++;
+	if (g_bit_count == 8)
 	{
 		if (bit == '\0')
 			kill(info->si_pid, SIGUSR2);
 		else
 			write(1, &bit, 1);
 		bit = 0;
-		bit_count = 0;
+		g_bit_count = 0;
 	}
 	if (kill(info->si_pid, SIGUSR1) == -1)
 		write(2, "Error", 5);
 }
 
-int main(void)
+int	main(void)
 {
 	struct sigaction	sa;
 
