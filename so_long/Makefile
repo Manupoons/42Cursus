@@ -27,26 +27,26 @@ DEPS = $(addsuffix .d, $(basename $(SRCS)))
 all: ${NAME}
 
 -include $(DEPS)
-${NAME}:	${OBJS}
+${NAME}: ${OBJS}
 	@echo "\n${YELLOW}Compiling libft $(DEF_COLOR)\n"
-	@make -C ./src/Libft
+	@make -C ./src/Libft > /dev/null
 	@echo "\n${YELLOW}Minilibx compilation $(DEF_COLOR)\n"
-	@make -C ./mlx all
+	@make -C ./mlx all > /dev/null
 	@cp ./mlx/libmlx.a .
 	@${CC} ${OBJS} $(LIB) -o $(NAME)
 	@echo "$(YELLOW)Created ${NAME} ✓$(DEF_COLOR)\n"
 
 clean:
-	@make -C ./mlx clean
-	@make -C ./src/Libft clean
+	@make -C ./mlx clean --no-print-directory > /dev/null
+	@make -C ./src/Libft clean --no-print-directory > /dev/null
 	@${RM} ${OBJS} ${DEPS}
 	@echo "\n$(YELLOW)All objects cleaned successfully $(DEF_COLOR)\n"
 
 fclean:
-	@make -C ./mlx clean
-	@make -C ./src/Libft fclean
+	@make -C ./mlx clean --no-print-directory > /dev/null
+	@make -C ./src/Libft fclean --no-print-directory > /dev/null
 	@${RM} ${OBJS} ${DEPS} ${NAME} libmlx.a
-	@echo "\n$(YELLOW)All objects and executable cleaned successfully$(DEF_COLOR)\n"
+	@echo "\n$(YELLOW)All objects and executable cleaned successfully $(DEF_COLOR)\n"
 
 re: fclean all
 

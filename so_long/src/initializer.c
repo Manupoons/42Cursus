@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:36:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/10 14:45:01 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:56:56 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ static void	ft_set_assests(t_data *data)
 
 	img_w = 50;
 	img_h = 50;
-	data->img->background = mlx_xpm_file_to_image(data->mlx, "img/ground.xpm",
+	data->img->background = mlx_xpm_file_to_image(data->mlx, "img/Tile.xpm",
 			&img_w, &img_h);
 	if (!data->img->background)
-		handle_error(data, "Error!\nGround file not found\n");
-	data->img->exit = mlx_xpm_file_to_image(data->mlx, "img/exit.xpm",
+		handle_error(data, "Error!\nTile file not found\n");
+	data->img->exit = mlx_xpm_file_to_image(data->mlx, "img/Exit.xpm",
 			&img_w, &img_h);
 	if (!data->img->exit)
 		handle_error(data, "Error!\nExit file not found\n");
-	data->img->pokeball = mlx_xpm_file_to_image(data->mlx, "img/pokeball.xpm",
+	data->img->coin = mlx_xpm_file_to_image(data->mlx, "img/Coin.xpm",
 			&img_w, &img_h);
-	if (!data->img->pokeball)
-		handle_error(data, "Error!\nPokeball file not found\n");
-	data->img->tree = mlx_xpm_file_to_image(data->mlx, "img/tree.xpm",
+	if (!data->img->coin)
+		handle_error(data, "Error!\nCoin file not found\n");
+	data->img->pilar = mlx_xpm_file_to_image(data->mlx, "img/Pilar.xpm",
 			&img_w, &img_h);
-	if (!data->img->tree)
-		handle_error(data, "Error!\nTree file not found\n");
+	if (!data->img->pilar)
+		handle_error(data, "Error!\nPilar file not found\n");
 }
 
 static void	ft_set_player(t_data *data)
@@ -45,13 +45,13 @@ static void	ft_set_player(t_data *data)
 
 	img_w = 50;
 	img_h = 50;
-	data->img->player_up = mlx_xpm_file_to_image(data->mlx, "img/npcup.xpm",
+	data->img->player_up = mlx_xpm_file_to_image(data->mlx, "img/PBack.xpm",
 			&img_w, &img_h);
-	data->img->player_left = mlx_xpm_file_to_image(data->mlx, "img/npclft.xpm",
+	data->img->player_left = mlx_xpm_file_to_image(data->mlx, "img/PLeft.xpm",
 			&img_w, &img_h);
-	data->img->player_right = mlx_xpm_file_to_image(data->mlx, "img/npcr.xpm",
+	data->img->player_right = mlx_xpm_file_to_image(data->mlx, "img/PRight.xpm",
 			&img_w, &img_h);
-	data->img->player_down = mlx_xpm_file_to_image(data->mlx, "img/npcdown.xpm",
+	data->img->player_down = mlx_xpm_file_to_image(data->mlx, "img/PFront.xpm",
 			&img_w, &img_h);
 	if (!data->img->player_left || !data->img->player_down
 		|| !data->img->player_right || !data->img->player_up)
@@ -73,7 +73,7 @@ void	ft_init(t_data *data, t_map *map)
 	ft_set_assests(data);
 	ft_set_player(data);
 	data->counter = 0;
-	data->map->pokeballs = 0;
+	data->map->coins = 0;
 	data->collected = 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 07:58:22 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/07 19:54:17 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:58:29 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	put_background(t_data *data)
 	}
 }
 
-void	put_tree(t_data *data)
+void	put_pilar(t_data *data)
 {
-	mlx_put_image_to_window(data->mlx, data->win, data->img->tree,
+	mlx_put_image_to_window(data->mlx, data->win, data->img->pilar,
 		(data->map->x * IMG_W), (data->map->y * IMG_H));
 }
 
@@ -52,8 +52,8 @@ void	put_exit(t_data *data)
 		(data->map->x * IMG_W), (data->map->y * IMG_H));
 }
 
-void	put_pokeball(t_data *data)
+void	put_coin(t_data *data)
 {
-	mlx_put_image_to_window(data->mlx, data->win, data->img->pokeball,
+	mlx_put_image_to_window(data->mlx, data->win, data->img->coin,
 		(data->map->x * IMG_W), (data->map->y * IMG_H));
 }

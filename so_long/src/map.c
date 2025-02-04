@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:10:12 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/08 18:04:36 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:59:34 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,11 @@ void	create_map(t_data *data)
 			if (tile == 'P')
 				put_player(data);
 			else if (tile == '1')
-				put_tree(data);
+				put_pilar(data);
 			else if (tile == 'C')
 			{
-				put_pokeball(data);
-				data->map->pokeballs++;
+				put_coin(data);
+				data->map->coins++;
 			}
 			else if (tile == 'E')
 				put_exit(data);

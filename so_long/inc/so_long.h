@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:19:02 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/08 18:01:04 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:55:43 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_img
 	void	*player_down;
 	void	*background;
 	void	*exit;
-	void	*pokeball;
-	void	*tree;
+	void	*coin;
+	void	*pilar;
 }	t_img;
 
 typedef struct s_map
@@ -46,7 +46,7 @@ typedef struct s_map
 	void	*object;
 	int		x;
 	int		y;
-	int		pokeballs;
+	int		coins;
 }	t_map;
 
 typedef struct s_data
@@ -94,10 +94,10 @@ void	free_double_pointer(t_data *data);
 void	handle_error(t_data *data, char *str);
 
 //put_assets
-void	put_tree(t_data *data);
+void	put_pilar(t_data *data);
 void	put_exit(t_data *data);
 void	put_player(t_data *data);
-void	put_pokeball(t_data *data);
+void	put_coin(t_data *data);
 void	put_background(t_data *data);
 
 #endif
