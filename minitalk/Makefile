@@ -5,12 +5,12 @@ SRV_SRC = server.c
 CLT_SRC = client.c
 UTILS_SRC = utils.c
 
-SRVBONUS_SRC = server_bonus.c
-CLTBONUS_SRC = client_bonus.c
-
 SRV_OBJ = $(SRV_SRC:.c=.o)
 CLT_OBJ = $(CLT_SRC:.c=.o)
 UTILS_OBJ = $(UTILS_SRC:.c=.o)
+
+SRVBONUS_SRC = server_bonus.c
+CLTBONUS_SRC = client_bonus.c
 
 SRVBONUS_OBJ = $(SRVBONUS_SRC:.c=.o)
 CLTBONUS_OBJ = $(CLTBONUS_SRC:.c=.o)

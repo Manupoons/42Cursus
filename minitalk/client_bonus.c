@@ -52,10 +52,17 @@ int	main(int argc, char **argv)
 {
 	int	pid;
 
-	(void)argc;
-	pid = ft_atoi(argv[1]);
-	signal(SIGUSR1, handle_signal);
-	signal(SIGUSR2, handle_signal);
-	send_msg(argv[2], pid);
+	if (argc != 3)
+	{
+		write(2, "Ejemplo de uso: (./client pid mensaje)", 38);
+		return (1);
+	}
+	else
+	{
+		pid = ft_atoi(argv[1]);
+		signal(SIGUSR1, handle_signal);
+		signal(SIGUSR2, handle_signal);
+		send_msg(argv[2], pid);
+	}
 	return (0);
 }

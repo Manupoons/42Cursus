@@ -16,24 +16,23 @@ static volatile int	g_bit_count = 0;
 
 void	handle_signal(int sig, siginfo_t *info, void *context)
 {
-	static unsigned char	bit = 0;
+	static unsigned char	chr = 0;
 
 	(void)context;
-	bit <<= 1;
+	chr <<= 1;
 	if (sig == SIGUSR2)
-		bit |= 1;
+		chr |= 1;
 	g_bit_count++;
 	if (g_bit_count == 8)
 	{
-		if (bit == '\0')
+		if (chr == '\0')
 			kill(info->si_pid, SIGUSR2);
 		else
-			write(1, &bit, 1);
-		bit = 0;
+			write(1, &chr, 1);
+		chr = 0;
 		g_bit_count = 0;
 	}
-	if (kill(info->si_pid, SIGUSR1) == -1)
-		write(2, "Error", 5);
+	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)
