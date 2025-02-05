@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 19:04:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/12/10 14:55:01 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:46:03 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	free_double_p(char ***str)
 	}
 }
 
-void	free_double_pointer(t_data *data)
+void	free_data(t_data *data)
 {
 	int	i;
 
@@ -80,7 +80,7 @@ void	calloc_fail(char *str)
 
 void	handle_error(t_data *data, char *str)
 {
-	free_double_pointer(data);
+	free_data(data);
 	ft_putstr_fd(str, 2);
 	exit(EXIT_FAILURE);
 }

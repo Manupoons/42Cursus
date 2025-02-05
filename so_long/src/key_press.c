@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:36 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/04 20:57:17 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:46:54 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_winner(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
 	ft_printf("\nCongratulations!!\nYou won in %d moves\n", data->counter);
-	free_double_pointer(data);
+	free_data(data);
 	exit(EXIT_SUCCESS);
 }
 

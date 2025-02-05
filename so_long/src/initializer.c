@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:36:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/04 20:56:56 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:29:06 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,4 @@ void	ft_init(t_data *data, t_map *map)
 	data->counter = 0;
 	data->map->coins = 0;
 	data->collected = 0;
-}
-
-void	window_size(t_data *data, char **argv)
-{
-	int	fd;
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error\nInvalid map_path\n");
-		exit(EXIT_FAILURE);
-	}
-	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
-	{
-		perror("Error\nMap has to be .ber\n");
-		exit(EXIT_FAILURE);
-	}
-	data->size_x = (ft_line_length(fd) * IMG_W);
-	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W) * IMG_H);
-	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:19:02 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/04 20:55:43 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/05 12:32:54 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_data
 
 //so_long
 int		ft_exit(t_data *data);
-void	check_map_ext(char *file_name);
+void	check_map_ext(t_data *data, char *file_name, char **argv);
 
 //check_path
 void	check_path(t_data *data);
@@ -75,7 +75,6 @@ int		valid_collectibles(t_data *data, int x, int y, char **visited);
 
 //initializer
 void	ft_init(t_data *data, t_map *map);
-void	window_size(t_data *data, char **argv);
 
 //validate and create map
 void	create_map(t_data *data);
@@ -90,7 +89,7 @@ void	ft_move(t_data *data, char pos, int dir);
 void	calloc_fail(char *str);
 void	find_player(t_data *data);
 void	free_double_p(char ***str);
-void	free_double_pointer(t_data *data);
+void	free_data(t_data *data);
 void	handle_error(t_data *data, char *str);
 
 //put_assets
