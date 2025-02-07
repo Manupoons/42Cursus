@@ -63,7 +63,7 @@ void	ft_move(t_data *data, char pos, int dir)
 		&& (data->map->map[data->p_y + 1 * dir][data->p_x] == 'E'
 		|| data->map->map[data->p_y][data->p_x + 1 * dir] == 'E')
 		&& data->collected != data->map->coins)
-		write(1, "\nCollect all collectibles before leaving\n", 41);
+		ft_printf("\nCollect all collectibles before leaving\n");
 	ft_player_move(data, pos, dir);
 	if (data->map->map[data->p_y][data->p_x] == 'C')
 		ft_collect(data, pos, dir);
