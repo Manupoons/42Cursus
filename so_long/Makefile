@@ -18,7 +18,6 @@ CFLAGS = -Wall -Wextra -Werror -MMD -I./inc -I./src/Libft
 LIB = -L. -lmlx -lXext -lX11 -lm -L./src/Libft -lft
 
 .c.o:
-	@echo "${BLUE} ◎ $(YELLOW)Compiling ${MAGENTA}→ $(CYAN) $< $(DEF_COLOR)"
 	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 OBJS = ${SRCS:.c=.o}
@@ -28,10 +27,10 @@ all: ${NAME}
 
 -include $(DEPS)
 ${NAME}: ${OBJS}
-	@echo "\n${YELLOW}Compiling libft $(DEF_COLOR)\n"
+	@echo "\n${YELLOW}Compiling libft ✓$(DEF_COLOR)"
 	@make -C ./src/Libft > /dev/null
-	@echo "\n${YELLOW}Minilibx compilation $(DEF_COLOR)\n"
-	@make -C ./mlx all > /dev/null
+	@echo "\n${YELLOW}Minilibx compilation ✓$(DEF_COLOR)\n"
+	@make -C ./mlx all > /dev/null 2>&1
 	@cp ./mlx/libmlx.a .
 	@${CC} ${OBJS} $(LIB) -o $(NAME)
 	@echo "$(YELLOW)Created ${NAME} ✓$(DEF_COLOR)\n"

@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:36 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/05 11:46:54 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:15:23 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ static void	ft_collect(t_data *data, char pos, int dir)
 
 void	ft_move(t_data *data, char pos, int dir)
 {
+	int	prev_x = data->p_x;
+	int	prev_y = data->p_y;
+	
 	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
 		(data->p_x * IMG_W), (data->p_y * IMG_H));
 	if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] != '1'
@@ -59,11 +62,24 @@ void	ft_move(t_data *data, char pos, int dir)
 		&& (data->map->map[data->p_y][data->p_x + 1 * dir] != 'E'
 			|| data->collected == data->map->coins))
 		data->p_x = data->p_x + 1 * dir;
-	else if ((pos == 'y' || pos == 'x')
-		&& (data->map->map[data->p_y + 1 * dir][data->p_x] == 'E'
-		|| data->map->map[data->p_y][data->p_x + 1 * dir] == 'E')
+	else if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] == 'E'
 		&& data->collected != data->map->coins)
+	{
 		ft_printf("\nCollect all collectibles before leaving\n");
+		data->p_y = data->p_y + 1 * dir;
+	}
+	else if (pos == 'x' && data->map->map[data->p_y][data->p_x + 1 * dir] == 'E'
+		&& data->collected != data->map->coins)
+	{
+		ft_printf("\nCollect all collectibles before leaving\n");
+		data->p_x = data->p_x + 1 * dir;
+	}
+	if (data->map->map[prev_y][prev_x] == 'E')
+		mlx_put_image_to_window(data->mlx, data->win, data->img->exit,
+		(data->p_x * IMG_W), (data->p_y * IMG_H));
+	if (data->map->map[data->p_y][data->p_x] == 'E' &&
+			data->collected == data->map->coins)
+		ft_winner(data);
 	ft_player_move(data, pos, dir);
 	if (data->map->map[data->p_y][data->p_x] == 'C')
 		ft_collect(data, pos, dir);
