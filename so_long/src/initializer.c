@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:36:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/05 12:29:06 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/10 20:07:46 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ static void	ft_set_assests(t_data *data)
 		handle_error(data, "Error!\nPilar file not found\n");
 }
 
+static void	ft_check_img(t_data *data)
+{
+	if (!data->img->player_left || !data->img->player_front
+		|| !data->img->player_right || !data->img->player_back
+		|| !data->img->p_back_exit || !data->img->p_left_exit
+		|| !data->img->p_right_exit || !data->img->p_front_exit)
+		handle_error(data, "Error!\nPlayer file not found\n");
+}
+
 static void	ft_set_player(t_data *data)
 {
 	int	img_w;
@@ -45,17 +54,23 @@ static void	ft_set_player(t_data *data)
 
 	img_w = 50;
 	img_h = 50;
-	data->img->player_up = mlx_xpm_file_to_image(data->mlx, "img/PBack.xpm",
-			&img_w, &img_h);
-	data->img->player_left = mlx_xpm_file_to_image(data->mlx, "img/PLeft.xpm",
-			&img_w, &img_h);
-	data->img->player_right = mlx_xpm_file_to_image(data->mlx, "img/PRight.xpm",
-			&img_w, &img_h);
-	data->img->player_down = mlx_xpm_file_to_image(data->mlx, "img/PFront.xpm",
-			&img_w, &img_h);
-	if (!data->img->player_left || !data->img->player_down
-		|| !data->img->player_right || !data->img->player_up)
-		handle_error(data, "Error!\nPlayer file not found\n");
+	data->img->player_back = mlx_xpm_file_to_image(data->mlx,
+			"img/PBack.xpm", &img_w, &img_h);
+	data->img->player_left = mlx_xpm_file_to_image(data->mlx,
+			"img/PLeft.xpm", &img_w, &img_h);
+	data->img->player_right = mlx_xpm_file_to_image(data->mlx,
+			"img/PRight.xpm", &img_w, &img_h);
+	data->img->player_front = mlx_xpm_file_to_image(data->mlx,
+			"img/PFront.xpm", &img_w, &img_h);
+	data->img->p_back_exit = mlx_xpm_file_to_image(data->mlx,
+			"img/PBackExit.xpm", &img_w, &img_h);
+	data->img->p_left_exit = mlx_xpm_file_to_image(data->mlx,
+			"img/PLeftExit.xpm", &img_w, &img_h);
+	data->img->p_right_exit = mlx_xpm_file_to_image(data->mlx,
+			"img/PRightExit.xpm", &img_w, &img_h);
+	data->img->p_front_exit = mlx_xpm_file_to_image(data->mlx,
+			"img/PFrontExit.xpm", &img_w, &img_h);
+	ft_check_img(data);
 }
 
 void	ft_init(t_data *data, t_map *map)

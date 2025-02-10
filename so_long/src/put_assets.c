@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 07:58:22 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/04 20:58:29 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:13:42 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	put_player(t_data *data)
 {
 	data->p_x = data->map->x;
 	data->p_y = data->map->y;
-	mlx_put_image_to_window(data->mlx, data->win, data->img->player_up,
+	mlx_put_image_to_window(data->mlx, data->win, data->img->player_front,
 		(data->p_x * IMG_W), (data->p_y * IMG_H));
 }
 
