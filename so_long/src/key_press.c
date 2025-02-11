@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:07:36 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/10 20:16:12 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:16:51 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,48 +49,6 @@ static void	ft_collect(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
 		(data->p_x * IMG_W), (data->p_y * IMG_H));
 }
-
-// void	ft_move(t_data *data, char pos, int dir)
-// {
-// 	int	prev_x;
-// 	int	prev_y;
-// 	int	exit;
-
-// 	prev_x = data->p_x;
-// 	prev_y = data->p_y;
-// 	exit = 0;
-// 	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
-// 		(data->p_x * IMG_W), (data->p_y * IMG_H));
-// 	if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] != '1'
-// 		&& (data->map->map[data->p_y + 1 * dir][data->p_x] != 'E'
-// 			|| data->collected == data->map->coins))
-// 		data->p_y = data->p_y + 1 * dir;
-// 	else if (pos == 'x' && data->map->map[data->p_y][data->p_x + 1 * dir] != '1'
-// 		&& (data->map->map[data->p_y][data->p_x + 1 * dir] != 'E'
-// 			|| data->collected == data->map->coins))
-// 		data->p_x = data->p_x + 1 * dir;
-// 	else if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] == 'E'
-// 		&& data->collected != data->map->coins)
-// 	{
-// 		ft_printf("\nCollect all collectibles before leaving\n");
-// 		data->p_y = data->p_y + 1 * dir;
-// 	}
-// 	else if (pos == 'x' && data->map->map[data->p_y][data->p_x + 1 * dir] == 'E'
-// 		&& data->collected != data->map->coins)
-// 	{
-// 		ft_printf("\nCollect all collectibles before leaving\n");
-// 		data->p_x = data->p_x + 1 * dir;
-// 		exit = 1;
-// 	}
-// 	if (data->map->map[prev_y][prev_x] == 'E')
-// 		mlx_put_image_to_window(data->mlx, data->win, data->img->exit,
-// 			(prev_x * IMG_W), (prev_y * IMG_H));
-// 	if (data->map->map[data->p_y][data->p_x] == 'C')
-// 		ft_collect(data);
-// 	ft_player_move(data, pos, dir, exit);
-// 	mlx_do_sync(data->mlx);
-// 	ft_printf("\nYou moved %d times\n", ++data->counter);
-// }
 
 static int	ft_try_move(t_data *data, char pos, int dir)
 {
