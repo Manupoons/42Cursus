@@ -8,7 +8,8 @@ CYAN =			\033[0;96m
 WHITE =			\033[0;97m
 
 SRCS = ./src/so_long.c ./src/check_path.c ./src/map.c ./src/ft_utils.c \
-		./src/initializer.c ./src/key_press.c ./src/put_assets.c
+		./src/initializer.c ./src/key_press.c ./src/put_assets.c \
+		./src/player_move.c
 
 INCLUD = ./inc/so_long.h
 

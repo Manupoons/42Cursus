@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:19:02 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/10 18:12:21 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:50:48 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,12 @@ void	ft_init(t_data *data, t_map *map);
 void	create_map(t_data *data);
 void	validate_map(t_data *data, char **argv, int argc);
 
+//player_move
+void	ft_player_move(t_data *data, char pos, int dir);
+void	ft_move(t_data *data, char pos, int dir);
+
 //key_press
 int		key_press(int key, t_data *data);
-void	ft_move(t_data *data, char pos, int dir);
 
 //ft_utils
 void	calloc_fail(char *str);
