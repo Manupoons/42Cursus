@@ -23,10 +23,11 @@ int	ft_line_length(int fd)
 	while (bytes == 1)
 	{
 		bytes = read(fd, buffer, 1);
+		if (bytes == 0)
+			break ;
 		if (buffer[0] == '\n')
 			break ;
-		else
-			len++;
+		len++;
 	}
 	return (len);
 }

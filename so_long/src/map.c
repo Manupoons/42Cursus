@@ -46,21 +46,26 @@ static void	check_content(t_data *data)
 	int	y;
 	int	exit;
 	int	player;
+	int	coins;
 
 	check_borders(data);
 	exit = 0;
 	player = 0;
+	coins = 0;
 	y = 0;
 	while (data->map->map && data->map->map[y])
 	{
 		exit += ft_count_c(data->map->map[y], 'E');
 		player += ft_count_c(data->map->map[y], 'P');
+		coins += ft_count_c(data->map->map[y], 'C');
 		y++;
 	}
 	if (player != 1)
-		handle_error(data, "Error!\nMust have 1 player only\n");
+		handle_error(data, "Error!\nMust have 1 player\n");
 	if (exit != 1)
-		handle_error(data, "Error!\nMust have 1 exit only\n");
+		handle_error(data, "Error!\nMust have 1 exit\n");
+	if (coins == 0)
+		handle_error(data, "Error!\nMust have at least 1 coin\n");
 }
 
 void	validate_map(t_data *data, char **argv, int argc)

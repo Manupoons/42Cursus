@@ -12,29 +12,28 @@
 
 #include "libft.h"
 
-int	ft_count_lines(int fd, int x, int img_w)
+int	ft_count_lines(int fd, int expected_width, int img_w)
 {
 	char	*line;
 	int		linecount;
+	int		line_length;
 
-	linecount = 1;
-	while (1)
+	line = get_next_line(fd);
+	linecount = 0;
+	while (line != NULL)
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		if ((int)ft_strlen(line) < x / img_w
-			|| (ft_strlen(line) < 1 && *line != '\n'))
+		line_length = ft_strlen(line);
+		if (line[line_length - 1] == '\n')
+			line_length--;
+		if (line_length < expected_width / img_w)
 		{
 			free(line);
-			write(1, "Error\nWrong map dimensions\n", 27);
+			write(2, "Error\nWrong map dimensions\n", 27);
 			exit(EXIT_FAILURE);
 		}
-		else
-		{
-			free(line);
-			linecount++;
-		}
+		free(line);
+		linecount++;
+		line = get_next_line(fd);
 	}
 	return (linecount);
 }

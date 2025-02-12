@@ -36,16 +36,24 @@ void	check_map_ext(t_data *data, char *file_name, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Error\nInvalid map_path\n");
+		perror("Error\nInvalid map path");
 		exit(EXIT_FAILURE);
 	}
-	file_name += (ft_strlen(file_name) - 4);
-	if (ft_strncmp(file_name, ".ber", 4))
+	file_name = argv[1] + (ft_strlen(argv[1]) - 4);
+	if (ft_strncmp(file_name, ".ber", 4) != 0)
 	{
 		ft_printf("Error!\nWrong file extension\n");
-		exit(1);
+		close(fd);
+		exit(EXIT_FAILURE);
 	}
 	data->size_x = (ft_line_length(fd) * IMG_W);
+	close(fd);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Error\nInvalid map path");
+		exit(EXIT_FAILURE);
+	}
 	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W) * IMG_H);
 	close(fd);
 }
