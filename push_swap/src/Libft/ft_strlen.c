@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 11:36:30 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/03 17:40:45 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/09/17 12:13:56 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/09/17 12:13:58 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char c)
-{
-	return (c == ' ' || (c >= 9 && c <= 13));
-}
+#include "libft.h"
 
-int	max(int a, int b)
+size_t	ft_strlen(const char *s)
 {
-	if (a > b)
+	size_t	length;
+	int		x;
+
+	x = 0;
+	length = 0;
+	while (s[x])
 	{
-		return (a);
+		x++;
+		length++;
 	}
-	return (b);
+	return (length);
 }

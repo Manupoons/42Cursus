@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 11:36:30 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/03 17:40:45 by mamaratr         ###   ########.fr       */
+/*   Created: 2024/09/17 11:46:52 by mamaratr          #+#    #+#             */
+/*   Updated: 2024/09/17 11:46:53 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char c)
-{
-	return (c == ' ' || (c >= 9 && c <= 13));
-}
+#include "libft.h"
 
-int	max(int a, int b)
+int	ft_isdigit(int c)
 {
-	if (a > b)
+	if (c >= 48 && c <= 57)
 	{
-		return (a);
+		return (1);
 	}
-	return (b);
+	return (0);
 }
