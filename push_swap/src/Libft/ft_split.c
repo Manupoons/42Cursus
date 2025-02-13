@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 12:13:15 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:41:38 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:30:21 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static char	**do_split(char *s, char c, char **split)
 	j = 0;
 	while (s[i])
 	{
+		if (s[i] != c && (i == 0 || s[i - 1] == c))
+			start = i;
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 		{
 			split[j] = ft_substr(s, start, i - start + 1);
@@ -69,8 +71,6 @@ static char	**do_split(char *s, char c, char **split)
 			}
 			j++;
 		}
-		if (s[i] == c && s[i + 1] != c)
-			start = i + 1;
 		i++;
 	}
 	split[j] = NULL;
@@ -86,6 +86,10 @@ char	**ft_split(char *s, char c)
 	split = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (!split)
 		return (NULL);
-	split = do_split(s, c, split);
+	if (!do_split(s, c, split))
+	{
+		free(split);
+		return (NULL);
+	}
 	return (split);
 }

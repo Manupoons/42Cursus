@@ -6,31 +6,58 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:06:55 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:42:44 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:47:13 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-int	has_duplicates(t_stack *stack)
-{
-	t_node	*node1;
-	t_node	*node2;
+// int	has_duplicates(t_stack *stack)
+// {
+// 	t_node	*node1;
+// 	t_node	*node2;
 
+// 	node1 = stack->top;
+// 	while (node1 != NULL)
+// 	{
+// 		node2 = node1->next;
+// 		while (node2 != NULL)
+// 		{
+// 			if (node1->value == node2->value)
+// 				return (1);
+// 			node2 = node2->next;
+// 		}
+// 		node1 = node1->next;
+// 	}
+// 	return (0);
+// }
+
+int has_duplicates(t_stack *stack)
+{
+	t_node *node1;
+	t_node **seen_values;
+	int i;
+
+	seen_values = malloc(sizeof(t_node *) * stack->size);
+	if (!seen_values)
+		return (1);
 	node1 = stack->top;
+	i = 0;
 	while (node1 != NULL)
 	{
-		node2 = node1->next;
-		while (node2 != NULL)
+		for (int j = 0; j < i; j++)
 		{
-			if (node1->value == node2->value)
-				return (1);
-			node2 = node2->next;
+			if (seen_values[j]->value == node1->value)
+				return (free(seen_values), 1);
 		}
+		seen_values[i] = node1;
+		i++;
 		node1 = node1->next;
 	}
+	free(seen_values);
 	return (0);
 }
+
 
 int	empty_string(const char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:16:49 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:41:15 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:51:03 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ void	free_stack(t_stack *stack)
 	t_node	*node;
 	t_node	*temp;
 
-	node = stack->bottom;
+	if (!stack)
+		return ;
+
+	node = stack->top;
 	while (node)
 	{
 		temp = node;
-		node = node->prev;
+		node = node->next;
 		free(temp);
 	}
 	free(stack);
@@ -82,6 +85,11 @@ void	init_stack(int argc, char **argv, t_stack *stack)
 	if (argc == 2)
 	{
 		numbers = ft_split(argv[1], ' ');
+		if (!numbers)
+		{
+			free_stack(stack);
+			error();
+		}
 		i = 0;
 		while (numbers[i])
 			i++;

@@ -17,7 +17,7 @@ INCLUD = ./inc/so_long.h
 
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -MMD -I./inc -I./src/Libft
+CFLAGS = -Wall -Wextra -Werror -MMD -I./inc -I./src/Libft -g
 LIB = -L. -lm -L./src/Libft -lft
 
 .c.o:
