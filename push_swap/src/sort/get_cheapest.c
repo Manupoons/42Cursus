@@ -6,11 +6,18 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:31:13 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:43:29 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:49:13 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
+
+int	max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
 
 int	get_moves(t_stack *stack, t_stack *obj, int val)
 {

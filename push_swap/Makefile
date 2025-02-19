@@ -10,8 +10,7 @@ SRCS = src/moves/pa.c src/moves/pb.c src/moves/ra.c \
 		src/sort/push_cheapest.c src/sort/size_info.c \
 		src/sort/sort.c src/sort/utils.c \
 		src/utils/errors_check.c src/utils/ps_utils.c \
-		src/utils/utils.c src/utils/validate_input.c \
-		src/push_swap.c
+		src/push_swap.c src/utils/validate_input.c
 
 INCLUD = ./inc/so_long.h
 

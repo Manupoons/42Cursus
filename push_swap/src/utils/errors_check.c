@@ -6,37 +6,17 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:06:55 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/13 14:47:13 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:00:54 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-// int	has_duplicates(t_stack *stack)
-// {
-// 	t_node	*node1;
-// 	t_node	*node2;
-
-// 	node1 = stack->top;
-// 	while (node1 != NULL)
-// 	{
-// 		node2 = node1->next;
-// 		while (node2 != NULL)
-// 		{
-// 			if (node1->value == node2->value)
-// 				return (1);
-// 			node2 = node2->next;
-// 		}
-// 		node1 = node1->next;
-// 	}
-// 	return (0);
-// }
-
-int has_duplicates(t_stack *stack)
+int	has_duplicates(t_stack *stack)
 {
-	t_node *node1;
-	t_node **seen_values;
-	int i;
+	t_node	*node1;
+	t_node	**seen_values;
+	int		i;
 
 	seen_values = malloc(sizeof(t_node *) * stack->size);
 	if (!seen_values)
@@ -57,7 +37,6 @@ int has_duplicates(t_stack *stack)
 	free(seen_values);
 	return (0);
 }
-
 
 int	empty_string(const char *str)
 {
@@ -86,7 +65,7 @@ int	valid_int_range(char *str)
 	else
 	{
 		if (ft_strlen(str) > 10 || (ft_strlen(str) == 10 && ft_strncmp(str,
-					"2147483648", ft_strlen(str)) > 0))
+					"2147483647", ft_strlen(str)) > 0))
 			return (0);
 	}
 	return (1);

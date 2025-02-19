@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:23:53 by mamaratr          #+#    #+#             */
-/*   Updated: 2024/09/24 11:01:43 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:51:36 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 int		ft_atoi(const char *nptr);
 int		ft_isdigit(int c);
+int		ft_isspace(char c);
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);

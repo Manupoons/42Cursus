@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:16:49 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/13 14:51:03 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:57:45 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	free_stack(t_stack *stack)
 
 	if (!stack)
 		return ;
-
 	node = stack->top;
 	while (node)
 	{
