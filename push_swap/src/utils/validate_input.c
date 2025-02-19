@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:27:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:40:42 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:14:53 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ static int	validate_multiple_inputs(int argc, char **argv)
 
 int	validate_params(int argc, char **argv)
 {
-	if (argc == 1)
-		return (0);
 	if (argc == 2)
 		return (validate_single_input(argv[1]));
 	return (validate_multiple_inputs(argc, argv));

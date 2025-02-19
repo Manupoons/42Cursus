@@ -6,11 +6,11 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 12:13:15 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/13 14:30:21 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:25:18 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include "libft.h"
 
 void	ft_free_split(char **split)
 {

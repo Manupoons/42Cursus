@@ -6,11 +6,11 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:49:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:41:50 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:25:38 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include "libft.h"
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {

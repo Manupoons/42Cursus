@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:54:51 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/13 14:01:28 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:22:12 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include "../Libft/libft.h"
 
 typedef struct s_node
 {
@@ -87,35 +88,16 @@ void				push_back(t_stack *from, t_stack *to);
 
 void				error(void);
 int					has_duplicates(t_stack *stack);
-int					empty_string(const char *str);
 int					valid_int_range(char *str);
 int					check_errors(int argc, char **argv);
 
-//functions
-
-int					ft_atoi(char *str);
-int					ft_strncmp(char *s1, char *s2, size_t n);
-char				**ft_split(char *s, char c);
-char				*ft_strdup(char *s1);
-char				*ft_strjoin(char *s1, char *s2);
-char				*ft_substr(char *s, unsigned int st, size_t len);
-void				ft_free_split(char **split);
-unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size);
-
-//ps_utils
+//stack_manager
 
 void				free_stack(t_stack *stack);
 void				push_stack(t_stack *stack, int value);
 void				init_stack(int argc, char **argv, t_stack *stack);
 t_node				*new_node(int value);
 t_stack				*new_stack(void);
-
-//utils
-
-int					ft_strlen(char *str);
-int					ft_isdigit(int c);
-int					ft_isspace(int c);
-int					max(int a, int b);
 
 //validate_input
 

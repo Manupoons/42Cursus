@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:06:55 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 13:07:33 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:15:24 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,6 @@ int	has_duplicates(t_stack *stack)
 	return (free(seen_values), 0);
 }
 
-int	empty_string(const char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str || str[0] == '\0')
-		return (1);
-	while (str[i])
-	{
-		if (!ft_isspace((unsigned char)str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 int	valid_int_range(char *str)
 {
 	if (*str == '-')
@@ -84,10 +68,6 @@ int	check_errors(int argc, char **argv)
 	int	i;
 
 	i = 1;
-	if (argc > 1 && empty_string(argv[1]))
-		return (1);
-	if (argc == 1)
-		return (1);
 	while (i < argc)
 	{
 		if (!valid_int_range(argv[i]))

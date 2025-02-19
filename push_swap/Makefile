@@ -9,7 +9,7 @@ SRCS = src/moves/pa.c src/moves/pb.c src/moves/ra.c \
 		src/sort/get_cheapest.c src/sort/get_target.c \
 		src/sort/push_cheapest.c src/sort/size_info.c \
 		src/sort/sort.c src/sort/utils.c \
-		src/utils/errors_check.c src/utils/ps_utils.c \
+		src/utils/errors_check.c src/utils/stack_manager.c \
 		src/push_swap.c src/utils/validate_input.c
 
 INCLUD = ./inc/so_long.h
@@ -29,7 +29,7 @@ all: ${NAME}
 
 -include $(DEPS)
 ${NAME}: ${OBJS}
-	@echo "\n${MAGENTA}Compiling libft ✓$(DEF_COLOR)"
+	@echo "\n${MAGENTA}Compiling libft ✓$(DEF_COLOR)\n"
 	@make -C ./src/Libft > /dev/null
 	@${CC} ${OBJS} $(LIB) -o $(NAME)
 	@echo "$(MAGENTA)Created ${NAME} ✓$(DEF_COLOR)\n"
@@ -37,12 +37,12 @@ ${NAME}: ${OBJS}
 clean:
 	@make -C ./src/Libft clean --no-print-directory > /dev/null
 	@${RM} ${OBJS} ${DEPS}
-	@echo "$(MAGENTA)All objects cleaned successfully $(DEF_COLOR)\n"
+	@echo "\n$(MAGENTA)All objects cleaned successfully ✓$(DEF_COLOR)\n"
 
 fclean:
 	@make -C ./src/Libft fclean --no-print-directory > /dev/null
 	@${RM} ${OBJS} ${DEPS} ${NAME}
-	@echo "$(MAGENTA)All objects and executable cleaned successfully$(DEF_COLOR)\n"
+	@echo "\n$(MAGENTA)All objects and executable cleaned successfully ✓$(DEF_COLOR)\n"
 
 re: fclean all
 

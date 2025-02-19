@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:23:53 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 09:51:36 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:29:39 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int		ft_atoi(const char *nptr);
-int		ft_isdigit(int c);
-int		ft_isspace(char c);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-size_t	ft_strlen(const char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+int				ft_atoi(char *str);
+int				ft_isdigit(int c);
+int				ft_isspace(char c);
+char			**ft_split(char *s, char c);
+char			*ft_strdup(char *src);
+char			*ft_strjoin(char *s1, char *s2);
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+size_t			ft_strlen(const char *s);
+int				ft_strncmp(char *s1, char *s2, size_t n);
+char			*ft_substr(char *s, unsigned int start, size_t len);
+void			ft_free_split(char **split);
 
 #endif

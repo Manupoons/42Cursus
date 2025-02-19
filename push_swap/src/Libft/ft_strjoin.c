@@ -6,11 +6,11 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:53:59 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:42:55 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:25:32 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/push_swap.h"
+#include "libft.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
