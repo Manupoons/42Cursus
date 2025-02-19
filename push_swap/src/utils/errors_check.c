@@ -6,11 +6,17 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:06:55 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 16:15:24 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:36:08 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
+
+void	error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
 int	has_duplicates(t_stack *stack)
 {
@@ -55,12 +61,6 @@ int	valid_int_range(char *str)
 			return (0);
 	}
 	return (1);
-}
-
-void	error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
 }
 
 int	check_errors(int argc, char **argv)
