@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:06:55 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 12:00:54 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:07:33 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	has_duplicates(t_stack *stack)
 	t_node	*node1;
 	t_node	**seen_values;
 	int		i;
+	int		j;
 
 	seen_values = malloc(sizeof(t_node *) * stack->size);
 	if (!seen_values)
@@ -25,17 +26,18 @@ int	has_duplicates(t_stack *stack)
 	i = 0;
 	while (node1 != NULL)
 	{
-		for (int j = 0; j < i; j++)
+		j = 0;
+		while (j < i)
 		{
 			if (seen_values[j]->value == node1->value)
 				return (free(seen_values), 1);
+			j++;
 		}
 		seen_values[i] = node1;
 		i++;
 		node1 = node1->next;
 	}
-	free(seen_values);
-	return (0);
+	return (free(seen_values), 0);
 }
 
 int	empty_string(const char *str)

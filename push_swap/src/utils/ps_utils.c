@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:16:49 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 09:57:45 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:17:29 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,20 +92,14 @@ void	init_stack(int argc, char **argv, t_stack *stack)
 		i = 0;
 		while (numbers[i])
 			i++;
-		while (i > 0)
-		{
-			i--;
+		while (--i >= 0)
 			push_stack(stack, ft_atoi(numbers[i]));
-		}
 		ft_free_split(numbers);
 	}
 	else
 	{
 		i = argc - 1;
 		while (i > 0)
-		{
-			push_stack(stack, ft_atoi(argv[i]));
-			i--;
-		}
+			push_stack(stack, ft_atoi(argv[i--]));
 	}
 }
