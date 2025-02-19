@@ -1,8 +1,8 @@
 NAME = libft.a
 
-SRC = ft_strlen.c ft_strlcpy.c ft_isdigit.c \
-		ft_strdup.c ft_strncmp.c ft_atoi.c ft_substr.c \
-		ft_strjoin.c ft_split.c ft_isspace.c\
+SRC = ft_strlen.c ft_strlcpy.c ft_isdigit.c ft_strdup.c \
+		ft_strncmp.c ft_atoi.c ft_substr.c ft_strjoin.c \
+		ft_split.c ft_isspace.c ft_abs.c ft_max.c
 
 LIBC = ar rcs
 CC = cc

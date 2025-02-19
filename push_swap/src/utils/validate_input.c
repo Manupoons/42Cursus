@@ -6,13 +6,30 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:27:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 16:14:53 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:11:36 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-int	validate_input(char *str)
+int	valid_int_range(char *str)
+{
+	if (*str == '-')
+	{
+		if (ft_strlen(str) > 11 || (ft_strlen(str) == 11 && ft_strncmp(str,
+					"-2147483648", ft_strlen(str)) > 0))
+			return (0);
+	}
+	else
+	{
+		if (ft_strlen(str) > 10 || (ft_strlen(str) == 10 && ft_strncmp(str,
+					"2147483647", ft_strlen(str)) > 0))
+			return (0);
+	}
+	return (1);
+}
+
+static int	validate_input(char *str)
 {
 	int	i;
 

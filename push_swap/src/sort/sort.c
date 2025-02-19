@@ -6,11 +6,34 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:45:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:44:17 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:15:40 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
+
+int	get_cheapest(t_stack *stack, t_stack *target)
+{
+	t_node	*node;
+	int		val;
+	int		steps;
+	int		moves;
+
+	node = stack->top;
+	steps = INT_MAX;
+	val = INT_MIN;
+	while (node)
+	{
+		moves = get_moves(stack, target, node->value);
+		if (moves < steps)
+		{
+			steps = moves;
+			val = node->value;
+		}
+		node = node->next;
+	}
+	return (val);
+}
 
 static void	handle_bigger_first(t_stack *stack)
 {
@@ -40,8 +63,6 @@ void	sort_three(t_stack *stack)
 	first = stack->top->value;
 	second = stack->top->next->value;
 	third = stack->top->next->next->value;
-	if (first < second && second < third)
-		return ;
 	if (first > second && second < third && first < third)
 		sa(stack);
 	else if (first > second && first > third)

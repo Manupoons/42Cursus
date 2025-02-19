@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:23:53 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 16:29:39 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:25:10 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ size_t			ft_strlen(const char *s);
 int				ft_strncmp(char *s1, char *s2, size_t n);
 char			*ft_substr(char *s, unsigned int start, size_t len);
 void			ft_free_split(char **split);
+int				ft_abs(int n);
+int				ft_max(int a, int b);
 
 #endif
