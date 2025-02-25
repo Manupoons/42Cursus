@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:45:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 17:15:40 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/25 12:11:27 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ void	sort(t_stack *a, t_stack *b)
 		return ;
 	}
 	if (a->size >= 4)
-		pb(a, b);
-	if (a->size >= 5)
 		pb(a, b);
 	while (a->size > 3)
 	{
