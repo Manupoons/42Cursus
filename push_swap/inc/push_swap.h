@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:54:51 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/26 14:02:00 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:28:05 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	init_stack(int argc, char **argv, t_stack *stack);
 
 //validate_input
 
+int		valid_int_range(char *str);
 int		validate_params(int argc, char **argv);
 
 #endif
