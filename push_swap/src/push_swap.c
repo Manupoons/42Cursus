@@ -69,8 +69,20 @@ static int	check_errors(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!valid_int_range(argv[i]))
-			return (1);
+		if (argv[i][0] == '-')
+		{
+			if (ft_strlen(argv[i]) > 11 || (ft_strlen(argv[i]) == 11
+					&& ft_strncmp(argv[i], "-2147483648",
+						ft_strlen(argv[i])) > 0))
+				return (1);
+		}
+		else
+		{
+			if (ft_strlen(argv[i]) > 10 || (ft_strlen(argv[i]) == 10
+					&& ft_strncmp(argv[i], "2147483647",
+						ft_strlen(argv[i])) > 0))
+				return (1);
+		}
 		i++;
 	}
 	if (!validate_params(argc, argv))

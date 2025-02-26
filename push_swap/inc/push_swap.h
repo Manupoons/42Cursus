@@ -92,7 +92,6 @@ void	init_stack(int argc, char **argv, t_stack *stack);
 
 //validate_input
 
-int		valid_int_range(char *str);
 int		validate_params(int argc, char **argv);
 
 #endif
