@@ -13,11 +13,6 @@ CYAN='\033[0;96m'
 GRAY='\033[0;90m'
 WHITE='\033[0;97m'
 
-printf ${BLUE}"\n-------------------------------------------------------------\n"${DEF_COLOR};
-printf ${YELLOW}"\n\t\tTEST CREATED BY: "${DEF_COLOR};
-printf ${CYAN}"GEMARTIN\t\n"${DEF_COLOR};
-printf ${BLUE}"\n-------------------------------------------------------------\n"${DEF_COLOR};
-
 rm -rf traces.txt
 rm -rf 0
 

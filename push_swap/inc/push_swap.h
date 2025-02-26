@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:54:51 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 17:25:34 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 11:03:51 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	sort(t_stack *a, t_stack *b);
 void	sort_two(t_stack *a);
 void	sort_three(t_stack *a);
 
-// utils
+// push_back
 
 int		get_moves(t_stack *stack, t_stack *obj, int val);
 int		get_depth(t_stack *from, int n);
