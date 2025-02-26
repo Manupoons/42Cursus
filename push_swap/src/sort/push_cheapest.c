@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:43:10 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/26 12:36:30 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:56:06 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,29 @@ static void	rotate_both(t_stack *a, t_stack *b, int *depth, int *trgt_depth)
 		(*depth)++;
 		(*trgt_depth)++;
 	}
+}
+
+int	get_cheapest(t_stack *a, t_stack *b)
+{
+	t_node	*node;
+	int		val;
+	int		steps;
+	int		moves;
+
+	node = a->top;
+	steps = INT_MAX;
+	val = INT_MIN;
+	while (node)
+	{
+		moves = get_moves(a, b, node->value);
+		if (moves < steps)
+		{
+			steps = moves;
+			val = node->value;
+		}
+		node = node->next;
+	}
+	return (val);
 }
 
 int	push_cheapest(t_stack *a, t_stack *b, int n)

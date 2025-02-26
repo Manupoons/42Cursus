@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:52:20 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 17:11:51 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:55:11 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,35 @@ void	error(void)
 	exit(1);
 }
 
-int	has_duplicates(t_stack *stack)
+static int	has_duplicates(t_stack *a)
 {
-	t_node	*node1;
+	t_node	*node;
 	t_node	**seen_values;
 	int		i;
 	int		j;
 
-	seen_values = malloc(sizeof(t_node *) * stack->size);
+	seen_values = malloc(sizeof(t_node *) * a->size);
 	if (!seen_values)
 		return (1);
-	node1 = stack->top;
+	node = a->top;
 	i = 0;
-	while (node1 != NULL)
+	while (node != NULL)
 	{
 		j = 0;
 		while (j < i)
 		{
-			if (seen_values[j]->value == node1->value)
+			if (seen_values[j]->value == node->value)
 				return (free(seen_values), 1);
 			j++;
 		}
-		seen_values[i] = node1;
+		seen_values[i] = node;
 		i++;
-		node1 = node1->next;
+		node = node->next;
 	}
 	return (free(seen_values), 0);
 }
 
-int	is_sorted(t_stack *stack)
+static int	is_sorted(t_stack *stack)
 {
 	t_node	*node;
 
@@ -62,7 +62,7 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-int	check_errors(int argc, char **argv)
+static int	check_errors(int argc, char **argv)
 {
 	int	i;
 

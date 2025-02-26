@@ -6,28 +6,11 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:16:49 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/19 16:16:35 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:51:03 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
-void	free_stack(t_stack *stack)
-{
-	t_node	*node;
-	t_node	*temp;
-
-	if (!stack)
-		return ;
-	node = stack->top;
-	while (node)
-	{
-		temp = node;
-		node = node->next;
-		free(temp);
-	}
-	free(stack);
-}
 
 t_node	*new_node(int value)
 {
@@ -53,6 +36,23 @@ t_stack	*new_stack(void)
 	stack->bottom = NULL;
 	stack->size = 0;
 	return (stack);
+}
+
+void	free_stack(t_stack *stack)
+{
+	t_node	*node;
+	t_node	*temp;
+
+	if (!stack)
+		return ;
+	node = stack->top;
+	while (node)
+	{
+		temp = node;
+		node = node->next;
+		free(temp);
+	}
+	free(stack);
 }
 
 void	push_stack(t_stack *stack, int value)

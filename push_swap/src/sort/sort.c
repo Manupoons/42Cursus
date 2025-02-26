@@ -6,33 +6,18 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:45:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/26 11:13:58 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:56:00 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-int	get_cheapest(t_stack *a, t_stack *b)
+void	sort_two(t_stack *a)
 {
-	t_node	*node;
-	int		val;
-	int		steps;
-	int		moves;
-
-	node = a->top;
-	steps = INT_MAX;
-	val = INT_MIN;
-	while (node)
-	{
-		moves = get_moves(a, b, node->value);
-		if (moves < steps)
-		{
-			steps = moves;
-			val = node->value;
-		}
-		node = node->next;
-	}
-	return (val);
+	if (!a || !a->top || !a->top->next)
+		return ;
+	if (a->top->value > a->top->next->value)
+		sa(a);
 }
 
 static void	handle_bigger_first(t_stack *a)
@@ -44,14 +29,6 @@ static void	handle_bigger_first(t_stack *a)
 		sa(a);
 		rra(a);
 	}
-}
-
-void	sort_two(t_stack *a)
-{
-	if (!a || !a->top || !a->top->next)
-		return ;
-	if (a->top->value > a->top->next->value)
-		sa(a);
 }
 
 void	sort_three(t_stack *a)

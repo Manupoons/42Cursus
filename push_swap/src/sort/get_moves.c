@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:25:22 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/26 12:42:08 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:58:18 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int	get_closer_bigger(t_stack *stack, int n)
 	return (val);
 }
 
-int	get_target(t_stack *b, int n)
+int	get_target(t_stack *stack, int n)
 {
-	if (is_biggest(b, n) || is_smallest(b, n))
-		return (get_biggest(b));
-	return (get_closer_smaller(b, n));
+	if (is_biggest(stack, n) || is_smallest(stack, n))
+		return (get_biggest(stack));
+	return (get_closer_smaller(stack, n));
 }
 
 int	get_depth(t_stack *stack, int n)
