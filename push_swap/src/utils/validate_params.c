@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_input.c                                   :+:      :+:    :+:   */
+/*   validate_params.c                                   :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,23 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
-int	valid_int_range(char *str)
-{
-	if (*str == '-')
-	{
-		if (ft_strlen(str) > 11 || (ft_strlen(str) == 11 && ft_strncmp(str,
-					"-2147483648", ft_strlen(str)) > 0))
-			return (0);
-	}
-	else
-	{
-		if (ft_strlen(str) > 10 || (ft_strlen(str) == 10 && ft_strncmp(str,
-					"2147483647", ft_strlen(str)) > 0))
-			return (0);
-	}
-	return (1);
-}
 
 static int	validate_input(char *str)
 {
