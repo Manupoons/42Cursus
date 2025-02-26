@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:54:51 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/26 11:03:51 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:44:54 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,37 +44,37 @@ void	rrr(t_stack *a, t_stack *b);
 
 //SORT:
 
-// get_target
+// get_moves
 
-int		get_target(t_stack *target, int n, int u_or_l);
-int		get_closer_smaller(t_stack *target, int n);
-int		get_closer_bigger(t_stack *target, int n);
+int		get_depth(t_stack *stack, int n);
+int		get_moves(t_stack *a, t_stack *b, int n);
+int		get_target(t_stack *stack, int n);
+int		get_closer_smaller(t_stack *stack, int n);
+int		get_closer_bigger(t_stack *stack, int n);
 
 // push_cheapest
 
-int		push_cheapest(t_stack *from, t_stack *to, int n);
+int		push_cheapest(t_stack *a, t_stack *b, int n);
 
 // size_info
 
-int		is_biggest(t_stack *target, int n);
-int		is_smallest(t_stack *target, int n);
-int		get_biggest(t_stack *target);
-int		get_smallest(t_stack *target);
+int		is_biggest(t_stack *stack, int n);
+int		is_smallest(t_stack *stack, int n);
+int		get_biggest(t_stack *stack);
+int		get_smallest(t_stack *stack);
 
 // sort
 
-int		get_cheapest(t_stack *stack, t_stack *target);
+int		get_cheapest(t_stack *a, t_stack *b);
 void	sort(t_stack *a, t_stack *b);
 void	sort_two(t_stack *a);
 void	sort_three(t_stack *a);
 
 // push_back
 
-int		get_moves(t_stack *stack, t_stack *obj, int val);
-int		get_depth(t_stack *from, int n);
-void	move_top(t_stack *stack, int n);
-void	move_min_top(t_stack *stack);
-void	push_back(t_stack *from, t_stack *to);
+void	move_top(t_stack *a, int n);
+void	move_min_top(t_stack *a);
+void	push_back(t_stack *b, t_stack *a);
 
 //UTILS
 

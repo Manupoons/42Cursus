@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_target.c                                       :+:      :+:    :+:   */
+/*   get_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:25:22 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:44:47 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:42:08 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
-int	get_target(t_stack *stack, int n, int dir)
-{
-	if (is_biggest(stack, n) || is_smallest(stack, n))
-		return (get_biggest(stack));
-	else if (dir)
-		return (get_closer_smaller(stack, n));
-	else if (!dir)
-		return (get_closer_bigger(stack, n));
-	else
-		return (INT_MIN);
-}
 
 int	get_closer_smaller(t_stack *stack, int n)
 {
@@ -72,4 +60,50 @@ int	get_closer_bigger(t_stack *stack, int n)
 		node = node->next;
 	}
 	return (val);
+}
+
+int	get_target(t_stack *b, int n)
+{
+	if (is_biggest(b, n) || is_smallest(b, n))
+		return (get_biggest(b));
+	return (get_closer_smaller(b, n));
+}
+
+int	get_depth(t_stack *stack, int n)
+{
+	int		i;
+	t_node	*node;
+
+	i = 0;
+	node = stack->top;
+	while (node)
+	{
+		if (node->value == n)
+		{
+			if (i <= stack->size / 2)
+				return (i);
+			else
+				return (i - stack->size);
+		}
+		i++;
+		node = node->next;
+	}
+	return (INT_MIN);
+}
+
+int	get_moves(t_stack *a, t_stack *b, int n)
+{
+	int	depth;
+	int	target;
+	int	target_depth;
+	int	moves;
+
+	depth = get_depth(a, n);
+	target = get_target(b, n);
+	target_depth = get_depth(b, target);
+	if ((depth > 0 && target_depth > 0) || (depth < 0 && target_depth < 0))
+		moves = ft_max(ft_abs(depth), ft_abs(target_depth));
+	else
+		moves = ft_abs(depth) + ft_abs(target_depth);
+	return (moves);
 }
