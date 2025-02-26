@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:52:20 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/02/26 13:55:11 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:19:13 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,26 @@ static int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-static int	check_errors(int argc, char **argv)
+int	check_errors(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	**numbers;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (!valid_int_range(argv[i]))
+		numbers = ft_split(argv[i], ' ');
+		if (!numbers)
 			return (1);
+		j = 0;
+		while (numbers[j])
+		{
+			if (!valid_int_range(numbers[j]))
+				return (ft_free_split(numbers), 1);
+			j++;
+		}
+		ft_free_split(numbers);
 		i++;
 	}
 	if (!validate_params(argc, argv))
