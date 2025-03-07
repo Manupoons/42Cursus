@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 11:47:16 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/06 15:55:58 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:54:09 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ long	current_time(void)
 	struct timeval	time;
 	long			ms;
 	gettimeofday(&time, NULL);
-	ms = time.tv_sec * 1000 + time.tv_sec / 1000;
+	ms = time.tv_sec * 1000 + time.tv_usec / 1000;
 	return (ms);
 }
 
@@ -32,13 +32,13 @@ void	sleep_ms(long time, t_data *data)
 
 void	print_status(t_philo *philo, char *status)
 {
-	long	elapsed;
+	long	time;
 
 	pthread_mutex_lock(&philo->data->print_mutex);
 	if (!sim_finished(philo->data) || ft_strcmp(status, "died") == 0)
 	{
-		elapsed = current_time() - philo->data->start_time;
-		printf("%ld %d %s\n", elapsed, philo->id, status);
+		time = current_time() - philo->data->start_time;
+		printf("%ld %d %s\n", time, philo->id, status);
 	}
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }

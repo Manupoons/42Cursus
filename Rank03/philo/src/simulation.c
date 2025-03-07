@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:22:04 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/06 15:06:01 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:51:08 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	sim_finished(t_data *data)
 
 void	wait_threads(t_data *data)
 {
-	while (!(get_bool(&data->threads_mutex, &data->threads_ready)))
+	while (!get_bool(&data->threads_mutex, &data->threads_ready))
 		usleep(100);
 }
 

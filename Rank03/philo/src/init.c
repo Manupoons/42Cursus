@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:09:41 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/06 15:59:31 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:37:12 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	init_philos(t_data *data)
 	while (i < data->num_philos)
 	{
 		data->philos[i].id = i + 1;
-		data->philos[i].meals_eaten = 0;
+		data->philos[i].meals_eaten= 0;
 		data->philos[i].last_meal_time = 0;
 		data->philos[i].left_fork = &data->forks[(i + 1) % data->num_philos];
 		data->philos[i].right_fork = &data->forks[i];
