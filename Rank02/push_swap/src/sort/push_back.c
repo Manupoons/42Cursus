@@ -54,7 +54,7 @@ void	push_back(t_stack *b, t_stack *a)
 			break ;
 		node = b->top;
 		target = get_closer_bigger(a, node->value);
-		if (target == INT_MAX)
+		if (target == INT_MAX || target == INT_MIN)
 			target = get_smallest(a);
 		move_top(a, target);
 		pa(a, b);

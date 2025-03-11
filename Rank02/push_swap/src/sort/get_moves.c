@@ -16,18 +16,22 @@ int	get_closer_smaller(t_stack *stack, int n)
 {
 	t_node	*node;
 	int		dif;
+	int		closest_dif;
 	int		val;
 
 	if (!stack->top)
 		return (INT_MIN);
 	node = stack->top;
-	dif = INT_MAX;
+	closest_dif = INT_MAX;
 	val = INT_MIN;
+	if (is_smallest(stack, n))
+		return (INT_MIN);
 	while (node)
 	{
-		if (n - node->value < dif && n - node->value > 0)
+		dif = n - node->value;
+		if (dif > 0 && dif < closest_dif)
 		{
-			dif = n - node->value;
+			closest_dif = dif;
 			val = node->value;
 		}
 		node = node->next;
