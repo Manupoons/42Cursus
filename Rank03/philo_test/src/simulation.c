@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_test.h"
 
 bool	sim_finished(t_data *data)
 {
@@ -49,7 +49,7 @@ int	start_simulation(t_data *data)
 	i = 0;
 	while (i < data->num_philos)
 	{
-		if (pthread_create(&data->philos[i].thread, NULL, philo_routine, 
+		if (pthread_create(&data->philos[i].thread, NULL, philo_routine,
 				&data->philos[i]) != 0)
 			return (1);
 		i++;
@@ -58,7 +58,7 @@ int	start_simulation(t_data *data)
 	set_bool(&data->threads_mutex, &data->threads_ready, true);
 	if (data->num_philos > 1)
 	{
-		if (pthread_create(&data->monitor_thread, NULL, &monitor_routine, 
+		if (pthread_create(&data->monitor_thread, NULL, &monitor_routine,
 				data) != 0)
 			return (1);
 	}

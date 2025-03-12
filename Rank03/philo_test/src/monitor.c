@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_test.h"
 
 static int	check_death(t_philo *philo)
 {

@@ -3,13 +3,14 @@ NAME = philo
 DEF_COLOR = \033[0;39m
 BRIGHT_GREEN =	\033[1;92m
 
-SRC = src/main.c
+SRC = src/main.c src/utils.c src/philo.c src/init.c \
+		src/simulation.c src/monitor.c src/error.c src/set_get.c
 
 INC = ./inc/philo.h
 
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -MMD -I./inc
+CFLAGS = -Wall -Wextra -Werror -MMD -I./inc -g
 
 .c.o:
 	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

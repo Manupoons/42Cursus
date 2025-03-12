@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_test.h"
 
 void	set_bool(pthread_mutex_t *mutex, bool *dest, bool val)
 {

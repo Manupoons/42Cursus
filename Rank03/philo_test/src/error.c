@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_test.h"
 
 void	error_full(t_data *data, char *msg)
 {

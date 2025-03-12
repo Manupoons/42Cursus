@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_test.h"
 
 static void	*one_philo(t_philo *philo, t_data *data)
 {
@@ -55,7 +55,7 @@ static void	philo_think(t_philo *philo, t_data *data)
 	int	t_eat;
 	int	t_sleep;
 	int	t_think;
-	
+
 	if (data->num_philos % 2 == 0)
 		print_status(philo, "is thinking");
 	else
