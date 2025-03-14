@@ -9,7 +9,8 @@
 		"fcntl.h": "c",
 		"stdio.h": "c",
 		"cstdlib": "c",
-		"utility": "c"
+		"utility": "c",
+		"type_traits": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }
