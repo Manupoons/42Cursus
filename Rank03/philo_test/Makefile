@@ -6,7 +6,7 @@ BRIGHT_GREEN =	\033[1;92m
 SRC = src/main.c src/utils.c src/philo.c src/init.c \
 		src/simulation.c src/monitor.c src/error.c src/set_get.c
 
-INC = ./inc/philo.h
+INC = ./inc/philo_test.h
 
 CC = gcc
 RM = rm -f
