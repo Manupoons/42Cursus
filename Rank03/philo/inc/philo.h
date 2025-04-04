@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:18:53 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/14 14:52:17 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/03/28 12:02:41 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-struct s_data;
+struct	s_data;
 
 typedef struct s_philo
 {
