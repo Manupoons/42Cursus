@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   philo_life.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:10:24 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/14 15:43:54 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:48:21 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	*one_philo(t_philo *philo, t_data *data)
+void	*one_philo(t_philo *philo, t_data *data)
 {
 	pthread_mutex_lock(philo->left_fork);
 	print_status(philo, "has taken a fork");
@@ -22,7 +22,7 @@ static void	*one_philo(t_philo *philo, t_data *data)
 	return (NULL);
 }
 
-static void	philo_eat(t_philo *philo, t_data *data)
+void	philo_eat(t_philo *philo, t_data *data)
 {
 	pthread_mutex_lock(philo->left_fork);
 	print_status(philo, "has taken a fork");
@@ -41,7 +41,7 @@ static void	philo_eat(t_philo *philo, t_data *data)
 	pthread_mutex_unlock(philo->right_fork);
 }
 
-static void	philo_sleep(t_philo *philo, t_data *data)
+void	philo_sleep(t_philo *philo, t_data *data)
 {
 	if (!sim_finished(data))
 	{
@@ -50,7 +50,7 @@ static void	philo_sleep(t_philo *philo, t_data *data)
 	}
 }
 
-static void	philo_think(t_philo *philo, t_data *data)
+void	philo_think(t_philo *philo, t_data *data)
 {
 	int	t_eat;
 	int	t_sleep;
@@ -66,27 +66,4 @@ static void	philo_think(t_philo *philo, t_data *data)
 		print_status(philo, "is thinking");
 		sleep_ms(t_think * 0.42, data);
 	}
-}
-
-void	*philo_routine(void	*arg)
-{
-	t_philo	*philo;
-	t_data	*data;
-
-	philo = (t_philo *)arg;
-	data = philo->data;
-	wait_threads(data);
-	set_long(&data->eat_mutex, &philo->last_meal_time, data->start_time);
-	increase_int(&data->threads_mutex, &data->philo_ready);
-	if (data->num_philos == 1)
-		return (one_philo(philo, data));
-	if (philo->id % 2 == 0)
-		sleep_ms(data->eat_time / 2, data);
-	while (!sim_finished(data))
-	{
-		philo_eat(philo, data);
-		philo_sleep(philo, data);
-		philo_think(philo, data);
-	}
-	return (NULL);
 }

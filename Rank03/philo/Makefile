@@ -4,7 +4,7 @@ DEF_COLOR = \033[0;39m
 BRIGHT_GREEN =	\033[1;92m
 
 SRC = src/main.c src/errors.c src/init.c \
-		src/utils.c src/philo.c src/monitor.c \
+		src/utils.c src/philo_life.c src/monitor.c \
 		src/set_get.c src/simulation.c
 
 INC = ./inc/philo.h

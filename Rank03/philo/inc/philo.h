@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:18:53 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/28 12:02:41 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:11:45 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	full_error(t_data *data, char *msg);
 void	error(t_data *data, char *msg);
 
 // UTILS
+int		ft_atoi(const char *str);
+int		ft_strcmp(const char *s1, const char *s2);
 long	get_current_time(void);
 void	sleep_ms(long time, t_data *data);
-int		ft_strcmp(const char *s1, const char *s2);
 void	print_status(t_philo *philo, char *status);
-int		ft_atoi(const char *str);
 
 // SET GET
 void	set_bool(pthread_mutex_t *mutex, bool *var, bool value);
@@ -87,7 +87,10 @@ int		start_simulation(t_data *data);
 bool	threads_ready(pthread_mutex_t *mutex, int *threads, int philo_num);
 void	*monitor_routine(void *arg);
 
-// PHILO
-void	*philo_routine(void *arg);
+//PHILO_LIFE
+void	*one_philo(t_philo *philo, t_data *data);
+void	philo_eat(t_philo *philo, t_data *data);
+void	philo_sleep(t_philo *philo, t_data *data);
+void	philo_think(t_philo *philo, t_data *data);
 
 #endif
