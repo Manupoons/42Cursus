@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:09:41 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/07 10:37:12 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:45:38 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	init_philos(t_data *data)
 	while (i < data->num_philos)
 	{
 		data->philos[i].id = i + 1;
-		data->philos[i].meals_eaten= 0;
+		data->philos[i].meals_eaten = 0;
 		data->philos[i].last_meal_time = 0;
 		data->philos[i].left_fork = &data->forks[(i + 1) % data->num_philos];
 		data->philos[i].right_fork = &data->forks[i];
@@ -31,7 +31,7 @@ static int	init_philos(t_data *data)
 		{
 			data->philos[i].left_fork = &data->forks[i];
 			data->philos[i].right_fork = &data->forks[(i + 1)
-					% data->num_philos];
+				% data->num_philos];
 		}
 		data->philos[i].data = data;
 		i++;
@@ -68,18 +68,18 @@ void	init_data(t_data *data, char **argv)
 	data->forks = NULL;
 	data->philos = NULL;
 	data->num_philos = ft_atoi(argv[1]);
-	data->time_to_die = ft_atoi(argv[2]);
-	data->time_to_eat = ft_atoi(argv[3]);
-	data->time_to_sleep = ft_atoi(argv[4]);
-	data->end_simulation = false;
-	data->threads_ready = false;
+	data->death_time = ft_atoi(argv[2]);
+	data->eat_time = ft_atoi(argv[3]);
+	data->sleep_time = ft_atoi(argv[4]);
 	data->philo_ready = 0;
 	data->philo_full = 0;
 	data->start_time = 0;
+	data->sim_finished = false;
+	data->threads_ready = false;
 	if (argv[5])
 		data->meals_count = ft_atoi(argv[5]);
 	else
 		data->meals_count = -1;
 	if (init_mutexes(data) != 0 || init_philos(data) != 0)
-		error_exit(data, "Error initializing data");
+		error(data, "Error: Mutex initialization failed");
 }

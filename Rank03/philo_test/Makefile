@@ -3,7 +3,7 @@ NAME = philo
 DEF_COLOR = \033[0;39m
 BRIGHT_GREEN =	\033[1;92m
 
-SRC = src/main.c src/utils.c src/philo.c src/init.c \
+SRC = src/main.c src/utils.c src/philo_life.c src/init.c \
 		src/simulation.c src/monitor.c src/error.c src/set_get.c
 
 INC = ./inc/philo_test.h

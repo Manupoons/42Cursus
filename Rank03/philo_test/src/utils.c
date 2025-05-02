@@ -6,41 +6,27 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 11:47:16 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/07 10:54:09 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:47:38 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_test.h"
 
-long	current_time(void)
+long	get_current_time(void)
 {
-	struct timeval	time;
-	long			ms;
-	gettimeofday(&time, NULL);
-	ms = time.tv_sec * 1000 + time.tv_usec / 1000;
-	return (ms);
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
 void	sleep_ms(long time, t_data *data)
 {
-	long	start;
+	long	start_time;
 
-	start = current_time();
-	while (!sim_finished(data) && (current_time() - start) < time)
+	start_time = get_current_time();
+	while (!sim_finished(data) && (get_current_time() - start_time) < time)
 		usleep(100);
-}
-
-void	print_status(t_philo *philo, char *status)
-{
-	long	time;
-
-	pthread_mutex_lock(&philo->data->print_mutex);
-	if (!sim_finished(philo->data) || ft_strcmp(status, "died") == 0)
-	{
-		time = current_time() - philo->data->start_time;
-		printf("%ld %d %s\n", time, philo->id, status);
-	}
-	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
@@ -59,6 +45,15 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
+void	print_status(t_philo *philo, char *status)
+{
+	pthread_mutex_lock(&philo->data->print_mutex);
+	if (!sim_finished(philo->data) || ft_strcmp(status, "died") == 0)
+		printf("%ld %d %s\n", get_current_time() - philo->data->start_time,
+			philo->id, status);
+	pthread_mutex_unlock(&philo->data->print_mutex);
+}
+
 int	ft_atoi(const char *str)
 {
 	long	res;
@@ -70,7 +65,7 @@ int	ft_atoi(const char *str)
 			return (0);
 		res = res * 10 + *str - '0';
 		if (res > INT_MAX)
-			error_exit(NULL, "Error: Integer overflow");
+			error(NULL, "Error: Integer overflow");
 		str++;
 	}
 	return ((int)res);

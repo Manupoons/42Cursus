@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:36:20 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/06 15:53:53 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:50:05 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static int	check_death(t_philo *philo)
 
 	data = philo->data;
 	pthread_mutex_lock(&data->eat_mutex);
-	time = current_time() - philo->last_meal_time;
+	time = get_current_time() - philo->last_meal_time;
 	pthread_mutex_unlock(&data->eat_mutex);
-	if (time >= data->time_to_die)
+	if (time >= data->death_time)
 	{
-		set_bool(&data->threads_mutex, &data->end_simulation, true);
+		set_bool(&data->threads_mutex, &data->sim_finished, true);
 		print_status(philo, "died");
 		return (1);
 	}
@@ -37,7 +37,7 @@ static int	check_full(t_data *data)
 	pthread_mutex_lock(&data->eat_mutex);
 	if (data->philo_full == data->num_philos)
 	{
-		set_bool(&data->threads_mutex, &data->end_simulation, true);
+		set_bool(&data->threads_mutex, &data->sim_finished, true);
 		pthread_mutex_unlock(&data->eat_mutex);
 		return (1);
 	}
@@ -45,16 +45,16 @@ static int	check_full(t_data *data)
 	return (0);
 }
 
-bool	threads_ready(pthread_mutex_t *mutex, int *threads, int philo_num)
+static bool	threads_ready(pthread_mutex_t *mutex, int *threads, int num_philos)
 {
-	bool	res;
+	bool	ready;
 
-	res = false;
+	ready = false;
 	pthread_mutex_lock(mutex);
-	if (*threads == philo_num)
-		res = true;
+	if (*threads == num_philos)
+		ready = true;
 	pthread_mutex_unlock(mutex);
-	return (res);
+	return (ready);
 }
 
 void	*monitor_routine(void *arg)
@@ -64,7 +64,7 @@ void	*monitor_routine(void *arg)
 
 	data = (t_data *)arg;
 	while (!threads_ready(&data->threads_mutex, &data->philo_ready,
-				data->num_philos))
+			data->num_philos))
 		usleep(100);
 	while (!sim_finished(data))
 	{
@@ -75,7 +75,7 @@ void	*monitor_routine(void *arg)
 				return (NULL);
 			i++;
 		}
-		usleep(100);
+		usleep (100);
 	}
 	return (NULL);
 }
