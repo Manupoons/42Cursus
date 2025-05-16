@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 14:18:53 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/04/30 12:11:45 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:54:33 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+
+# define HELP_MSG "Usage: ./philo <number_of_philosophers> <time_to_die> \
+<time_to_eat> <time_to_sleep> [number_of_times_each_philosopher_must_eat]"
 
 struct	s_data;
 
@@ -54,43 +57,49 @@ typedef struct s_data
 	t_philo			*philos;
 }	t_data;
 
-// INIT
-void	init_data(t_data *data, char **argv);
+// simulation
 
-// ERRORS
+bool	sim_finished(t_data *data);
+void	wait_threads(t_data *data);
+int		end_simulation(t_data *data);
+void	*philo_routine(void *arg);
+int		start_simulation(t_data *data);
+
+// utils
+
+long	get_current_time(void);
+void	sleep_ms(long time, t_data *data);
+int		ft_strcmp(const char *s1, const char *s2);
+void	print_status(t_philo *philo, char *status);
+int		ft_atoi(const char *str);
+
+// error
+
 void	destroy_mutexes(t_data *data);
 void	free_data(t_data *data);
 void	full_error(t_data *data, char *msg);
 void	error(t_data *data, char *msg);
 
-// UTILS
-int		ft_atoi(const char *str);
-int		ft_strcmp(const char *s1, const char *s2);
-long	get_current_time(void);
-void	sleep_ms(long time, t_data *data);
-void	print_status(t_philo *philo, char *status);
+// init
 
-// SET GET
-void	set_bool(pthread_mutex_t *mutex, bool *var, bool value);
-void	set_long(pthread_mutex_t *mutex, long *var, long value);
-bool	get_bool(pthread_mutex_t *mutex, bool *var);
-long	get_long(pthread_mutex_t *mutex, long *var);
+void	init_data(t_data *data, char **argv);
+
+// set_get
+
+void	set_long(pthread_mutex_t *mutex, long *value, long new_value);
+void	set_bool(pthread_mutex_t *mutex, bool *value, bool new_value);
+bool	get_bool(pthread_mutex_t *mutex, bool *value);
 void	increase_int(pthread_mutex_t *mutex, int *value);
 
-// SIMULATION
-bool	sim_finished(t_data *data);
-void	wait_threads(t_data *data);
-int		end_simulation(t_data *data);
-int		start_simulation(t_data *data);
+// philo_life
 
-// MONITOR
-bool	threads_ready(pthread_mutex_t *mutex, int *threads, int philo_num);
-void	*monitor_routine(void *arg);
-
-//PHILO_LIFE
 void	*one_philo(t_philo *philo, t_data *data);
 void	philo_eat(t_philo *philo, t_data *data);
 void	philo_sleep(t_philo *philo, t_data *data);
 void	philo_think(t_philo *philo, t_data *data);
+
+// monitor
+
+void	*monitor_routine(void *arg);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 13:13:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/14 14:21:36 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:53:52 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	check_full(t_data *data)
 	return (0);
 }
 
-bool	threads_ready(pthread_mutex_t *mutex, int *threads, int philo_num)
+static bool	threads_ready(pthread_mutex_t *mutex, int *threads, int philo_num)
 {
 	bool	ready;
 

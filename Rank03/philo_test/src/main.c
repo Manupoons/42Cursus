@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 11:45:51 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/05/02 16:49:40 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:40:24 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	validate_input(int argc, char **argv)
 	int	i;
 	int	j;
 
-	i = 1;
 	if (argc < 5 || argc > 6)
 		error(NULL, HELP_MSG);
+	i = 1;
 	while (i < argc)
 	{
 		j = ft_atoi(argv[i]);
