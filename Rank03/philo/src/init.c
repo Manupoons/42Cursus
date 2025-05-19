@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 10:34:22 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/14 14:43:01 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:49:30 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ void	init_data(t_data *data, char **argv)
 	data->death_time = ft_atoi(argv[2]);
 	data->eat_time = ft_atoi(argv[3]);
 	data->sleep_time = ft_atoi(argv[4]);
-	data->sim_finished = false;
-	data->threads_ready = false;
 	data->philo_ready = 0;
 	data->philo_full = 0;
 	data->start_time = 0;
+	data->sim_finished = false;
+	data->threads_ready = false;
 	if (argv[5])
 		data->meals_count = ft_atoi(argv[5]);
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 10:34:09 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/14 15:16:28 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:04:42 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 long	get_current_time(void)
 {
 	struct timeval	tv;
-	long			ms;
 
 	gettimeofday(&tv, NULL);
-	ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
-	return (ms);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
 void	sleep_ms(long time, t_data *data)
@@ -49,14 +47,10 @@ int	ft_strcmp(const char *s1, const char *s2)
 
 void	print_status(t_philo *philo, char *status)
 {
-	long	time;
-
 	pthread_mutex_lock(&philo->data->print_mutex);
 	if (!sim_finished(philo->data) || ft_strcmp(status, "died") == 0)
-	{
-		time = get_current_time() - philo->data->start_time;
-		printf("%ld %d %s\n", time, philo->id, status);
-	}
+		printf("%ld %d %s\n", get_current_time() - philo->data->start_time,
+			philo->id, status);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 

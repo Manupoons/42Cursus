@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_test.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 11:18:46 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/05/02 16:48:39 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:44:08 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_data
 	t_philo			*philos;
 }	t_data;
 
-// simuation
+// simulation
 
 bool	sim_finished(t_data *data);
 void	wait_threads(t_data *data);

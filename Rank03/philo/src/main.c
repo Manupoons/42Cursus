@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaratr <mamaratr@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 10:34:12 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/03/14 15:03:02 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:18:46 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static void	validate_input(int argc, char **argv)
 	int	j;
 
 	if (argc < 5 || argc > 6)
-		error(NULL, "Error: Invalid number of arguments");
+		error(NULL, HELP_MSG);
 	i = 1;
 	while (i < argc)
 	{
 		j = ft_atoi(argv[i]);
-		if (j == 0)
+		if (j <= 0)
 			error(NULL, "Error: Invalid argument");
 		i++;
 	}
