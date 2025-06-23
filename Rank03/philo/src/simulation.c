@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 13:07:20 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/04/30 12:08:00 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/06/23 15:39:13 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	start_simulation(t_data *data)
 	int	i;
 
 	i = 0;
+	data->start_time = get_current_time();
 	while (i < data->num_philos)
 	{
 		if (pthread_create(&data->philos[i].philo_thread, NULL,
@@ -77,7 +78,6 @@ int	start_simulation(t_data *data)
 			return (1);
 		i++;
 	}
-	data->start_time = get_current_time();
 	set_bool(&data->threads_mutex, &data->threads_ready, true);
 	if (data->num_philos > 1)
 	{

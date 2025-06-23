@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 11:10:24 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/04/30 12:48:21 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:10:25 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	philo_eat(t_philo *philo, t_data *data)
 	print_status(philo, "has taken a fork");
 	set_long(&data->eat_mutex, &philo->last_meal_time, get_current_time());
 	print_status(philo, "is eating");
+	sleep_ms(data->eat_time, data);
 	if (data->meals_count != -1)
 	{
 		philo->meals_eaten++;
 		if (philo->meals_eaten == data->meals_count)
 			increase_int(&data->eat_mutex, &data->philo_full);
 	}
-	sleep_ms(data->eat_time, data);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
@@ -52,18 +52,14 @@ void	philo_sleep(t_philo *philo, t_data *data)
 
 void	philo_think(t_philo *philo, t_data *data)
 {
-	int	t_eat;
-	int	t_sleep;
 	int	t_think;
 
 	if (data->num_philos % 2 == 0)
 		print_status(philo, "is thinking");
 	else
 	{
-		t_eat = data->eat_time;
-		t_sleep = data->sleep_time;
-		t_think = t_eat * 2 + t_sleep;
+		t_think = (philo->id % data->num_philos) * 5;
 		print_status(philo, "is thinking");
-		sleep_ms(t_think * 0.42, data);
+		sleep_ms(t_think, data);
 	}
 }
