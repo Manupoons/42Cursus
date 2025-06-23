@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 13:07:20 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/06/23 15:39:13 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:42:32 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	*philo_routine(void	*arg)
 		sleep_ms(data->eat_time / 2, data);
 	while (!sim_finished(data))
 	{
+		if (philo->meals_eaten == data->meals_count)
+			break ;
 		philo_eat(philo, data);
 		philo_sleep(philo, data);
 		philo_think(philo, data);

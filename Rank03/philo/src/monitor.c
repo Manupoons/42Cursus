@@ -6,7 +6,7 @@
 /*   By: mamaratr <mamaratr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 13:13:27 by mamaratr          #+#    #+#             */
-/*   Updated: 2025/05/16 12:53:52 by mamaratr         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:21:20 by mamaratr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	check_death(t_philo *philo)
 	pthread_mutex_lock(&data->eat_mutex);
 	time = get_current_time() - philo->last_meal_time;
 	pthread_mutex_unlock(&data->eat_mutex);
-	if (time >= data->death_time)
+	if (time > data->death_time)
 	{
 		set_bool(&data->threads_mutex, &data->sim_finished, true);
 		print_status(philo, "died");
