@@ -1,0 +1,12 @@
+# Projects that live in their own GitHub repo (linked from README)
+/CPP42/
+/Rank03/Minishell/
+/Rank04/CUB3D/cub3d/
+/Rank05/ft_irc/
+/Rank05/Inception/
+
+# Build artifacts / editor
+*.o
+*.d
+*.a
+.vscode/
