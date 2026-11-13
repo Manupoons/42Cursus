@@ -14,7 +14,7 @@ My 42 projects, by rank.
 | 03 | philosophers | [Rank03/philo](Rank03/philo) |
 | 03 | NetPractice | [Rank03/NetPractice](Rank03/NetPractice) |
 | 03 | Minishell | [Manupoons/Minishell](https://github.com/Manupoons/Minishell) |
-| 04 | cub3D | [robercarpio/cub3d](https://github.com/robercarpio/cub3d) |
+| 04 | cub3D | [Manupoons/Cub3D](https://github.com/Manupoons/Cub3D) |
 | 05 | CPP Modules 00-09 | [Manupoons/CPP42](https://github.com/Manupoons/CPP42) |
-| 05 | ft_irc | [robercarpio/ft_irc](https://github.com/robercarpio/ft_irc) |
+| 05 | ft_irc | [Manupoons/ft_irc](https://github.com/Manupoons/ft_irc) |
 | 05 | Inception | [Manupoons/Inception](https://github.com/Manupoons/Inception) |
